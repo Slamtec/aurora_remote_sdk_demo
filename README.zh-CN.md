@@ -33,6 +33,11 @@
 - [SLAMTEC Aurora 网站](https://www.slamtec.com/cn/Aurora) 
 - [RoboStudio](https://www.slamtec.com/en/RoboStudio)
 
+## Remote SDK API 参考文档
+- [Remote SDK API Reference](doc/html/index.html)
+这是Remote SDK的API参考。它包含所有函数在Remote SDK中的函数原型、参数描述和返回值。
+
+
 ## 构建演示的步骤
 1. 克隆仓库及其子模块：
     ```

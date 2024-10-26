@@ -1,0 +1,26 @@
+var classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo =
+[
+    [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a27e192ff75be5f31bb23926e10eb53df", null ],
+    [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a4d2952abbdd133db9cdc1fdf8ae2733a", null ],
+    [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a8ce9dcbb91c2ea2d67be8ad2e09d1131", null ],
+    [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ac46b9db37c7fb6408c0da73c0e2b2fe2", null ],
+    [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ac396708ef9a968721c4f1ea71647ae71", null ],
+    [ "_copyFrom", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a0768417cfb2b7917d9e3b10c49cdf29c", null ],
+    [ "_isOwnBuffer", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a2dbbf15cee660d1575b329e06adddb4e", null ],
+    [ "_moveFrom", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a14f8561e0071f96d11a86d412d98adfc", null ],
+    [ "getKeypointsLeftBuffer", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a97e7fb475b94cf419786b46b9c061e5d", null ],
+    [ "getKeypointsLeftCount", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#aeeb3e8e76f12136efa46fa8003426940", null ],
+    [ "getKeypointsRightBuffer", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a413f09564f2e4e6ff9d32ab568fd58bd", null ],
+    [ "getKeypointsRightCount", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a0f3de8685cd6b585f6ef39fda2481024", null ],
+    [ "operator=", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a8da67d13d22f0890f5a7027d9aa3f26b", null ],
+    [ "operator=", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a7f4e8f26524a317471a5891474d195d1", null ],
+    [ "_imgbuffer_left", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ab9b4e33dd47dbd812006329daaf6104e", null ],
+    [ "_imgbuffer_right", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a68c1936367b8c52ed9e0475799b57d78", null ],
+    [ "_keypoints_buffer_left", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a6157945816e58919efb662ce1432cefd", null ],
+    [ "_keypoints_buffer_rightf", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#afdb7137b62ebba1b90e8af722faa9f8d", null ],
+    [ "_keypoints_left", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a76c0ddd736dcecc5034918efeebc0c39", null ],
+    [ "_keypoints_right", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a83fb7e3d3fdac6015a8dbb950cfc2eb3", null ],
+    [ "leftImage", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a5e41a721b09d67f0ba35aac174874cfb", null ],
+    [ "rightImage", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ae74a8adfc41edea0e8f6fd514662d8c9", null ],
+    [ "trackingInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#abde8cc34b3fd5c18ccf07f0d25987f79", null ]
+];

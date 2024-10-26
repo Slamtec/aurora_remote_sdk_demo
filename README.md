@@ -36,6 +36,12 @@ They can be downloaded from the following links:
 - [SLAMTEC Aurora Website](https://www.slamtec.com/en/Aurora) / ([中文版点此](https://www.slamtec.com/cn/Aurora))
 - [RoboStudio](https://www.slamtec.com/en/RoboStudio)
 
+
+## API Reference of the Remote SDK
+- [Remote SDK API Reference](doc/html/index.html)
+This is the API reference for the Remote SDK. It contains the function prototypes, parameter descriptions, and return values for all the functions in the Remote SDK.
+
+
 ## Steps to build the Demos
 1. Clone the repository and its submodules:
     ```

@@ -1,0 +1,75 @@
+var group__Cxx__DataProvider__Operations =
+[
+    [ "RemoteImageRef", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html", [
+      [ "RemoteImageRef", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html#a75810d737cc36a4eb220c2ce4639fd3b", null ],
+      [ "toMat", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html#aa99544e5f3411bab0870357f02e59077", null ],
+      [ "_data", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html#a7f7255b98d9609a688b79b06a8084dc7", null ],
+      [ "_desc", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html#a91e71f94076277741855c472c0eaab34", null ]
+    ] ],
+    [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html", [
+      [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a27e192ff75be5f31bb23926e10eb53df", null ],
+      [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a4d2952abbdd133db9cdc1fdf8ae2733a", null ],
+      [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a8ce9dcbb91c2ea2d67be8ad2e09d1131", null ],
+      [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ac46b9db37c7fb6408c0da73c0e2b2fe2", null ],
+      [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ac396708ef9a968721c4f1ea71647ae71", null ],
+      [ "_copyFrom", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a0768417cfb2b7917d9e3b10c49cdf29c", null ],
+      [ "_isOwnBuffer", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a2dbbf15cee660d1575b329e06adddb4e", null ],
+      [ "_moveFrom", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a14f8561e0071f96d11a86d412d98adfc", null ],
+      [ "getKeypointsLeftBuffer", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a97e7fb475b94cf419786b46b9c061e5d", null ],
+      [ "getKeypointsLeftCount", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#aeeb3e8e76f12136efa46fa8003426940", null ],
+      [ "getKeypointsRightBuffer", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a413f09564f2e4e6ff9d32ab568fd58bd", null ],
+      [ "getKeypointsRightCount", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a0f3de8685cd6b585f6ef39fda2481024", null ],
+      [ "operator=", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a8da67d13d22f0890f5a7027d9aa3f26b", null ],
+      [ "operator=", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a7f4e8f26524a317471a5891474d195d1", null ],
+      [ "_imgbuffer_left", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ab9b4e33dd47dbd812006329daaf6104e", null ],
+      [ "_imgbuffer_right", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a68c1936367b8c52ed9e0475799b57d78", null ],
+      [ "_keypoints_buffer_left", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a6157945816e58919efb662ce1432cefd", null ],
+      [ "_keypoints_buffer_rightf", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#afdb7137b62ebba1b90e8af722faa9f8d", null ],
+      [ "_keypoints_left", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a76c0ddd736dcecc5034918efeebc0c39", null ],
+      [ "_keypoints_right", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a83fb7e3d3fdac6015a8dbb950cfc2eb3", null ],
+      [ "leftImage", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a5e41a721b09d67f0ba35aac174874cfb", null ],
+      [ "rightImage", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ae74a8adfc41edea0e8f6fd514662d8c9", null ],
+      [ "trackingInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#abde8cc34b3fd5c18ccf07f0d25987f79", null ]
+    ] ],
+    [ "RemoteKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html", [
+      [ "RemoteKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a0e910a9850362e69d557de1e3047487f", null ],
+      [ "RemoteKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a9fc52a6df4e5e63ead440e2dd078a7a8", null ],
+      [ "RemoteKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#ac8d215a938bbed7d5c6f5ea57acc15f6", null ],
+      [ "RemoteKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#ab7e650e8230dff23c9636cc61c576ef9", null ],
+      [ "operator=", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a7a40e13ea4a689d2280d0935d7d260b9", null ],
+      [ "operator=", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a1fd3b7d42c34706a4384c1311b67e019", null ],
+      [ "connectedKeyFrameIDs", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#ab626627c7e36c504b339a27cd084f9b7", null ],
+      [ "desc", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a484efaf20ce217892685e8e5bc48a10b", null ],
+      [ "loopedKeyFrameIDs", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a2b3e1e6bb8ee97b2974b4125ff2ddd61", null ]
+    ] ],
+    [ "RemoteMapDataVisitor", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html", [
+      [ "KeyFrameDataCallback", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#aa4fabf760eb3d88d8d0d549d4ff74bc5", null ],
+      [ "MapDataCallback", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#a3d9e88565a6edc4af3736ab102ed05db", null ],
+      [ "MapPointDataCallback", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#ad129ff485d883354f3197d45e2e99886", null ],
+      [ "RemoteMapDataVisitor", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#ab55fb545235862a259471333cc31e76e", null ],
+      [ "subscribeKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#ada6d0ebc855de4de1586447f68bffbfc", null ],
+      [ "subscribeMapData", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#a2319b687fd302ee87c40b084e12a5fb5", null ],
+      [ "subscribeMapPointData", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#a3006cffdd1e4ea11664cb3096ed91c93", null ],
+      [ "RemoteDataProvider", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#a17f3fd649b84e5361aa927f588faa3ab", null ],
+      [ "_keyFrameDataCallback", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#a9d079fa09c8c4440c093f153609033bd", null ],
+      [ "_mapDataCallback", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#a0d0ba938ba860cf948b7f62c8ab6a0e0", null ],
+      [ "_mapPointDataCallback", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#a3647178d8e96008ea86124214fd66c0b", null ],
+      [ "_visitor_obj", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#acb976287df3874139877dcc650e23c50", null ]
+    ] ],
+    [ "RemoteDataProvider", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html", [
+      [ "RemoteDataProvider", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#ab6ac659118aebcb544908d66d6f461f4", null ],
+      [ "accessMapData", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#abbc7b6d2f1f88031908b9265e6673785", null ],
+      [ "accessMapData", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a75498b787692bf73c4439d685a7ae25a", null ],
+      [ "getAllMapInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a2ae940ef71c82a516a32d46827477159", null ],
+      [ "getCurrentPose", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#aa3cdc0bfad27d6c882efb5b89d642bbd", null ],
+      [ "getCurrentPoseSE3", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a020587b8ec7e1f4c2464c19be494e255", null ],
+      [ "getGlobalMappingInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a3993848fdc72b97f387a0b5173db2bb6", null ],
+      [ "getIMUInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a670fb477a4a50662dd106b2ab530bb5a", null ],
+      [ "getLastDeviceStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#ae78f2be2cf47dff0a75cce90f4736796", null ],
+      [ "getMappingFlags", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a20d765bc9d1cb926d98aad59a034078e", null ],
+      [ "peekIMUData", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a9aa3bd005a4f0d6e13ba02c992736237", null ],
+      [ "peekTrackingData", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a448d3da5892ddce8c9751f95a65e9c19", null ],
+      [ "RemoteSDK", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a3d7224f06f82e9b871760e360315effe", null ],
+      [ "_sdk", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a718269dbca274e95182d626524262bd3", null ]
+    ] ]
+];
