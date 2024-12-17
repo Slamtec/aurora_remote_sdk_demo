@@ -53,7 +53,7 @@ void showHelp() {
     std::cout << "  -d, --download        Download the vslam map from the aurora device" << std::endl;
     std::cout << "  -u, --upload          Upload the vslam map to the aurora device" << std::endl;
     std::cout << "  [map_file]            The map file to be downloaded or uploaded" << std::endl;
-    std::cout << "                        Default: auroramap.asb" << std::endl;
+    std::cout << "                        Default: auroramap.stcm" << std::endl;
 }
 
 
@@ -62,7 +62,7 @@ struct Options {
     bool download = false;
     bool upload = false;
     bool autoSelectDevice = true;
-    std::string mapFile = "auroramap.asb";
+    std::string mapFile = "auroramap.stcm";
 };
 
 

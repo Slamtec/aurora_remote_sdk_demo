@@ -38,5 +38,7 @@ var hierarchy =
     [ "rp::standalone::aurora::RemoteKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html", null ],
     [ "rp::standalone::aurora::RemoteMapDataVisitor", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html", null ],
     [ "rp::standalone::aurora::RemoteSDKListener", "classrp_1_1standalone_1_1aurora_1_1RemoteSDKListener.html", null ],
-    [ "rp::standalone::aurora::RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html", null ]
+    [ "rp::standalone::aurora::RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html", null ],
+    [ "slamtec_aurora_sdk_device_status", "structslamtec__aurora__sdk__device__status.html", null ],
+    [ "slamtec_aurora_sdk_relocalization_status", "structslamtec__aurora__sdk__relocalization__status.html", null ]
 ];

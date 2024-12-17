@@ -469,6 +469,32 @@ enum slamtec_aurora_sdk_device_status_types {
  */
 typedef uint32_t slamtec_aurora_sdk_device_status_t; //value selected from enum slamtec_aurora_sdk_device_status_types
 
+/**
+ * @brief The device status structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The device status structure contains the status of the device.
+ */
+typedef struct slamtec_aurora_sdk_device_status
+{
+    slamtec_aurora_sdk_device_status_t status;
+    uint64_t timestamp_ns;
+};
+
+enum slamtec_aurora_sdk_relocalization_status_types {
+    SLAMTEC_AURORA_SDK_RELOCALIZATION_NONE = 0,
+    SLAMTEC_AURORA_SDK_RELOCALIZATION_STARTED,
+    SLAMTEC_AURORA_SDK_RELOCALIZATION_SUCCEED,
+    SLAMTEC_AURORA_SDK_RELOCALIZATION_FAILED,
+    SLAMTEC_AURORA_SDK_RELOCALIZATION_ABORTED
+};
+
+typedef uint32_t slamtec_aurora_sdk_relocalization_status_t;
+
+typedef struct slamtec_aurora_sdk_relocalization_status
+{
+    slamtec_aurora_sdk_relocalization_status_t status;
+    uint64_t timestamp_ns;
+};
 
 /**
  * @brief The image description structure
@@ -647,7 +673,7 @@ typedef struct _slamtec_aurora_sdk_tracking_info {
     uint32_t tracking_status; // from slamtec_aurora_sdk_tracking_status_t
 
     /**
-     * @brief The pose of the tracking
+     * @brief The pose of the tracking (base to world)
      * @details The pose of the tracking is the pose of the tracking.
      */
     slamtec_aurora_sdk_pose_se3_t pose;
@@ -707,11 +733,18 @@ typedef struct _slamtec_aurora_sdk_imu_info_t {
      * @details non-zero for valid data
      */
     int valid; // non-zero for valid data
+
+
     /**
-     * @brief The transform from IMU to base
-     * @details The transform from IMU to base is the transform from IMU to base.
+     * @brief The transform from base to camera
      */
     slamtec_aurora_sdk_pose_se3_t tcb;
+
+    /**
+     * @brief The transform from IMU to camera
+     */
+    slamtec_aurora_sdk_pose_se3_t tc_imu;
+
     /**
      * @brief The covariance of the noise
      * @details The covariance of the noise is the covariance of the noise.
@@ -866,7 +899,7 @@ typedef struct _slamtec_aurora_sdk_keyframe_desc_t {
     double timestamp;
 
     /**
-     * @brief The pose of the keyframe
+     * @brief The pose of the keyframe (base to world)
      */
     slamtec_aurora_sdk_pose_se3_t pose_se3;
     slamtec_aurora_sdk_pose_t pose;

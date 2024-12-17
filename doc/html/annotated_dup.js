@@ -3,19 +3,19 @@ var annotated_dup =
     [ "rp", null, [
       [ "standalone", null, [
         [ "aurora", null, [
-          [ "Noncopyable", "classrp_1_1standalone_1_1aurora_1_1Noncopyable.html", "classrp_1_1standalone_1_1aurora_1_1Noncopyable" ],
-          [ "RemoteController", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html", "classrp_1_1standalone_1_1aurora_1_1RemoteController" ],
-          [ "RemoteDataProvider", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider" ],
-          [ "RemoteImageRef", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef" ],
-          [ "RemoteKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData" ],
-          [ "RemoteMapDataVisitor", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor" ],
-          [ "RemoteMapManager", "classrp_1_1standalone_1_1aurora_1_1RemoteMapManager.html", "classrp_1_1standalone_1_1aurora_1_1RemoteMapManager" ],
-          [ "RemoteSDK", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK" ],
-          [ "RemoteSDKListener", "classrp_1_1standalone_1_1aurora_1_1RemoteSDKListener.html", "classrp_1_1standalone_1_1aurora_1_1RemoteSDKListener" ],
-          [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo" ],
-          [ "SDKConfig", "classrp_1_1standalone_1_1aurora_1_1SDKConfig.html", "classrp_1_1standalone_1_1aurora_1_1SDKConfig" ],
           [ "SDKConnectionInfo", "classrp_1_1standalone_1_1aurora_1_1SDKConnectionInfo.html", "classrp_1_1standalone_1_1aurora_1_1SDKConnectionInfo" ],
-          [ "SDKServerConnectionDesc", "classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc.html", "classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc" ]
+          [ "SDKServerConnectionDesc", "classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc.html", "classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc" ],
+          [ "RemoteImageRef", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef" ],
+          [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo" ],
+          [ "RemoteKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData" ],
+          [ "Noncopyable", "classrp_1_1standalone_1_1aurora_1_1Noncopyable.html", "classrp_1_1standalone_1_1aurora_1_1Noncopyable" ],
+          [ "RemoteSDKListener", "classrp_1_1standalone_1_1aurora_1_1RemoteSDKListener.html", "classrp_1_1standalone_1_1aurora_1_1RemoteSDKListener" ],
+          [ "RemoteMapDataVisitor", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor" ],
+          [ "SDKConfig", "classrp_1_1standalone_1_1aurora_1_1SDKConfig.html", "classrp_1_1standalone_1_1aurora_1_1SDKConfig" ],
+          [ "RemoteController", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html", "classrp_1_1standalone_1_1aurora_1_1RemoteController" ],
+          [ "RemoteMapManager", "classrp_1_1standalone_1_1aurora_1_1RemoteMapManager.html", "classrp_1_1standalone_1_1aurora_1_1RemoteMapManager" ],
+          [ "RemoteDataProvider", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider" ],
+          [ "RemoteSDK", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK" ]
         ] ]
       ] ]
     ] ],
@@ -40,5 +40,7 @@ var annotated_dup =
     [ "_slamtec_aurora_sdk_session_config_t", "struct__slamtec__aurora__sdk__session__config__t.html", "struct__slamtec__aurora__sdk__session__config__t" ],
     [ "_slamtec_aurora_sdk_tracking_data_buffer_t", "struct__slamtec__aurora__sdk__tracking__data__buffer__t.html", "struct__slamtec__aurora__sdk__tracking__data__buffer__t" ],
     [ "_slamtec_aurora_sdk_tracking_info", "struct__slamtec__aurora__sdk__tracking__info.html", "struct__slamtec__aurora__sdk__tracking__info" ],
-    [ "_slamtec_aurora_sdk_version_info_t", "struct__slamtec__aurora__sdk__version__info__t.html", "struct__slamtec__aurora__sdk__version__info__t" ]
+    [ "_slamtec_aurora_sdk_version_info_t", "struct__slamtec__aurora__sdk__version__info__t.html", "struct__slamtec__aurora__sdk__version__info__t" ],
+    [ "slamtec_aurora_sdk_device_status", "structslamtec__aurora__sdk__device__status.html", "structslamtec__aurora__sdk__device__status" ],
+    [ "slamtec_aurora_sdk_relocalization_status", "structslamtec__aurora__sdk__relocalization__status.html", "structslamtec__aurora__sdk__relocalization__status" ]
 ];

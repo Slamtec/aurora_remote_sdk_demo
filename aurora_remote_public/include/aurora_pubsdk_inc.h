@@ -216,6 +216,26 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_requ
  */
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_require_mapping_mode(slamtec_aurora_sdk_session_handle_t handle, uint64_t timeout_ms);
 
+/**
+ * @brief Require the remote Device to enter the relocalization mode
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @param timeout_ms - the timeout in milliseconds
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_require_relocalization(slamtec_aurora_sdk_session_handle_t handle, uint64_t timeout_ms);
+
+
+/**
+ * @brief Require the remote Device to cancel the relocalization process
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @param timeout_ms - the timeout in milliseconds
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_cancel_relocalization(slamtec_aurora_sdk_session_handle_t handle, uint64_t timeout_ms);
 
 /**
  * @brief Send a custom command to the remote Device
@@ -293,7 +313,7 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_mapmanager_quer
 // dataprovider operations
 
 /**
- * @brief Get the current pose in SE3 format
+ * @brief Get the current pose (base to world) in SE3 format
  * @details Caller can use this function to get the current pose in SE3 format.
  * @details The pose data retrieved is the cached data from previous fetched by the background data sync thread.
  * @details The pose data may be outdated. If caller needs the latest pose data, it should using the SDK listener to get the pose update event.
@@ -306,7 +326,7 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_mapmanager_quer
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_current_pose_se3(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_pose_se3_t* pose_out);
 
 /**
- * @brief Get the current pose in Euler angles (Roll-Pitch-Yaw  RPY order) format
+ * @brief Get the current pose (base to world) in Euler angles (Roll-Pitch-Yaw  RPY order) format
  * @details Caller can use this function to get the current pose in Euler angles format.
  * @details The pose data retrieved is the cached data from previous fetched by the background data sync thread.
  * @details The pose data may be outdated. If caller needs the latest pose data, it should using the SDK listener to get the pose update event.
@@ -341,6 +361,19 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_ge
  * @return the error code
  */
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_last_device_status(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_device_status_t* status_out, uint64_t * timestamp_ns_out);
+
+/**
+* @brief Get the relocalization status
+* @details Caller can use this function to get the relocalization status.
+* @ingroup DataProvider_Operations Data Provider Operations
+* 
+* @param handle - the session handle
+* @param status_out - the status will be stored in this pointer
+* @param timestamp_ns_out - the timestamp will be stored in this pointer
+* @return the error code
+*/  
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_relocalization_status(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_relocalization_status_t * status_out, uint64_t * timestamp_ns_out);
+
 
 /**
  * @brief Peek the tracking data
@@ -380,6 +413,7 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_pe
  * @param info_out - the IMU info will be stored in this pointer
  * @return the error code
  */
+
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_imu_info(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_imu_info_t * info_out);
 
 

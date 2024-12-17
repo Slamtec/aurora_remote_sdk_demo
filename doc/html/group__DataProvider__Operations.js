@@ -8,6 +8,7 @@ var group__DataProvider__Operations =
     [ "slamtec_aurora_sdk_dataprovider_get_imu_info", "group__DataProvider__Operations.html#ga185b849bd6331ae84d44fb6b4d47e88b", null ],
     [ "slamtec_aurora_sdk_dataprovider_get_last_device_status", "group__DataProvider__Operations.html#ga72f817747bf697a3b6e9ed7e4628e519", null ],
     [ "slamtec_aurora_sdk_dataprovider_get_mapping_flags", "group__DataProvider__Operations.html#gafbb5becc761637ed5fe604b7ffbd7829", null ],
+    [ "slamtec_aurora_sdk_dataprovider_get_relocalization_status", "group__DataProvider__Operations.html#ga96175023d241850e3837909b80553255", null ],
     [ "slamtec_aurora_sdk_dataprovider_peek_imu_data", "group__DataProvider__Operations.html#gabc763395e4e45fbbd99a25971bd3b486", null ],
     [ "slamtec_aurora_sdk_dataprovider_peek_tracking_data", "group__DataProvider__Operations.html#ga99d67b19be8703ef3a5973205a763c92", null ]
 ];

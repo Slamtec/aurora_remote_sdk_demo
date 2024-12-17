@@ -440,6 +440,35 @@ public:
         return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
     }
 
+    /**
+    * @brief Require the remote device to perform the relocalization
+    * @param[in] timeout_ms The timeout in milliseconds, default is 5000ms
+    * @param[out] errcode The error code, set to nullptr if not interested
+    * @return True if the relocalization request is sent and performed successfully, false otherwise
+    */
+
+    bool requireRelocalization(uint64_t timeout_ms = SLAMTEC_AURORA_SDK_REMOTE_SERVER_DEFAULT_TIMEOUT, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_controller_require_relocalization(_sdk, timeout_ms);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+    * @brief Cancel the relocalization
+    * @param[in] timeout_ms The timeout in milliseconds, default is 5000ms
+    * @param[out] errcode The error code, set to nullptr if not interested
+    * @return True if the relocalization is canceled successfully, false otherwise
+    */
+    bool cancelRelocalization(uint64_t timeout_ms = SLAMTEC_AURORA_SDK_REMOTE_SERVER_DEFAULT_TIMEOUT, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_controller_cancel_relocalization(_sdk, timeout_ms);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
 
     /**
      * @brief Send a custom command to the remote device
@@ -709,6 +738,23 @@ public:
         return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
     }
 
+    //peek peek VSLAM System Status
+    bool peekVSLAMSystemStatus(slamtec_aurora_sdk_device_status& statusOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_dataprovider_get_last_device_status(_sdk, &statusOut.status, &statusOut.timestamp_ns);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    bool peekRelocalizationStatus(slamtec_aurora_sdk_relocalization_status& statusOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_dataprovider_get_relocalization_status(_sdk, &statusOut.status, &statusOut.timestamp_ns);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
     /**
      * @brief Peek the IMU data
      * @details Caller can use this function to peek the IMU data
@@ -975,8 +1021,17 @@ public:
         delete this;
     }
 
+    /**
+     * @brief The data provider class object
+     */
     RemoteDataProvider dataProvider;
+    /**
+     * @brief The controller class object
+     */
     RemoteController   controller;
+    /**
+     * @brief The map manager class object
+     */
     RemoteMapManager   mapManager;
 protected:
 

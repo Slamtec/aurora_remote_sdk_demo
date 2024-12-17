@@ -85,6 +85,14 @@ add_custom_command(TARGET simple_pose POST_BUILD
     ${AURORA_LIB_PATH}
     $<TARGET_FILE_DIR:simple_pose>)
 
+## relocalization
+add_executable(relocalization demo/relocalization/src/relocalization.cpp)
+target_link_libraries(relocalization ${AURORA_LIB_NAME})
+# copy the .so or .dll with ${AURORA_LIB_NAME} to the build directory
+add_custom_command(TARGET relocalization POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory  
+    ${AURORA_LIB_PATH}
+    $<TARGET_FILE_DIR:relocalization>)
 
 ## pure_c_demo
 add_executable(pure_c_demo demo/pure_c_demo/src/pure_c_demo.c)

@@ -2,7 +2,7 @@ SLAMTEC Aurora
 Public Remote SDK
 
 Initial Release Version  
-1.1.0-rc2
+1.2.0-rtm
 
 
 visit www.slamte.com for more info

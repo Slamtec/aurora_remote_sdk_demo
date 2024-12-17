@@ -47,6 +47,14 @@ var group__SDK__Basic__Data__Types =
       [ "rpy", "struct__slamtec__aurora__sdk__pose__t.html#af13da7e73e79a69d43202dc4cf6ba7f2", null ],
       [ "translation", "struct__slamtec__aurora__sdk__pose__t.html#ab866f8843457e74751a63a848520658d", null ]
     ] ],
+    [ "slamtec_aurora_sdk_device_status", "structslamtec__aurora__sdk__device__status.html", [
+      [ "status", "structslamtec__aurora__sdk__device__status.html#a9eee3e308f6d75a2faade5ba00b402a5", null ],
+      [ "timestamp_ns", "structslamtec__aurora__sdk__device__status.html#a067157016d8a13fcdea3a206e6f8bad2", null ]
+    ] ],
+    [ "slamtec_aurora_sdk_relocalization_status", "structslamtec__aurora__sdk__relocalization__status.html", [
+      [ "status", "structslamtec__aurora__sdk__relocalization__status.html#a28c41787a001076b605f56a7831a800d", null ],
+      [ "timestamp_ns", "structslamtec__aurora__sdk__relocalization__status.html#afde54706bf1443aab04c6b0598a39ccb", null ]
+    ] ],
     [ "_slamtec_aurora_sdk_image_desc_t", "struct__slamtec__aurora__sdk__image__desc__t.html", [
       [ "data_size", "struct__slamtec__aurora__sdk__image__desc__t.html#ae447d091a1ea38db8ba42be2eb24fac7", null ],
       [ "format", "struct__slamtec__aurora__sdk__image__desc__t.html#ab008ab9ca7ad6c638106b5acc9d13a77", null ],
@@ -88,6 +96,7 @@ var group__SDK__Basic__Data__Types =
     [ "_slamtec_aurora_sdk_imu_info_t", "struct__slamtec__aurora__sdk__imu__info__t.html", [
       [ "cov_noise", "struct__slamtec__aurora__sdk__imu__info__t.html#af6cf5ebc4a7431443d47baaa22598bf2", null ],
       [ "cov_random_walk", "struct__slamtec__aurora__sdk__imu__info__t.html#a35d1ad3c801402ff89971516809588a6", null ],
+      [ "tc_imu", "struct__slamtec__aurora__sdk__imu__info__t.html#a7fa0fda253357c5c15b58f69ce710c04", null ],
       [ "tcb", "struct__slamtec__aurora__sdk__imu__info__t.html#ad1dd15503f0d27a4f5965d8c8d49d63f", null ],
       [ "valid", "struct__slamtec__aurora__sdk__imu__info__t.html#a89f818cab816e8062bc7aacd865ada39", null ]
     ] ],
