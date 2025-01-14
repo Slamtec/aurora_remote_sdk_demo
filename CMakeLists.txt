@@ -121,5 +121,15 @@ add_executable(map_render demo/map_render/src/map_render.cpp)
 target_include_directories(map_render PRIVATE ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(map_render ${AURORA_LIB_NAME}  ${OpenCV_LIBS})
     
+## lidar scan plot
+add_executable(lidar_scan_plot demo/lidar_scan_plot/src/lidar_scan_plot.cpp)
+target_include_directories(lidar_scan_plot PRIVATE ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(lidar_scan_plot ${AURORA_LIB_NAME}  ${OpenCV_LIBS})
+
+## lidar 2d map render
+add_executable(lidar_2dmap_render demo/lidar_2dmap_render/src/lidar_2dmap_render.cpp)
+target_include_directories(lidar_2dmap_render PRIVATE ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(lidar_2dmap_render ${AURORA_LIB_NAME}  ${OpenCV_LIBS})
+
 
 endif()

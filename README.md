@@ -18,6 +18,11 @@ This repository contains the Demo code and project skeleton for using the SLAMTE
 - Pure C can be compiled with any C compiler that supports C11 (but C++ wrapper is not supported)
 - OpenCV 4.2 or above (if you want to compile the demo that uses OpenCV)
 
+## ROS Integration
+- SLAMTEC provides Aurora ROS wrapper nodes for ROS 1 and ROS 2.
+- You can find the wrapper nodes on SLAMTEC Aurora Website. ([ROS Wrapper Nodes](https://developer.slamtec.com/docs/slamware/aurora_ros2_sdk_en/))
+- Some Aurora specific features are not supported in the ROS wrapper nodes, such as the auto floor detection.
+- If you want to use the Aurora specific features, you need to use the Remote SDK.
 
 ## About the Remote SDK and SLAMWARE SDK
 - The Remote SDK is a standalone library that can be used to retrieve data specific to SLAMTEC Aurora, such as point cloud, map, and odometry.
@@ -73,7 +78,7 @@ This is the API reference for the Remote SDK. It contains the function prototype
 ## About the Demos
 ### map_render
 ![map_render](res/demo_vertical_map.gif)
-- This demo shows how to render the map data from the Aurora device.
+- This demo shows how to render the VSLAM map data from the Aurora device.
 - It will subscribe the map data, keyframe data, and map point data from the device, and render the map, keyframes, and map points on the screen.
 - The map will be rendered in the vertical view, and the keyframes will be rendered on the map.
 - Opencv is required for this demo.
@@ -82,6 +87,24 @@ This is the API reference for the Remote SDK. It contains the function prototype
 ![frame_preview](res/demo_tracking_prev_full.png)
 - This demo shows how to subscribe the tracking frame and raw camera image from the Aurora device.
 - Opencv is required for this demo.
+
+
+### lidar_scan_plot
+![lidar_scan_plot](res/demo.lidar.scan.rendering.gif)
+- This demo shows how to retrieve and render the built-in 2D lidar scan data from the Aurora device.
+- Two retrieving methods are provided:
+   1. via Callback Listener
+   2. via Polling
+- The Scan Point Quality (RSSI) is also retrieved and rendered.
+- Opencv is required for this demo.
+
+
+### lidar_2dmap_render
+![lidar_2dmap_render](res/demo_lidar_2dmap.gif)
+- This demo shows how to retrieve and render the 2D lidar map from the Aurora device.
+- Also, the auto floor detection is enabled in this demo.
+- Opencv is required for this demo.
+
 
 ### simple_pose
 ```

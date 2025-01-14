@@ -20,6 +20,7 @@
 #include <cstring>
 #include <algorithm>
 #include <functional>
+#include <memory>
 
 #include "slamtec_remote_objects.hxx"
 
@@ -59,27 +60,28 @@
  * @brief The data provider classes
  */
 
+/**
+ * @defgroup Cxx_LIDAR_2DMap_Operations LIDAR 2D GridMap Operations
+ * @brief The LIDAR 2D GridMap classes
+ */
+
+/**
+ * @defgroup Cxx_Auto_Floor_Detection_Operations LIDAR Auto Floor Detection Operations
+ * @brief The Auto Floor Detection classes
+ */
+
 /** @} */ // end of SDK_Cxx_Wrapper
 
 
 namespace rp { namespace standalone { namespace aurora { 
 
-class Noncopyable {
-protected:
-    Noncopyable() = default;
-    ~Noncopyable() = default;
 
-    Noncopyable(const Noncopyable&) = delete;
-    Noncopyable& operator=(const Noncopyable&) = delete;
-
-    Noncopyable(Noncopyable&&) = default;
-    Noncopyable& operator=(Noncopyable&&) = default;
-};
 
 class RemoteSDK;
 class RemoteDataProvider;
 class RemoteController;
 class RemoteMapManager;
+class LIDAR2DMapBuilder;
 
 /**
  * @brief The listener base class for receiving the data stream from the remote device
@@ -91,9 +93,9 @@ class RemoteSDKListener
     friend class RemoteSDK;
 public:
     RemoteSDKListener() 
-        : _listener_obj{ 0 }
+        : _sdk_listener_obj{ 0 }
     {
-        _listener_obj.user_data = this;
+        _sdk_listener_obj.user_data = this;
         _binding();
     }
     virtual ~RemoteSDKListener() {}
@@ -133,10 +135,18 @@ public:
      */
     virtual void onDeviceStatusChanged(uint64_t timestamp_ns, slamtec_aurora_sdk_device_status_t status) {}
 
+
+    /**
+     * @brief The callback for the LIDAR scan data
+     * @ingroup SDK_Callback_Types SDK Callback Types
+     * @details The callback to receive the LIDAR scan data from the remote device
+     */
+    virtual void onLIDARScan(const slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t& header, const slamtec_aurora_sdk_lidar_scan_point_t* points) {}
+
 private:
 
     void _binding() {
-        _listener_obj.on_raw_image_data = [](void* user_data, uint64_t timestamp_ns, const slamtec_aurora_sdk_image_desc_t* left_desc, const void* left_data, const slamtec_aurora_sdk_image_desc_t* right_desc, const void* right_data) {
+        _sdk_listener_obj.on_raw_image_data = [](void* user_data, uint64_t timestamp_ns, const slamtec_aurora_sdk_image_desc_t* left_desc, const void* left_data, const slamtec_aurora_sdk_image_desc_t* right_desc, const void* right_data) {
             RemoteSDKListener* This = reinterpret_cast<RemoteSDKListener *>(user_data);
 
             RemoteImageRef left(*left_desc, left_data);
@@ -145,7 +155,7 @@ private:
             This->onRawCamImageData(timestamp_ns, left, right);
         };
 
-        _listener_obj.on_tracking_data = [](void* user_data, const slamtec_aurora_sdk_tracking_info_t* tracking_data, const slamtec_aurora_sdk_tracking_data_buffer_t* provided_buffer_info) {
+        _sdk_listener_obj.on_tracking_data = [](void* user_data, const slamtec_aurora_sdk_tracking_info_t* tracking_data, const slamtec_aurora_sdk_tracking_data_buffer_t* provided_buffer_info) {
             RemoteSDKListener* This = reinterpret_cast<RemoteSDKListener*>(user_data);
 
             RemoteTrackingFrameInfo frameInfo(*tracking_data, *provided_buffer_info);
@@ -153,28 +163,33 @@ private:
             This->onTrackingData(frameInfo);
         };
 
-        _listener_obj.on_imu_data = [](void* user_data, const slamtec_aurora_sdk_imu_data_t* imu_data, size_t imu_data_count) {
+        _sdk_listener_obj.on_imu_data = [](void* user_data, const slamtec_aurora_sdk_imu_data_t* imu_data, size_t imu_data_count) {
             RemoteSDKListener* This = reinterpret_cast<RemoteSDKListener*>(user_data);
 
             This->onIMUData(imu_data, imu_data_count);
         };
 
-        _listener_obj.on_mapping_flags = [](void* user_data, slamtec_aurora_sdk_mapping_flag_t flags) {
+        _sdk_listener_obj.on_mapping_flags = [](void* user_data, slamtec_aurora_sdk_mapping_flag_t flags) {
             RemoteSDKListener* This = reinterpret_cast<RemoteSDKListener*>(user_data);
 
             This->onNewMappingFlags(flags);
         };
 
-        _listener_obj.on_device_status = [](void* user_data, uint64_t timestamp_ns,  slamtec_aurora_sdk_device_status_t status) {
+        _sdk_listener_obj.on_device_status = [](void* user_data, uint64_t timestamp_ns,  slamtec_aurora_sdk_device_status_t status) {
             RemoteSDKListener* This = reinterpret_cast<RemoteSDKListener*>(user_data);
 
             This->onDeviceStatusChanged(timestamp_ns, status);
         };
 
+        _sdk_listener_obj.on_lidar_scan = [](void* user_data, const slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t* header, const slamtec_aurora_sdk_lidar_scan_point_t* points) {
+            RemoteSDKListener* This = reinterpret_cast<RemoteSDKListener*>(user_data);
+            This->onLIDARScan(*header, points);
+        };
 
     }
 
-    slamtec_aurora_sdk_listener_t _listener_obj;
+protected:
+    slamtec_aurora_sdk_listener_t _sdk_listener_obj;
 };
 #if 0
 class RemoteMapDataVisitor {
@@ -739,7 +754,7 @@ public:
     }
 
     //peek peek VSLAM System Status
-    bool peekVSLAMSystemStatus(slamtec_aurora_sdk_device_status& statusOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+    bool peekVSLAMSystemStatus(slamtec_aurora_sdk_device_status_desc_t& statusOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
         auto result = slamtec_aurora_sdk_dataprovider_get_last_device_status(_sdk, &statusOut.status, &statusOut.timestamp_ns);
         if (errcode) {
             *errcode = result;
@@ -747,13 +762,61 @@ public:
         return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
     }
 
-    bool peekRelocalizationStatus(slamtec_aurora_sdk_relocalization_status& statusOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+    bool peekRelocalizationStatus(slamtec_aurora_sdk_relocalization_status_t & statusOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
         auto result = slamtec_aurora_sdk_dataprovider_get_relocalization_status(_sdk, &statusOut.status, &statusOut.timestamp_ns);
         if (errcode) {
             *errcode = result;
         }
         return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
     }
+
+    /**
+     * @brief Peek the recent LIDAR scan data in single layer mode
+     * @details Caller can use this function to peek the recent LIDAR scan data along with its pose.
+     * @details The pose is estimated by the tracking pose at the time of the scan.
+     * @details The LIDAR scan data is the cached data from previous fetched by the background data sync thread.
+     * @details The LIDAR scan data may be outdated. If caller needs the latest LIDAR scan data, it should using the SDK listener to get the LIDAR scan update event.
+     * @param[out] scanData The LIDAR scan data
+     * @param[out] scanPoseSE3 The pose of the LIDAR scan data
+     * @param[in] forceLatest Whether to force the latest LIDAR scan data, set to false to use the cached data
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the LIDAR scan data is retrieved successfully, false otherwise
+     */
+    bool peekRecentLIDARScanSingleLayer(SingleLayerLIDARScan& scanData, slamtec_aurora_sdk_pose_se3_t & scanPoseSE3, bool forceLatest = false,  slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        // pre-allocate the buffer
+        std::vector< slamtec_aurora_sdk_lidar_scan_point_t> localdata;
+        
+        size_t newSize = 4096;
+
+        do {
+            localdata.resize(newSize);
+            auto result = slamtec_aurora_sdk_dataprovider_peek_recent_lidar_scan_singlelayer(_sdk, &scanData.info, localdata.data(), localdata.size(), &scanPoseSE3, forceLatest ? 1 : 0);
+
+            if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+                scanData.scanData.clear();
+                if (errcode) {
+                    *errcode = result;
+                }
+                return false;
+            }
+
+
+            // not enough buffer? less likely to happen
+            if (scanData.info.scan_count > localdata.size()) {
+                newSize = scanData.info.scan_count;
+                continue;
+            }
+
+
+            localdata.resize(scanData.info.scan_count);
+            scanData.scanData = std::move(localdata);
+
+            return true;
+
+        } while (1);
+
+        return false;
+    }   
 
     /**
      * @brief Peek the IMU data
@@ -893,7 +956,355 @@ protected:
     slamtec_aurora_sdk_session_handle_t _sdk;
 };
 
+/**
+ * @brief The 2D gridmap reference class wraps the 2D gridmap handle
+ * @details This class is used to access a 2D gridmap data.
+ * @ingroup Cxx_LIDAR_2DMap_Operations LIDAR 2D GridMap Operations
+ */
+class OccupancyGridMap2DRef : public Noncopyable {
+    friend class LIDAR2DMapBuilder;
+public:
+    OccupancyGridMap2DRef(const slamtec_aurora_sdk_occupancy_grid_2d_handle_t handle, bool ownBuffer)
+        : _handle(handle), _ownBuffer(ownBuffer)
+    {
+    }
 
+
+    ~OccupancyGridMap2DRef() {
+        if (_ownBuffer) {
+            slamtec_aurora_sdk_lidar2dmap_gridmap_release(_handle);
+        }
+    }
+
+    /**
+     * @brief Get the resolution of the 2D gridmap
+     * @return The resolution of the 2D gridmap
+     */
+    float getResolution() const {
+        float resolution;
+        if (slamtec_aurora_sdk_lidar2dmap_gridmap_get_resolution(_handle, &resolution) != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            return 0;
+        }
+        return resolution;
+    }
+
+    /**
+     * @brief Get the dimension of the 2D gridmap
+     * @param[out] dimensionOut The dimension of the 2D gridmap
+     */
+    void getMapDimension(slamtec_aurora_sdk_2dmap_dimension_t& dimensionOut) const {
+        slamtec_aurora_sdk_lidar2dmap_gridmap_get_dimension(_handle, &dimensionOut, 0);
+    }
+
+    /**
+     * @brief Get the maximum capacity dimension of the 2D gridmap
+     * @param[out] dimensionOut The maximum capacity dimension of the 2D gridmap
+     */
+    void getMaxMapCapacityDimension(slamtec_aurora_sdk_2dmap_dimension_t& dimensionOut) const {
+        slamtec_aurora_sdk_lidar2dmap_gridmap_get_dimension(_handle, &dimensionOut, 1);
+    }
+
+    /**
+     * @brief Read the cell data of the 2D gridmap
+     * @param[in] rect The rectangle area to read
+     * @param[out] fetchInfoOut The fetch info of the actual area of the cell data
+     * @param[out] dataOut The data of the cell
+     * @param[in] l2pMapping Whether to perform log odd to logic (0-255) mapping to each cell. For visualization purpose, set to true.
+     * @return True if the cell data is read successfully, false otherwise
+     */
+    bool readCellData(const slamtec_aurora_sdk_rect_t& rect, slamtec_aurora_sdk_2d_gridmap_fetch_info_t& fetchInfoOut, std::vector<uint8_t>& dataOut, bool l2pMapping = true) const {
+        int bL2p = (l2pMapping ? 1 : 0);
+        auto result = slamtec_aurora_sdk_lidar2dmap_gridmap_read_cell_data(_handle, &rect, &fetchInfoOut, nullptr, 0, bL2p);
+        if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            return false;
+        }
+
+        size_t cellSize = fetchInfoOut.cell_height * fetchInfoOut.cell_width;
+        if (cellSize) {
+            dataOut.resize(cellSize);
+            result = slamtec_aurora_sdk_lidar2dmap_gridmap_read_cell_data(_handle, &rect, &fetchInfoOut, dataOut.data(), dataOut.size(), bL2p);
+        }
+
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Read the cell data of the 2D gridmap
+     * @param[in] rect The rectangle area to read
+     * @param[out] fetchInfoOut The fetch info of the actual area of the cell data
+     * @param[out] dataBuffer The buffer to store the cell data, set to nullptr to only get the fetch info
+     * @param[in] dataBufferSize The size of the buffer, set to 0 to only get the fetch info
+     * @param[in] l2pMapping Whether to perform log odd to logic (0-255) mapping to each cell. For visualization purpose, set to true.
+     * @return True if the cell data is read successfully, false otherwise
+     */
+    bool readCellData(const slamtec_aurora_sdk_rect_t& rect, slamtec_aurora_sdk_2d_gridmap_fetch_info_t& fetchInfoOut, uint8_t* dataBuffer, size_t dataBufferSize, bool l2pMapping = true) const {
+        return slamtec_aurora_sdk_lidar2dmap_gridmap_read_cell_data(_handle, &rect, &fetchInfoOut, dataBuffer, dataBufferSize, l2pMapping?1:0); 
+    }
+
+    /**
+     * @brief Get the handle of the 2D gridmap
+     * @return The handle of the 2D gridmap
+     */
+    slamtec_aurora_sdk_occupancy_grid_2d_handle_t getHandle() const {
+        return _handle;
+    }
+
+protected:
+    slamtec_aurora_sdk_occupancy_grid_2d_handle_t _handle;
+    bool _ownBuffer;
+};
+
+
+/**
+ * @brief The 2D gridmap builder class
+ * @details This class is used to build a 2D gridmap.
+ * @ingroup Cxx_LIDAR_2DMap_Operations LIDAR 2D GridMap Operations
+ */
+class LIDAR2DMapBuilder : public Noncopyable {
+    friend class RemoteSDK;
+
+public:
+
+    /**
+     * @brief Get the supported resolution range of the 2D gridmap
+     * @return The supported resolution range of the 2D gridmap [min, max]
+     */
+    std::tuple<float, float> getSupportedResolutionRange() const {
+        float minRes, maxRes;
+        if (slamtec_aurora_sdk_lidar2dmap_get_supported_grid_resultion_range(_sdk, &minRes, &maxRes) != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            return std::make_tuple(0.0f, 0.0f);
+        }
+        return std::make_tuple(minRes, maxRes);
+    }
+
+    /**
+     * @brief Get the maximum grid cell count of the 2D gridmap
+     * @details Caller can use this function to get the supported maximum grid cell count. Each cell is stored as a byte. 
+ * @details For example, for a map with 100 meters width and 100 meters height, if the resolution is 0.1 meter, the maximum cell count will be (100/0.1) * (100/0.1) =  1,000,000 .
+     * @details If the cell count is larger than the supported maximum, the map will not be generated.
+     * @return The maximum grid cell count of the 2D gridmap
+     */
+    size_t getMaxGridCellCount() const {
+        size_t maxCount;
+        if (slamtec_aurora_sdk_lidar2dmap_get_supported_max_grid_cell_count(_sdk, &maxCount) != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            return 0;
+        }
+        return maxCount;
+    }
+
+
+    /**
+     * @brief Require the preview map to be redrawn
+     * @details The request will be queued and processed by the background thread.
+     * @return True if the preview map is redrawn requested successfully, false otherwise
+     */
+    bool requireRedrawPreviewMap() {
+        return slamtec_aurora_sdk_lidar2dmap_previewmap_require_redraw(_sdk) == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Start the preview map background update
+     * @param[in] options The generation options of the preview map
+     * @return True if the preview map background update is started successfully, false otherwise
+     */
+    bool startPreviewMapBackgroundUpdate(const LIDAR2DGridMapGenerationOptions & options) {
+        auto result = slamtec_aurora_sdk_lidar2dmap_previewmap_start_background_update(_sdk, &options);
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Stop the preview map background update
+     */
+    void stopPreviewMapBackgroundUpdate() {
+        slamtec_aurora_sdk_lidar2dmap_previewmap_stop_background_update(_sdk);
+    }
+
+    /**
+     * @brief Check if the preview map background update is active
+     * @return True if the preview map background update is active, false otherwise
+     */
+    bool isPreviewMapBackgroundUpdateActive() const {
+        return slamtec_aurora_sdk_lidar2dmap_previewmap_is_background_updating(_sdk) != 0;
+    }
+
+    /**
+     * @brief Get the dirty rectangle of the preview map and reset the dirty rectangle
+     * @param[out] rectOut The dirty rectangle of the preview map
+     * @param[out] mapBigChange the map big change flag will be stored in this pointer. If there is a big change, the map will be redrawn and this flag will be set to true. It commonly happens when there is a loop closure or a new map has been loaded.
+     */
+    void getAndResetPreviewMapDirtyRect(slamtec_aurora_sdk_rect_t& rectOut, bool & mapBigChange) {
+        int mpChange;
+        if (slamtec_aurora_sdk_lidar2dmap_previewmap_get_and_reset_update_dirty_rect(_sdk, &rectOut, &mpChange) != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            mapBigChange = false;
+            memset(&rectOut, 0, sizeof(rectOut));
+        }
+        else {
+            mapBigChange = (mpChange != 0);
+        }
+    }
+
+    /**
+     * @brief Get the generation options of the preview map
+     * @details Caller can use this function to get the current generation options of the LIDAR 2D preview map.
+     * @details If the auto floor detection is enabled, caller can use this function to get the current height range used to generate the preview map.
+     * @param[out] optionsOut The generation options of the preview map
+     * @return The error code
+     */ 
+    void getPreviewMapGenerationOptions(LIDAR2DGridMapGenerationOptions& optionsOut) const {
+        slamtec_aurora_sdk_lidar2dmap_previewmap_get_generation_options(_sdk, &optionsOut);
+    }
+
+    /**
+     * @brief Set the auto floor detection for the preview map
+     * @details Caller can use this function to set the auto floor detection for the LIDAR 2D preview map.
+     * @details If the auto floor detection is enabled, the detector will update the height range used to generate the preview map.
+     * @details The height range is based on the current floor description.
+     * @details Auto floor detection is useful for multiple floor scenarios. 
+     * @param[in] enable Whether to enable the auto floor detection
+     */
+    void setPreviewMapAutoFloorDetection(bool enable) {
+        slamtec_aurora_sdk_lidar2dmap_previewmap_set_auto_floor_detection(_sdk, enable?1:0);
+    }
+
+    /**
+     * @brief Check if the auto floor detection is enabled for the preview map
+     * @return True if the auto floor detection is enabled, false otherwise
+     */
+    bool isPreviewMapAutoFloorDetectionEnabled() const {
+        return slamtec_aurora_sdk_lidar2dmap_previewmap_is_auto_floor_detection(_sdk) != 0;
+    }
+
+    /**
+     * @brief Get the preview map to access the map data
+     * @return The preview map
+     */
+    const OccupancyGridMap2DRef& getPreviewMap() const {
+        _cachedPreviewMap._handle = slamtec_aurora_sdk_lidar2dmap_previewmap_get_gridmap_handle(_sdk);
+        return _cachedPreviewMap;
+    }
+
+    /**
+     * @brief Generate the full map
+     * @details Caller can use this function to generate the full map on demand and return the handle of the generated map.
+     * @details The caller thread will be blocked until the map is generated or the timeout occurs.
+     * @param[in] options The generation options of the full map
+     * @param[in] waitForDataSync Whether to wait for the data sync to complete
+     * @param[in] timeout_ms The timeout in milliseconds
+     * @return The full map
+     */
+    std::shared_ptr<OccupancyGridMap2DRef> generateFullMap(const LIDAR2DGridMapGenerationOptions& options, bool waitForDataSync = true, uint64_t timeout_ms = 30000) {
+        slamtec_aurora_sdk_occupancy_grid_2d_handle_t handleOut;
+        auto result = slamtec_aurora_sdk_lidar2dmap_generate_fullmap(_sdk, &handleOut, &options, (waitForDataSync?1:0), timeout_ms);
+    
+        if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            return nullptr;
+        }
+
+        return std::make_shared<OccupancyGridMap2DRef>(handleOut, true);
+    }
+
+protected:
+    LIDAR2DMapBuilder(slamtec_aurora_sdk_session_handle_t& sdk)
+        : _sdk(sdk)
+        , _cachedPreviewMap(nullptr, false)
+    {
+    }
+
+    mutable OccupancyGridMap2DRef _cachedPreviewMap;
+
+    slamtec_aurora_sdk_session_handle_t _sdk;
+};
+
+
+/**
+ * @brief The floor detector class
+ * @ingroup Cxx_Auto_Floor_Detection_Operations LIDAR Auto Floor Detection Operations
+ */
+class FloorDetector : public Noncopyable {
+    friend class RemoteSDK;
+
+
+public:
+    /**
+     * @brief Get the detected floor description of the current detected floor
+     * @param[out] descOut The current detected floor description
+     * @return True if the current detected floor description is retrieved successfully, false otherwise
+     */
+    bool getCurrentDetectedFloorDesc(slamtec_aurora_sdk_floor_detection_desc_t& descOut) {
+        return slamtec_aurora_sdk_autofloordetection_get_current_detection_desc(_sdk, &descOut) == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Get all the detected floor descriptions
+     * @param[out] descBuffer The buffer to store the detected floor descriptions
+     * @param[out] currentFloorID The ID of the current detected floor
+     * @return True if the detected floor descriptions are retrieved successfully, false otherwise
+     */
+    bool getAllDetectionDesc(std::vector<slamtec_aurora_sdk_floor_detection_desc_t>& descBuffer, int & currentFloorID) {
+        
+        descBuffer.clear();
+
+        do {
+            size_t actualCount = 0;
+            auto result = slamtec_aurora_sdk_autofloordetection_get_all_detection_info(_sdk, descBuffer.data(), descBuffer.size(), &actualCount, &currentFloorID);
+
+            if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+                descBuffer.clear();
+                return false;
+            }
+
+            if (actualCount > descBuffer.size()) {
+                descBuffer.resize(actualCount);
+                continue;
+            }
+            
+            descBuffer.resize(actualCount);
+            break;
+        } while (1);
+        return true;
+      
+    }
+
+    /**
+     * @brief Get the detection histogram of the floor detection
+     * @param[out] histogramOut The histogram of the floor detection
+     * @return True if the histogram is retrieved successfully, false otherwise
+     */
+    bool getDetectionHistogram(FloorDetectionHistogram& histogramOut) {
+        size_t histogramSize = 100;
+
+        do {
+            histogramOut.histogramData.resize(histogramSize);
+
+            auto result = slamtec_aurora_sdk_autofloordetection_get_detection_histogram(_sdk, &histogramOut.info, histogramOut.histogramData.data(), histogramOut.histogramData.size());
+
+
+            if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+                histogramOut.histogramData.clear();
+                return false;
+            }
+
+            if (histogramOut.info.bin_total_count > histogramOut.histogramData.size()) {
+                histogramSize = histogramOut.info.bin_total_count;
+                continue;
+            }
+
+            histogramOut.histogramData.resize(histogramOut.info.bin_total_count);
+            break;
+        } while (1);
+        return true;
+    }
+
+
+protected:
+    FloorDetector(slamtec_aurora_sdk_session_handle_t& sdk)
+        : _sdk(sdk)
+    {
+    }
+
+
+    slamtec_aurora_sdk_session_handle_t _sdk;
+};
 /**
  * @brief The main class for the remote SDK
  * @details Caller can use this class to create a session and access the data from the remote device
@@ -929,7 +1340,7 @@ public:
         
         const slamtec_aurora_sdk_listener_t* rawListener = nullptr;
         if (listener) {
-            rawListener = &listener->_listener_obj;
+            rawListener = &listener->_sdk_listener_obj;
         }
         auto && handle = slamtec_aurora_sdk_create_session(&config, sizeof(config), rawListener, error_code);
 
@@ -950,6 +1361,7 @@ public:
         delete session;
     }
     
+
 public:
     /**
      * @brief Get the discovered servers
@@ -1033,6 +1445,18 @@ public:
      * @brief The map manager class object
      */
     RemoteMapManager   mapManager;
+
+
+    /**
+     * @brief The LIDAR 2D map builder class object
+     */
+    LIDAR2DMapBuilder lidar2DMapBuilder;
+
+
+    /**
+     * @brief The floor detector class object
+     */
+    FloorDetector floorDetector;
 protected:
 
 
@@ -1044,6 +1468,8 @@ protected:
         , dataProvider(obj)
         , controller(obj)
         , mapManager(obj)
+        , lidar2DMapBuilder(obj)
+        , floorDetector(obj)
     {}
 
 

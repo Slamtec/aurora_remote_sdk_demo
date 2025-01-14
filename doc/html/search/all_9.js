@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['lastkfcounttofetch_89',['lastKFCountToFetch',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a5d1ff5fb4c610ca9645a0baa30815c2e',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['lastkfretrieved_90',['lastKFRetrieved',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#ad8a7875306abf62db075e24885b2730f',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['lastmapcounttofetch_91',['lastMapCountToFetch',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a95e651eeab4d074137a681ab593036c9',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['lastmpcounttofetch_92',['lastMPCountToFetch',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a990698d0b11b938e5f2f3d020aedaa77',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['lastmpretrieved_93',['lastMPRetrieved',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#ad805effa699dbcbb3eecf0cd9af7e9d9',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['left_5fimage_5fdesc_94',['left_image_desc',['../struct__slamtec__aurora__sdk__tracking__info.html#a4ce62fedc867e3244f4a0bc7d273907b',1,'_slamtec_aurora_sdk_tracking_info']]],
-  ['leftimage_95',['leftImage',['../classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a5e41a721b09d67f0ba35aac174874cfb',1,'rp::standalone::aurora::RemoteTrackingFrameInfo']]],
-  ['looped_5fframe_5fcount_96',['looped_frame_count',['../struct__slamtec__aurora__sdk__keyframe__desc__t.html#a6d677e6eb5e42c773132352580ec93ba',1,'_slamtec_aurora_sdk_keyframe_desc_t']]],
-  ['loopedkeyframeids_97',['loopedKeyFrameIDs',['../classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a2b3e1e6bb8ee97b2974b4125ff2ddd61',1,'rp::standalone::aurora::RemoteKeyFrameData']]]
+  ['keyframe_5fcount_126',['keyframe_count',['../struct__slamtec__aurora__sdk__map__desc__t.html#ae1b91904b83e387799d97d92956c25f0',1,'_slamtec_aurora_sdk_map_desc_t']]],
+  ['keyframe_5fid_5fend_127',['keyframe_id_end',['../struct__slamtec__aurora__sdk__map__desc__t.html#aa7c99fb627bc76bde9b289dadc77edf4',1,'_slamtec_aurora_sdk_map_desc_t']]],
+  ['keyframe_5fid_5fstart_128',['keyframe_id_start',['../struct__slamtec__aurora__sdk__map__desc__t.html#a9716004aa5e3ecdbd8b5f6f5d32a26c7',1,'_slamtec_aurora_sdk_map_desc_t']]],
+  ['keypoints_5fleft_129',['keypoints_left',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#a1ace261dc4c57b20a127382d2a89efff',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
+  ['keypoints_5fleft_5fbuffer_5fcount_130',['keypoints_left_buffer_count',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#a8421d2acf85081d05c54fc4a9ad455d9',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
+  ['keypoints_5fleft_5fcount_131',['keypoints_left_count',['../struct__slamtec__aurora__sdk__tracking__info.html#a27a71a48b6c12ab721ee0d3b11135640',1,'_slamtec_aurora_sdk_tracking_info']]],
+  ['keypoints_5fright_132',['keypoints_right',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#a167523d6acda2f0ab1ecff9a00032ec3',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
+  ['keypoints_5fright_5fbuffer_5fcount_133',['keypoints_right_buffer_count',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#aafdf30ac541dc52a837656880fc0338f',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
+  ['keypoints_5fright_5fcount_134',['keypoints_right_count',['../struct__slamtec__aurora__sdk__tracking__info.html#aa6f90fd61503a4d3600287e122deabb9',1,'_slamtec_aurora_sdk_tracking_info']]]
 ];

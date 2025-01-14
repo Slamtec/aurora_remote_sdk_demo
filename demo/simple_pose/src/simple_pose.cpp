@@ -112,6 +112,6 @@ int main(int argc, char** argv) {
     }
 
     sdk->disconnect();
-    sdk->release(); // alternatively, you can release the sdk suing RemoteSDK::ReleaseSession()
+    sdk->release(); // alternatively, you can release the sdk using RemoteSDK::ReleaseSession()
     return 0;
 }

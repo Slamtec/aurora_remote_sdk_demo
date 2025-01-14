@@ -42,6 +42,15 @@ var group__Cxx__DataProvider__Operations =
       [ "desc", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a484efaf20ce217892685e8e5bc48a10b", null ],
       [ "loopedKeyFrameIDs", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a2b3e1e6bb8ee97b2974b4125ff2ddd61", null ]
     ] ],
+    [ "SingleLayerLIDARScan", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan.html", [
+      [ "SingleLayerLIDARScan", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan.html#a913373d092dfdb50f943c2daf408dee3", null ],
+      [ "SingleLayerLIDARScan", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan.html#a92de426ca60bf8df455e36188849856d", null ],
+      [ "SingleLayerLIDARScan", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan.html#ac600f35d8f90250d68858815434b9c3e", null ],
+      [ "operator=", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan.html#a71e49be5b75e7d503566f7d9ee0b07af", null ],
+      [ "operator=", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan.html#a9c249bf4af9f28648c240827e1194311", null ],
+      [ "info", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan.html#a5ec1a2cbe6f5f3381a3596dea4a4241e", null ],
+      [ "scanData", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan.html#a737168f22c4feaf1f7e2f70a2c451ec4", null ]
+    ] ],
     [ "RemoteMapDataVisitor", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html", [
       [ "KeyFrameDataCallback", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#aa4fabf760eb3d88d8d0d549d4ff74bc5", null ],
       [ "MapDataCallback", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html#a3d9e88565a6edc4af3736ab102ed05db", null ],
@@ -68,9 +77,10 @@ var group__Cxx__DataProvider__Operations =
       [ "getLastDeviceStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#ae78f2be2cf47dff0a75cce90f4736796", null ],
       [ "getMappingFlags", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a20d765bc9d1cb926d98aad59a034078e", null ],
       [ "peekIMUData", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a9aa3bd005a4f0d6e13ba02c992736237", null ],
-      [ "peekRelocalizationStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#ae1d334f2fd50a1e852304c18f2379a0b", null ],
+      [ "peekRecentLIDARScanSingleLayer", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a00c02b12393c2b3e1c5bf7ac3fc54ea9", null ],
+      [ "peekRelocalizationStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#af92b02eacad65a10e0c6a10cf8518fd6", null ],
       [ "peekTrackingData", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a448d3da5892ddce8c9751f95a65e9c19", null ],
-      [ "peekVSLAMSystemStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#adf678dd2be137f107b7de741e54c268a", null ],
+      [ "peekVSLAMSystemStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a5aeffeeed7f264b35a44ff675e760a23", null ],
       [ "RemoteSDK", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a3d7224f06f82e9b871760e360315effe", null ],
       [ "_sdk", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a718269dbca274e95182d626524262bd3", null ]
     ] ]

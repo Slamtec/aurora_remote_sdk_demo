@@ -1,10 +1,4 @@
 var searchData=
 [
-  ['release_384',['release',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#ad70b7a47ff51ac1515002df4d8d65703',1,'rp::standalone::aurora::RemoteSDK']]],
-  ['remotetrackingframeinfo_385',['RemoteTrackingFrameInfo',['../classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a4d2952abbdd133db9cdc1fdf8ae2733a',1,'rp::standalone::aurora::RemoteTrackingFrameInfo::RemoteTrackingFrameInfo(const slamtec_aurora_sdk_tracking_info_t &amp;info, const slamtec_aurora_sdk_tracking_data_buffer_t &amp;buffer)'],['../classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a8ce9dcbb91c2ea2d67be8ad2e09d1131',1,'rp::standalone::aurora::RemoteTrackingFrameInfo::RemoteTrackingFrameInfo(const slamtec_aurora_sdk_tracking_info_t &amp;info, std::vector&lt; uint8_t &gt; &amp;&amp;imgbuffer_left, std::vector&lt; uint8_t &gt; &amp;&amp;imgbuffer_right, std::vector&lt; slamtec_aurora_sdk_keypoint_t &gt; &amp;&amp;keypoints_buffer_left, std::vector&lt; slamtec_aurora_sdk_keypoint_t &gt; &amp;&amp;keypoints_buffer_right)']]],
-  ['requiremappingmode_386',['requireMappingMode',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a1ca76fd99c47ca3917d45efc3fd9e5b1',1,'rp::standalone::aurora::RemoteController']]],
-  ['requiremapreset_387',['requireMapReset',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#add505a0c532f76f57b2d00caa0e238c7',1,'rp::standalone::aurora::RemoteController']]],
-  ['requirepurelocalizationmode_388',['requirePureLocalizationMode',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a73928218cff85ce00f0bc77fb36f44e8',1,'rp::standalone::aurora::RemoteController']]],
-  ['requirerelocalization_389',['requireRelocalization',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#ae43df2e2abfc7036ecb12edba06d150d',1,'rp::standalone::aurora::RemoteController']]],
-  ['resyncmapdata_390',['resyncMapData',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a9e14968391ecf3edfd94bda77622ff2a',1,'rp::standalone::aurora::RemoteController']]]
+  ['querysessionstatus_527',['querySessionStatus',['../classrp_1_1standalone_1_1aurora_1_1RemoteMapManager.html#aeaa00ab2944dd396dab225bedefb7599',1,'rp::standalone::aurora::RemoteMapManager']]]
 ];

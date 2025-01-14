@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['id_462',['id',['../struct__slamtec__aurora__sdk__keyframe__desc__t.html#a6762eca32c7f17841b77212843cab66b',1,'_slamtec_aurora_sdk_keyframe_desc_t::id()'],['../struct__slamtec__aurora__sdk__map__point__desc__t.html#a5f64f91904f9945c4972afbf1cfdc04c',1,'_slamtec_aurora_sdk_map_point_desc_t::id()']]],
-  ['imgdata_5fleft_463',['imgdata_left',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#a3e34a1db481dd582d777e8cbcec28723',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
-  ['imgdata_5fleft_5fsize_464',['imgdata_left_size',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#aef6a6c2973f9d1d849844a170c6f861c',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
-  ['imgdata_5fright_465',['imgdata_right',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#a45e9a638cb0cb348ab9b598ffdf0067f',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
-  ['imgdata_5fright_5fsize_466',['imgdata_right_size',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#ad0333b4878fb04a1b47df162e12d25eb',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
-  ['imu_5fid_467',['imu_id',['../struct__slamtec__aurora__sdk__imu__data__t.html#ae9ef51d45dcb71c43ba3ef9a88a5655d',1,'_slamtec_aurora_sdk_imu_data_t']]],
-  ['is_5fstereo_468',['is_stereo',['../struct__slamtec__aurora__sdk__tracking__info.html#a1e1e366455673b3ef5755d1dae268ac1',1,'_slamtec_aurora_sdk_tracking_info']]]
+  ['height_644',['height',['../struct__slamtec__aurora__sdk__image__desc__t.html#aee281bf6051c31583a8ae831079365dc',1,'_slamtec_aurora_sdk_image_desc_t::height()'],['../struct__slamtec__aurora__sdk__rect__t.html#a37756520f1ec60cc225a281a480d61d9',1,'_slamtec_aurora_sdk_rect_t::height()']]],
+  ['height_5frange_5fspecified_645',['height_range_specified',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a9bd98f7afda6873ae1ff0def1a3b6a01',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t']]],
+  ['histogramdata_646',['histogramData',['../classrp_1_1standalone_1_1aurora_1_1FloorDetectionHistogram.html#ae5862f8917fe200c5ec2703a75b5489e',1,'rp::standalone::aurora::FloorDetectionHistogram']]]
 ];

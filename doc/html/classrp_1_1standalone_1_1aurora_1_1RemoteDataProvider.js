@@ -11,9 +11,10 @@ var classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider =
     [ "getLastDeviceStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#ae78f2be2cf47dff0a75cce90f4736796", null ],
     [ "getMappingFlags", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a20d765bc9d1cb926d98aad59a034078e", null ],
     [ "peekIMUData", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a9aa3bd005a4f0d6e13ba02c992736237", null ],
-    [ "peekRelocalizationStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#ae1d334f2fd50a1e852304c18f2379a0b", null ],
+    [ "peekRecentLIDARScanSingleLayer", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a00c02b12393c2b3e1c5bf7ac3fc54ea9", null ],
+    [ "peekRelocalizationStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#af92b02eacad65a10e0c6a10cf8518fd6", null ],
     [ "peekTrackingData", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a448d3da5892ddce8c9751f95a65e9c19", null ],
-    [ "peekVSLAMSystemStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#adf678dd2be137f107b7de741e54c268a", null ],
+    [ "peekVSLAMSystemStatus", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a5aeffeeed7f264b35a44ff675e760a23", null ],
     [ "RemoteSDK", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a3d7224f06f82e9b871760e360315effe", null ],
     [ "_sdk", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a718269dbca274e95182d626524262bd3", null ]
 ];

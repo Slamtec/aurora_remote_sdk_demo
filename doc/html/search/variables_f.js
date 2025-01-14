@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['sdk_5fbuild_5ftime_515',['sdk_build_time',['../struct__slamtec__aurora__sdk__version__info__t.html#a91a268d7d8740d523d9eaa59b1d919ab',1,'_slamtec_aurora_sdk_version_info_t']]],
-  ['sdk_5ffeature_5fflags_516',['sdk_feature_flags',['../struct__slamtec__aurora__sdk__version__info__t.html#ac0a77fb4726725f511e53ffca17d1982',1,'_slamtec_aurora_sdk_version_info_t']]],
-  ['sdk_5fname_517',['sdk_name',['../struct__slamtec__aurora__sdk__version__info__t.html#a679a2b425b38b0c41fd7c165b36d0214',1,'_slamtec_aurora_sdk_version_info_t']]],
-  ['sdk_5fversion_5fstring_518',['sdk_version_string',['../struct__slamtec__aurora__sdk__version__info__t.html#a4a59ee021210f2a5beb65ccfcd522c65',1,'_slamtec_aurora_sdk_version_info_t']]],
-  ['stride_519',['stride',['../struct__slamtec__aurora__sdk__image__desc__t.html#aa28827947406c3b7e750a00585482275',1,'_slamtec_aurora_sdk_image_desc_t']]]
+  ['real_5fx_708',['real_x',['../struct__slamtec__aurora__sdk__2d__gridmap__fetch__info__t.html#a82a535b8dbdd9bd9a80eb7a62da66427',1,'_slamtec_aurora_sdk_2d_gridmap_fetch_info_t']]],
+  ['real_5fy_709',['real_y',['../struct__slamtec__aurora__sdk__2d__gridmap__fetch__info__t.html#ac313d63e2655f0981c6c0143620430f9',1,'_slamtec_aurora_sdk_2d_gridmap_fetch_info_t']]],
+  ['reserved_710',['reserved',['../struct__slamtec__aurora__sdk__session__config__t.html#a6ad74b6ff5ca864a9feeba628f02e656',1,'_slamtec_aurora_sdk_session_config_t']]],
+  ['resolution_711',['resolution',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a69c3bd98554d092a5ea8371283995999',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t']]],
+  ['right_5fimage_5fdesc_712',['right_image_desc',['../struct__slamtec__aurora__sdk__tracking__info.html#a965c559cabe83a191721eee0facf6789',1,'_slamtec_aurora_sdk_tracking_info']]],
+  ['rightimage_713',['rightImage',['../classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ae74a8adfc41edea0e8f6fd514662d8c9',1,'rp::standalone::aurora::RemoteTrackingFrameInfo']]],
+  ['roll_714',['roll',['../struct__slamtec__aurora__sdk__euler__angle__t.html#a69591a2fa8546bf5c017997b99621fcf',1,'_slamtec_aurora_sdk_euler_angle_t']]],
+  ['rpy_715',['rpy',['../struct__slamtec__aurora__sdk__pose__t.html#af13da7e73e79a69d43202dc4cf6ba7f2',1,'_slamtec_aurora_sdk_pose_t']]]
 ];

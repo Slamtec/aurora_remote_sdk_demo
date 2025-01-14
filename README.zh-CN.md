@@ -16,6 +16,13 @@
 - 纯 C 可以用任何支持 C11 的 C 编译器编译 (但无法使用SDK中C++的功能)
 - OpenCV 4.2 或更高版本 (如果您想编译使用 OpenCV 的例子程序)
 
+
+## 用于ROS
+- SLAMTEC官方提供Aurora的ROS包装节点，支持ROS 1和ROS 2。
+- 您可以在SLAMTEC Aurora网站上找到这些包装节点。([ROS Wrapper Nodes](https://developer.slamtec.com/docs/slamware/aurora_ros2_sdk/))
+- 一些Aurora特有的功能在ROS包装节点中不受支持，例如自动楼层检测。
+- 如果您想使用Aurora特有的功能，您需要使用Remote SDK。
+
 ## 关于 Remote SDK 和 SLAMWARE SDK
 - Remote SDK 是一个独立的库,可用于检索 SLAMTEC Aurora 特有的数据,如点云、地图和里程计。
 - SLAMWARE SDK 是一个更通用的库,可用于控制所有 SLAMTEC 产品,如 SLAMKIT、SLAMWARE、Apollo 机器人平台、A1/A2/A3 系列,并为建图、定位和导航等任务提供更高级的 API。
@@ -69,7 +76,7 @@
 ## 关于演示程序
 ### map_render
 ![map_render](res/demo_vertical_map.gif)
-- 这个演示展示了如何渲染来自Aurora设备的地图数据。
+- 这个演示展示了如何渲染来自Aurora设备的VSLAM地图数据。
 - 它将订阅设备的地图数据、关键帧数据和地图点数据，并在屏幕上渲染地图、关键帧和地图点。
 - 地图将以垂直视图渲染，关键帧将渲染在地图上。
 - 此演示需要OpenCV。
@@ -78,6 +85,26 @@
 ![frame_preview](res/demo_tracking_prev_full.png)
 - 这个演示展示了如何从Aurora设备订阅跟踪帧和原始相机图像。
 - 此演示需要OpenCV。
+
+
+
+### lidar_scan_plot
+![lidar_scan_plot](res/demo.lidar.scan.rendering.gif)
+- 这个演示展示了如何获取Aurora自带的2D激光雷达的扫描数据并进行渲染显示。
+- 提供了两种数据获取方式
+   1. 通过回调函数
+   2. 通过轮询
+- 激光雷达扫描点的信号强度信息（RSSI）也可以被获取并进行了显示
+- 此演示需要OpenCV。
+
+
+### lidar_2dmap_render
+![lidar_2dmap_render](res/demo_lidar_2dmap.gif)
+- 这个演示展示了如何从Aurora设备获取同步的激光2D栅格地图并进行实时渲染显示。
+- 同时，自动楼层检测功能也被启用。
+- 此演示需要OpenCV。
+
+
 
 ### simple_pose
 ```

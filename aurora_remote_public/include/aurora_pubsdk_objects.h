@@ -34,6 +34,14 @@ typedef void* slamtec_aurora_sdk_session_handle_t;
 typedef void* slamtec_aurora_sdk_mapstorage_session_handle_t;
 
 /**
+ * @brief The occupancy grid 2D handle type
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The occupancy grid 2D handle is used to access a occupancy 2D grid map.
+ */
+typedef void* slamtec_aurora_sdk_occupancy_grid_2d_handle_t;
+
+
+/**
  * @brief Check if the handle is valid
  * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
  * @details Caller can use this function to check if the handle is valid.
@@ -474,11 +482,11 @@ typedef uint32_t slamtec_aurora_sdk_device_status_t; //value selected from enum 
  * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
  * @details The device status structure contains the status of the device.
  */
-typedef struct slamtec_aurora_sdk_device_status
+typedef struct _slamtec_aurora_sdk_device_status_desc
 {
     slamtec_aurora_sdk_device_status_t status;
     uint64_t timestamp_ns;
-};
+} slamtec_aurora_sdk_device_status_desc_t;
 
 enum slamtec_aurora_sdk_relocalization_status_types {
     SLAMTEC_AURORA_SDK_RELOCALIZATION_NONE = 0,
@@ -488,13 +496,13 @@ enum slamtec_aurora_sdk_relocalization_status_types {
     SLAMTEC_AURORA_SDK_RELOCALIZATION_ABORTED
 };
 
-typedef uint32_t slamtec_aurora_sdk_relocalization_status_t;
+typedef uint32_t slamtec_aurora_sdk_relocalization_status_type_t;
 
-typedef struct slamtec_aurora_sdk_relocalization_status
+typedef struct _slamtec_aurora_sdk_relocalization_status
 {
-    slamtec_aurora_sdk_relocalization_status_t status;
+    slamtec_aurora_sdk_relocalization_status_type_t status;
     uint64_t timestamp_ns;
-};
+} slamtec_aurora_sdk_relocalization_status_t;
 
 /**
  * @brief The image description structure
@@ -757,6 +765,223 @@ typedef struct _slamtec_aurora_sdk_imu_info_t {
     double cov_random_walk[6]; // gyro to accel
 } slamtec_aurora_sdk_imu_info_t;
 
+/**
+ * @brief The LIDAR scan point structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The LIDAR scan point structure contains data of a single LIDAR scan point.
+ */
+typedef struct _slamtec_aurora_sdk_lidar_scan_point_t {
+    /**
+     * @brief The distance of the scan point in meters
+     */
+    float dist; 
+    /**
+     * @brief The angle of the scan point in radians using the right-hand coordinate system
+     */
+    float angle;
+    /**
+     * @brief The quality (RSSI) of the scan point
+     */
+    uint8_t quality;
+} slamtec_aurora_sdk_lidar_scan_point_t;
+
+/**
+ * @brief The single layer LIDAR scan data header structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The single layer LIDAR scan data header structure contains the description of a single layer (2D) LIDAR scan data.
+ */
+typedef struct _slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t {
+    /**
+     * @brief The timestamp of the scan data
+     * @details The nanoseconds timestamp of the scan data
+     */
+    uint64_t timestamp_ns;
+    /**
+     * @brief The ID of the layer
+     * @details The ID of the layer is the ID of the layer.
+     */
+    int32_t layer_id;
+    /**
+     * @brief The ID of the binded Visual keyframe
+     * @details The ID of the binded Visual keyframe is the ID of the binded Visual keyframe if applicable, otherwise it is 0
+     */
+    uint64_t binded_kf_id;
+
+    /**
+     * @brief The yaw change of the scan data
+     * @details The yaw rotation change of the scan data during the scan sample is taken
+     */
+    float dyaw;
+    /**
+     * @brief The count of the scan points
+     * @details The count of the scan points is the count of the scan points.
+     */
+    uint32_t scan_count;
+} slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t;
+
+
+/**
+ * @brief The 2D gridmap dimension structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The 2D gridmap dimension structure contains the dimension information of a 2D gridmap.
+ */
+typedef struct _slamtec_aurora_sdk_2d_gridmap_dimension_t{
+    /**
+     * @brief The minimum x coordinate of the gridmap in meters
+     */
+    float min_x;
+    /**
+     * @brief The minimum y coordinate of the gridmap in meters
+     */
+    float min_y;
+    /**
+     * @brief The maximum x coordinate of the gridmap in meters
+     */
+    float max_x;
+    /**
+     * @brief The maximum y coordinate of the gridmap in meters
+     */
+    float max_y;
+} slamtec_aurora_sdk_2dmap_dimension_t;
+
+
+/**
+ * @brief The rectangle structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The rectangle structure represents a rectangle in 2D Gridmap
+ */
+typedef struct _slamtec_aurora_sdk_rect_t {
+    /**
+     * @brief The x coordinate of the rectangle
+     */
+    float x;
+    /**
+     * @brief The y coordinate of the rectangle
+     */
+    float y;
+    /**
+     * @brief The width of the rectangle
+     */
+    float width;
+    /**
+     * @brief The height of the rectangle
+     */
+    float height;
+} slamtec_aurora_sdk_rect_t;
+
+
+/**
+ * @brief The 2D gridmap generation options structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The 2D gridmap generation options is used to guide the LIDAR 2D Grid Map builder to generate a map
+ */
+typedef struct _slamtec_aurora_sdk_2d_gridmap_generation_options_t {
+    /**
+     * @brief The resolution of the gridmap
+     */
+    float resolution;
+    /**
+     * @brief The width of the gridmap canvas
+     */
+    float map_canvas_width;
+    /**
+     * @brief The height of the gridmap canvas
+     */
+    float map_canvas_height;
+    /**
+     * @brief Whether to generate the active map only
+     */
+    int   active_map_only;
+    /**
+     * @brief Whether the height range is specified
+     * @details If the height range is specified, the gridmap will be generated using the LIDAR scan with the pose within the specified height range
+     */
+    int  height_range_specified;
+    /**
+     * @brief The minimum height of LIDAR scan pose to be included in the gridmap
+     */
+    float min_height; //only valid when height_range_specified is true
+    /**
+     * @brief The maximum height of LIDAR scan pose to be included in the gridmap
+     */
+    float max_height; //only valid when height_range_specified is true
+} slamtec_aurora_sdk_2d_gridmap_generation_options_t;
+
+
+/**
+ * @brief The 2D gridmap fetch info structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The 2D gridmap fetch info structure is used to describe the actual retrieved 2D gridmap data
+ */
+typedef struct _slamtec_aurora_sdk_2d_gridmap_fetch_info_t {
+    /**
+     * @brief The x coordinate of the retrieved gridmap in meters
+     */
+    float real_x;
+    /**
+     * @brief The y coordinate of the retrieved gridmap in meters
+     */
+    float real_y;
+    /**
+     * @brief The width of the retrieved gridmap cell in meters
+     */
+    int cell_width;
+    /**
+     * @brief The height of the retrieved gridmap cell in meters
+     */
+    int cell_height;
+} slamtec_aurora_sdk_2d_gridmap_fetch_info_t;
+
+/**
+ * @brief The floor detection description structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The floor detection description structure contains the description of a detected floor
+ */
+typedef struct _slamtec_aurora_sdk_floor_detection_desc_t {
+    /**
+     * @brief The ID of the floor
+     * @details The ID of the floor is only to identify a specific floor among the detected floors, it is different from the floor number in real world
+     * @details The ID value may change during each detection iteration even for the same logic floor.  
+     */
+    int floorID;
+    /**
+     * @brief The typical height of the floor
+     */
+    float typical_height;
+    /**
+     * @brief The minimum height of the floor
+     */
+    float min_height;
+    /**
+     * @brief The maximum height of the floor
+     */
+    float max_height;
+    /**
+     * @brief The confidence of the floor detection
+     */
+    float confidence;
+} slamtec_aurora_sdk_floor_detection_desc_t;
+
+
+/**
+ * @brief The floor detection histogram info structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The floor detection histogram info structure contains the histogram info used by the auto floor detection algorithm
+ */
+typedef struct _slamtec_aurora_sdk_floor_detection_histogram_info_t {
+    /**
+     * @brief The width of the histogram bin in meters
+     */
+    float bin_width;
+    /**
+     * @brief The start height of the histogram bin in meters
+     */
+    float bin_height_start;
+    /**
+     * @brief The total count of the histogram bin
+     */
+    int bin_total_count;
+} slamtec_aurora_sdk_floor_detection_histogram_info_t;
 
 
 // -- Map Objects
@@ -1011,6 +1236,17 @@ typedef void (*slamtec_aurora_sdk_on_device_status_callback_t)(void* user_data, 
 
 
 /**
+ * @brief The lidar scan callback
+ * @ingroup SDK_Callback_Types SDK Callback Types
+ * @details The lidar scan callback to receive the lidar scan data from the device.
+ * @param user_data The user data to be passed to the callback
+ * @param scan_info The scan info of the lidar scan data
+ * @param scan_point_buffer The buffer of the lidar scan points, this buffer is provided by the SDK, the buffer will be invalidated after the callback returns. The buffer count is scan_info->scan_count
+ */
+typedef void (*slamtec_aurora_sdk_on_lidar_scan_callback_t)(void* user_data, const slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t* scan_info, const slamtec_aurora_sdk_lidar_scan_point_t* scan_point_buffer);
+
+
+/**
  * @brief The listener structure
  * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
  * @details The listener structure contains the listener.
@@ -1042,6 +1278,11 @@ typedef struct _slamtec_aurora_sdk_listener_t {
      */
     slamtec_aurora_sdk_on_device_status_callback_t on_device_status;
     
+    /**
+     * @brief The callback for the lidar scan data, set to NULL to ignore this callback
+     */
+    slamtec_aurora_sdk_on_lidar_scan_callback_t on_lidar_scan;
+
 } slamtec_aurora_sdk_listener_t;
 
 

@@ -20,6 +20,19 @@ namespace cv {
 
 namespace rp { namespace standalone { namespace aurora { 
 
+
+class Noncopyable {
+protected:
+    Noncopyable() = default;
+    ~Noncopyable() = default;
+
+    Noncopyable(const Noncopyable&) = delete;
+    Noncopyable& operator=(const Noncopyable&) = delete;
+
+    Noncopyable(Noncopyable&&) = default;
+    Noncopyable& operator=(Noncopyable&&) = default;
+};
+
 /**
  * @brief The connection info class
  * @details This class is used to store the connection information.
@@ -604,6 +617,153 @@ public:
 };
 
 
+/**
+ * @brief The single layer LIDAR scan data class wraps the LIDAR scan data and its description
+ * @details This class is used to wrap the LIDAR scan data and its description.
+ * @ingroup Cxx_DataProvider_Operations Data Provider Operations
+ */
+class SingleLayerLIDARScan {
+public:
+    SingleLayerLIDARScan()  {
+        memset(&info, 0, sizeof(slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t));
+    }
+
+    SingleLayerLIDARScan(const SingleLayerLIDARScan& other) : info(other.info), scanData(other.scanData) {
+    }
+
+    SingleLayerLIDARScan& operator=(const SingleLayerLIDARScan& other) {
+        info = other.info;
+        scanData = other.scanData;
+        return *this;
+    }
+
+    SingleLayerLIDARScan(SingleLayerLIDARScan&& other) : info(other.info), scanData(std::move(other.scanData)) {
+    }
+
+    SingleLayerLIDARScan& operator=(SingleLayerLIDARScan&& other) {
+        info = other.info;
+        scanData = std::move(other.scanData);
+        return *this;
+    }
+
+public:
+    /**
+     * @brief The LIDAR scan data info
+     */
+    slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t info;
+
+    /**
+     * @brief The LIDAR scan data
+     */
+    std::vector< slamtec_aurora_sdk_lidar_scan_point_t> scanData;
+
+};
+
+/**
+ * @brief The 2D gridmap generation options class wraps the 2D gridmap generation options
+ * @details This class is used to wrap the 2D gridmap generation options.
+ * @ingroup Cxx_LIDAR_2DMap_Operations LIDAR 2D GridMap Operations
+ */
+class LIDAR2DGridMapGenerationOptions : public slamtec_aurora_sdk_2d_gridmap_generation_options_t {
+public:
+    LIDAR2DGridMapGenerationOptions()
+    {
+        memset(this, 0, sizeof(slamtec_aurora_sdk_2d_gridmap_generation_options_t));
+        loadDefaults();
+    }
+
+
+    LIDAR2DGridMapGenerationOptions(const slamtec_aurora_sdk_2d_gridmap_generation_options_t& other) {
+        memcpy(this, &other, sizeof(slamtec_aurora_sdk_2d_gridmap_generation_options_t));
+    }
+
+
+
+    LIDAR2DGridMapGenerationOptions(const LIDAR2DGridMapGenerationOptions& other) {
+        memcpy(this, &other, sizeof(LIDAR2DGridMapGenerationOptions));
+    }
+
+    LIDAR2DGridMapGenerationOptions& operator=(const LIDAR2DGridMapGenerationOptions& other) {
+        memcpy(this, &other, sizeof(LIDAR2DGridMapGenerationOptions));
+        return *this;
+    }
+
+
+    
+    /**
+     * @brief Load the default 2D gridmap generation options
+     */
+    void loadDefaults() {
+        this->resolution = SLAMTEC_AURORA_SDK_LIDAR_2D_GRIDMAP_DEFAULT_RESOLUTION;
+        this->map_canvas_width = SLAMTEC_AURORA_SDK_LIDAR_2D_GRIDMAP_DEFAULT_WIDTH;
+        this->map_canvas_height = SLAMTEC_AURORA_SDK_LIDAR_2D_GRIDMAP_DEFAULT_HEIGHT;
+        this->active_map_only = 1;
+        this->height_range_specified = 0;
+    }
+
+    /**
+     * @brief Set the height range for the 2D gridmap generation
+     * @param[in] minHeight The minimum height
+     * @param[in] maxHeight The maximum height
+     */
+    void setHeightRange(float minHeight, float maxHeight) {
+        this->height_range_specified = 1;
+        this->min_height = minHeight;
+        this->max_height = maxHeight;
+    }
+
+    /**
+     * @brief Clear the height range for the 2D gridmap generation
+     */
+    void clearHeightRange() {
+        this->height_range_specified = 0;
+        this->min_height = 0;
+        this->max_height = 0;
+    }
+
+
+};
+
+/**
+ * @brief The floor detection histogram class wraps the floor detection histogram data and its description
+ * @details This class is used to wrap the floor detection histogram data and its description.
+ * @ingroup Cxx_Auto_Floor_Detection_Operations LIDAR Auto Floor Detection Operations
+ */
+class FloorDetectionHistogram {
+public:
+    FloorDetectionHistogram() {
+        memset(&info, 0, sizeof(slamtec_aurora_sdk_floor_detection_histogram_info_t));
+    }
+
+    FloorDetectionHistogram(const FloorDetectionHistogram& other) : info(other.info), histogramData(other.histogramData) {
+    }
+
+    FloorDetectionHistogram& operator=(const FloorDetectionHistogram& other) {
+        info = other.info;
+        histogramData = other.histogramData;
+        return *this;
+    }
+
+    FloorDetectionHistogram(FloorDetectionHistogram&& other) : info(other.info), histogramData(std::move(other.histogramData)) {
+    }
+
+    FloorDetectionHistogram& operator=(FloorDetectionHistogram&& other)  {
+        info = other.info;
+        histogramData = std::move(other.histogramData);
+        return *this;
+    }
+
+public:
+    /**
+     * @brief The floor detection histogram info
+     */
+    slamtec_aurora_sdk_floor_detection_histogram_info_t info;
+
+    /**
+     * @brief The floor detection histogram data
+     */
+    std::vector<float> histogramData;
+};
 
 
 }}} // namespace rp::standalone::aurora

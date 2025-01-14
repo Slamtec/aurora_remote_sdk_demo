@@ -54,6 +54,12 @@
  */
 #define SLAMTEC_AURORA_SDK_REMOTE_SERVER_DEFAULT_TIMEOUT 5000
 
+
+#define SLAMTEC_AURORA_SDK_LIDAR_2D_GRIDMAP_DEFAULT_RESOLUTION 0.05f //meter
+#define SLAMTEC_AURORA_SDK_LIDAR_2D_GRIDMAP_DEFAULT_WIDTH 300 //meter
+#define SLAMTEC_AURORA_SDK_LIDAR_2D_GRIDMAP_DEFAULT_HEIGHT 300 //meter
+
+
 /**
  * @brief The error code value type
  * @details This type is used to represent the error code value. The value is selected from  @ref slamtec_aurora_sdk_errorcode_types
@@ -75,3 +81,6 @@ enum slamtec_aurora_sdk_errorcode_types {
     SLAMTEC_AURORA_SDK_ERRORCODE_IO_ERROR = -6,
     SLAMTEC_AURORA_SDK_ERRORCODE_NOT_READY = -7,
 };
+
+
+

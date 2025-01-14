@@ -12,3 +12,9 @@ The SDK supports the following platforms and architectures:
 ### V1.1.0-rc2: Beta version, 26th Oct 2024
 - Refined some APIs
 - Added API reference documentation
+
+
+### V1.5.0: 
+- Binded to Remote SDK 1.5.0
+- Added LIDAR Scan Data Retrieval and Rendering Demo
+- Added LIDAR 2D Map Rendering Demo
