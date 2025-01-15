@@ -1,8 +1,5 @@
 var NAVTREEINDEX0 =
 {
-".html":[2,0,0],
-".html":[2,0,0,0],
-".html":[2,0,0,0,0],
 "annotated.html":[2,0],
 "aurora__pubsdk__common__def_8h_source.html":[3,0,0,1],
 "aurora__pubsdk__inc_8h_source.html":[3,0,0,2],
@@ -48,13 +45,13 @@ var NAVTREEINDEX0 =
 "classrp_1_1standalone_1_1aurora_1_1LIDAR2DMapBuilder.html#adfd31a5bfa47c92168d7f36a8fcc5e2f":[1,2,5,2,5],
 "classrp_1_1standalone_1_1aurora_1_1LIDAR2DMapBuilder.html#aec6b7af3506084d265f40657d29b4ed1":[1,2,5,2,11],
 "classrp_1_1standalone_1_1aurora_1_1LIDAR2DMapBuilder.html#afc5345d48a7b2d45d303240b3e5a5c03":[1,2,5,2,6],
-"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html":[2,0,0,0,0,4],
-"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#a02dd60931d6983b1714d2c25a1b02afb":[2,0,0,0,0,4,0],
-"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#a5a10f1a7704018ea9ff1fe177995252c":[2,0,0,0,0,4,3],
-"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#a686abca5e168a6b11c08b1f6078d5037":[2,0,0,0,0,4,5],
-"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#a8dea91759f5b74f3e7e634c2ce9865f9":[2,0,0,0,0,4,1],
-"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#a97bc566ddc235d9de4deb185078ca07a":[2,0,0,0,0,4,4],
-"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#ac0b87e01c5d76de3f1b933cf09d0fbd4":[2,0,0,0,0,4,2],
+"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html":[2,0,0,0,0,0],
+"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#a02dd60931d6983b1714d2c25a1b02afb":[2,0,0,0,0,0,0],
+"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#a5a10f1a7704018ea9ff1fe177995252c":[2,0,0,0,0,0,3],
+"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#a686abca5e168a6b11c08b1f6078d5037":[2,0,0,0,0,0,5],
+"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#a8dea91759f5b74f3e7e634c2ce9865f9":[2,0,0,0,0,0,1],
+"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#a97bc566ddc235d9de4deb185078ca07a":[2,0,0,0,0,0,4],
+"classrp_1_1standalone_1_1aurora_1_1Noncopyable.html#ac0b87e01c5d76de3f1b933cf09d0fbd4":[2,0,0,0,0,0,2],
 "classrp_1_1standalone_1_1aurora_1_1OccupancyGridMap2DRef.html":[1,2,5,1],
 "classrp_1_1standalone_1_1aurora_1_1OccupancyGridMap2DRef.html#a04ff2566ad4ee090d8a5da0e7451cec9":[1,2,5,1,8],
 "classrp_1_1standalone_1_1aurora_1_1OccupancyGridMap2DRef.html#a0c2c8c67cdf1c5a24eb7ec03c1b483b7":[1,2,5,1,0],
@@ -249,5 +246,8 @@ var NAVTREEINDEX0 =
 "functions_vars.html":[2,3,2],
 "functions_w.html":[2,3,0,20],
 "functions_x.html":[2,3,0,21],
-"functions_y.html":[2,3,0,22]
+"functions_y.html":[2,3,0,22],
+"functions_z.html":[2,3,0,23],
+"group__Aurora__SDK__Pure__C.html":[1,0],
+"group__AutoFloorDetection__Operations.html":[1,0,9]
 };

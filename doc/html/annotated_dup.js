@@ -3,25 +3,25 @@ var annotated_dup =
     [ "rp", null, [
       [ "standalone", null, [
         [ "aurora", null, [
-          [ "FloorDetectionHistogram", "classrp_1_1standalone_1_1aurora_1_1FloorDetectionHistogram.html", "classrp_1_1standalone_1_1aurora_1_1FloorDetectionHistogram" ],
-          [ "FloorDetector", "classrp_1_1standalone_1_1aurora_1_1FloorDetector.html", "classrp_1_1standalone_1_1aurora_1_1FloorDetector" ],
-          [ "LIDAR2DGridMapGenerationOptions", "classrp_1_1standalone_1_1aurora_1_1LIDAR2DGridMapGenerationOptions.html", "classrp_1_1standalone_1_1aurora_1_1LIDAR2DGridMapGenerationOptions" ],
-          [ "LIDAR2DMapBuilder", "classrp_1_1standalone_1_1aurora_1_1LIDAR2DMapBuilder.html", "classrp_1_1standalone_1_1aurora_1_1LIDAR2DMapBuilder" ],
           [ "Noncopyable", "classrp_1_1standalone_1_1aurora_1_1Noncopyable.html", "classrp_1_1standalone_1_1aurora_1_1Noncopyable" ],
-          [ "OccupancyGridMap2DRef", "classrp_1_1standalone_1_1aurora_1_1OccupancyGridMap2DRef.html", "classrp_1_1standalone_1_1aurora_1_1OccupancyGridMap2DRef" ],
-          [ "RemoteController", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html", "classrp_1_1standalone_1_1aurora_1_1RemoteController" ],
-          [ "RemoteDataProvider", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider" ],
-          [ "RemoteImageRef", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef" ],
-          [ "RemoteKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData" ],
-          [ "RemoteMapDataVisitor", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor" ],
-          [ "RemoteMapManager", "classrp_1_1standalone_1_1aurora_1_1RemoteMapManager.html", "classrp_1_1standalone_1_1aurora_1_1RemoteMapManager" ],
-          [ "RemoteSDK", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK" ],
-          [ "RemoteSDKListener", "classrp_1_1standalone_1_1aurora_1_1RemoteSDKListener.html", "classrp_1_1standalone_1_1aurora_1_1RemoteSDKListener" ],
-          [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo" ],
-          [ "SDKConfig", "classrp_1_1standalone_1_1aurora_1_1SDKConfig.html", "classrp_1_1standalone_1_1aurora_1_1SDKConfig" ],
           [ "SDKConnectionInfo", "classrp_1_1standalone_1_1aurora_1_1SDKConnectionInfo.html", "classrp_1_1standalone_1_1aurora_1_1SDKConnectionInfo" ],
           [ "SDKServerConnectionDesc", "classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc.html", "classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc" ],
-          [ "SingleLayerLIDARScan", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan.html", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan" ]
+          [ "RemoteImageRef", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html", "classrp_1_1standalone_1_1aurora_1_1RemoteImageRef" ],
+          [ "RemoteTrackingFrameInfo", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo" ],
+          [ "RemoteKeyFrameData", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html", "classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData" ],
+          [ "SingleLayerLIDARScan", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan.html", "classrp_1_1standalone_1_1aurora_1_1SingleLayerLIDARScan" ],
+          [ "LIDAR2DGridMapGenerationOptions", "classrp_1_1standalone_1_1aurora_1_1LIDAR2DGridMapGenerationOptions.html", "classrp_1_1standalone_1_1aurora_1_1LIDAR2DGridMapGenerationOptions" ],
+          [ "FloorDetectionHistogram", "classrp_1_1standalone_1_1aurora_1_1FloorDetectionHistogram.html", "classrp_1_1standalone_1_1aurora_1_1FloorDetectionHistogram" ],
+          [ "RemoteSDKListener", "classrp_1_1standalone_1_1aurora_1_1RemoteSDKListener.html", "classrp_1_1standalone_1_1aurora_1_1RemoteSDKListener" ],
+          [ "RemoteMapDataVisitor", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html", "classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor" ],
+          [ "SDKConfig", "classrp_1_1standalone_1_1aurora_1_1SDKConfig.html", "classrp_1_1standalone_1_1aurora_1_1SDKConfig" ],
+          [ "RemoteController", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html", "classrp_1_1standalone_1_1aurora_1_1RemoteController" ],
+          [ "RemoteMapManager", "classrp_1_1standalone_1_1aurora_1_1RemoteMapManager.html", "classrp_1_1standalone_1_1aurora_1_1RemoteMapManager" ],
+          [ "RemoteDataProvider", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html", "classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider" ],
+          [ "OccupancyGridMap2DRef", "classrp_1_1standalone_1_1aurora_1_1OccupancyGridMap2DRef.html", "classrp_1_1standalone_1_1aurora_1_1OccupancyGridMap2DRef" ],
+          [ "LIDAR2DMapBuilder", "classrp_1_1standalone_1_1aurora_1_1LIDAR2DMapBuilder.html", "classrp_1_1standalone_1_1aurora_1_1LIDAR2DMapBuilder" ],
+          [ "FloorDetector", "classrp_1_1standalone_1_1aurora_1_1FloorDetector.html", "classrp_1_1standalone_1_1aurora_1_1FloorDetector" ],
+          [ "RemoteSDK", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK" ]
         ] ]
       ] ]
     ] ],

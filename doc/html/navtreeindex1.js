@@ -1,8 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"functions_z.html":[2,3,0,23],
-"group__Aurora__SDK__Pure__C.html":[1,0],
-"group__AutoFloorDetection__Operations.html":[1,0,9],
 "group__AutoFloorDetection__Operations.html#ga23a0a22d3486bb516a0c321d6c5e31a2":[1,0,9,1],
 "group__AutoFloorDetection__Operations.html#ga851c3f2d13f64138e0bd7784de82390b":[1,0,9,0],
 "group__AutoFloorDetection__Operations.html#gaecc4f4eaada657b735e5d2aa124e411f":[1,0,9,2],
@@ -249,5 +246,8 @@ var NAVTREEINDEX1 =
 "struct__slamtec__aurora__sdk__imu__data__t.html#ae9ef51d45dcb71c43ba3ef9a88a5655d":[1,1,16,2],
 "struct__slamtec__aurora__sdk__imu__info__t.html":[1,1,17],
 "struct__slamtec__aurora__sdk__imu__info__t.html#a35d1ad3c801402ff89971516809588a6":[1,1,17,1],
-"struct__slamtec__aurora__sdk__imu__info__t.html#a7fa0fda253357c5c15b58f69ce710c04":[1,1,17,2]
+"struct__slamtec__aurora__sdk__imu__info__t.html#a7fa0fda253357c5c15b58f69ce710c04":[1,1,17,2],
+"struct__slamtec__aurora__sdk__imu__info__t.html#a89f818cab816e8062bc7aacd865ada39":[1,1,17,4],
+"struct__slamtec__aurora__sdk__imu__info__t.html#ad1dd15503f0d27a4f5965d8c8d49d63f":[1,1,17,3],
+"struct__slamtec__aurora__sdk__imu__info__t.html#af6cf5ebc4a7431443d47baaa22598bf2":[1,1,17,0]
 };

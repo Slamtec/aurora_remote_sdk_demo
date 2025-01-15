@@ -1,8 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"struct__slamtec__aurora__sdk__imu__info__t.html#a89f818cab816e8062bc7aacd865ada39":[1,1,17,4],
-"struct__slamtec__aurora__sdk__imu__info__t.html#ad1dd15503f0d27a4f5965d8c8d49d63f":[1,1,17,3],
-"struct__slamtec__aurora__sdk__imu__info__t.html#af6cf5ebc4a7431443d47baaa22598bf2":[1,1,17,0],
 "struct__slamtec__aurora__sdk__keyframe__desc__t.html":[1,1,28],
 "struct__slamtec__aurora__sdk__keyframe__desc__t.html#a4d758ecdbdb64fee69542e4c6dbf5091":[1,1,28,0],
 "struct__slamtec__aurora__sdk__keyframe__desc__t.html#a6762eca32c7f17841b77212843cab66b":[1,1,28,1],

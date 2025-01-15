@@ -1,12 +1,11 @@
 var searchData=
 [
-  ['data_20provider_20operations_68',['Data Provider Operations',['../group__Cxx__DataProvider__Operations.html',1,'']]],
-  ['data_5fsize_69',['data_size',['../struct__slamtec__aurora__sdk__image__desc__t.html#ae447d091a1ea38db8ba42be2eb24fac7',1,'_slamtec_aurora_sdk_image_desc_t']]],
-  ['dataprovider_70',['dataProvider',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a3e8f1471eefd0414c84ced62b4fe8897',1,'rp::standalone::aurora::RemoteSDK']]],
-  ['data_20provider_20operations_71',['Data Provider Operations',['../group__DataProvider__Operations.html',1,'']]],
-  ['desc_72',['desc',['../classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a484efaf20ce217892685e8e5bc48a10b',1,'rp::standalone::aurora::RemoteKeyFrameData']]],
-  ['destroysession_73',['DestroySession',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a5f101854c9aad15b62ff1a51daa3d19e',1,'rp::standalone::aurora::RemoteSDK']]],
-  ['disconnect_74',['disconnect',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a40e3d28e8ab9af5c81b413b10311d622',1,'rp::standalone::aurora::RemoteController::disconnect()'],['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a4991b8d5a68599c413eee0dce180ac6b',1,'rp::standalone::aurora::RemoteSDK::disconnect()']]],
-  ['dist_75',['dist',['../struct__slamtec__aurora__sdk__lidar__scan__point__t.html#a8f40c63bc790b60d3b16ba4f5e1505da',1,'_slamtec_aurora_sdk_lidar_scan_point_t']]],
-  ['dyaw_76',['dyaw',['../struct__slamtec__aurora__sdk__lidar__singlelayer__scandata__info__t.html#ae3eed9c31c3a2d4e61eea87e9d9f0829',1,'_slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t']]]
+  ['data_20provider_20operations_67',['Data Provider Operations',['../group__Cxx__DataProvider__Operations.html',1,'(Global Namespace)'],['../group__DataProvider__Operations.html',1,'(Global Namespace)']]],
+  ['data_5fsize_68',['data_size',['../struct__slamtec__aurora__sdk__image__desc__t.html#ae447d091a1ea38db8ba42be2eb24fac7',1,'_slamtec_aurora_sdk_image_desc_t']]],
+  ['dataprovider_69',['dataProvider',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a3e8f1471eefd0414c84ced62b4fe8897',1,'rp::standalone::aurora::RemoteSDK']]],
+  ['desc_70',['desc',['../classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a484efaf20ce217892685e8e5bc48a10b',1,'rp::standalone::aurora::RemoteKeyFrameData']]],
+  ['destroysession_71',['DestroySession',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a5f101854c9aad15b62ff1a51daa3d19e',1,'rp::standalone::aurora::RemoteSDK']]],
+  ['disconnect_72',['disconnect',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a40e3d28e8ab9af5c81b413b10311d622',1,'rp::standalone::aurora::RemoteController::disconnect()'],['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a4991b8d5a68599c413eee0dce180ac6b',1,'rp::standalone::aurora::RemoteSDK::disconnect()']]],
+  ['dist_73',['dist',['../struct__slamtec__aurora__sdk__lidar__scan__point__t.html#a8f40c63bc790b60d3b16ba4f5e1505da',1,'_slamtec_aurora_sdk_lidar_scan_point_t']]],
+  ['dyaw_74',['dyaw',['../struct__slamtec__aurora__sdk__lidar__singlelayer__scandata__info__t.html#ae3eed9c31c3a2d4e61eea87e9d9f0829',1,'_slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t']]]
 ];

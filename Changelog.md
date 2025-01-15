@@ -14,7 +14,7 @@ The SDK supports the following platforms and architectures:
 - Added API reference documentation
 
 
-### V1.5.0: 
-- Binded to Remote SDK 1.5.0
+### V1.2.0-rc2: 
 - Added LIDAR Scan Data Retrieval and Rendering Demo
 - Added LIDAR 2D Map Rendering Demo
+- Fixed the issue of drifting when stationary
