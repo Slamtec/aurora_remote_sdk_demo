@@ -19,7 +19,7 @@
 
 ## 用于ROS
 - SLAMTEC官方提供Aurora的ROS包装节点，支持ROS 1和ROS 2。
-- 您可以在SLAMTEC Aurora网站上找到这些包装节点。([ROS Wrapper Nodes](https://developer.slamtec.com/docs/slamware/aurora_ros2_sdk/))
+- 您可以在SLAMTEC Aurora网站上找到这些包装节点。([ROS Wrapper Nodes](https://developer.slamtec.com/docs/slamware/aurora-ros2-sdk/))
 - 一些Aurora特有的功能在ROS包装节点中不受支持，例如自动楼层检测。
 - 如果您想使用Aurora特有的功能，您需要使用Remote SDK。
 
@@ -37,7 +37,7 @@
 ![RoboStudio](res/slamtec.robostudio.png)
 
 它们可以从以下链接下载:
-- [SLAMTEC Aurora 网站](https://www.slamtec.com/cn/Aurora) 
+- [SLAMTEC Aurora 网站](https://www.slamtec.com/cn/Support#aurora) 
 - [RoboStudio](https://www.slamtec.com/en/RoboStudio)
 
 ## Remote SDK API 参考文档
