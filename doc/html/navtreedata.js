@@ -46,8 +46,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group__AutoFloorDetection__Operations.html#ga23a0a22d3486bb516a0c321d6c5e31a2",
-"struct__slamtec__aurora__sdk__keyframe__desc__t.html"
+"group__AutoFloorDetection__Operations.html",
+"struct__slamtec__aurora__sdk__image__desc__t.html#ae447d091a1ea38db8ba42be2eb24fac7"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

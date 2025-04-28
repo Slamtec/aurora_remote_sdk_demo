@@ -40,6 +40,7 @@ var group__Cxx__Controller__Operations =
       [ "requireRelocalization", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html#ae43df2e2abfc7036ecb12edba06d150d", null ],
       [ "resyncMapData", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a9e14968391ecf3edfd94bda77622ff2a", null ],
       [ "sendCustomCommand", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html#ac53fa6a32c4d0d8cf2dfccf09c6729f0", null ],
+      [ "setLoopClosure", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html#ad53fa3a45def7a895300b59010691b63", null ],
       [ "setLowRateMode", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a38b3a6d0cec232cef05c4d81e47e4445", null ],
       [ "setMapDataSyncing", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a74919fe1ac3342f0b53b4443719d1947", null ],
       [ "setRawDataSubscription", "classrp_1_1standalone_1_1aurora_1_1RemoteController.html#af6adeab01bc8e4003fa713cf7128e2f1", null ],

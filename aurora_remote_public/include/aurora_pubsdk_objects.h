@@ -392,6 +392,11 @@ enum slamtec_aurora_sdk_mapping_flag_types {
      */
     SLAMTEC_AURORA_SDK_MAPPING_FLAG_LC_DISABLED = (0x1 << 2),
     /**
+     * @brief The GBA running mapping flag
+     * @details This flag tells the SDK that the global bundle adjustment is running.
+     */
+    SLAMTEC_AURORA_SDK_MAPPING_FLAG_GBA_RUNNING = (0x1 << 3),
+    /**
      * @brief The lost mapping flag
      * @details This flag tells the SDK that the tracking is lost.
      */
@@ -1053,7 +1058,35 @@ typedef struct _slamtec_aurora_sdk_global_map_desc_t {
      * @brief The ID of the active map
      */
     uint32_t activeMapID;
+
+    /**
+     * @brief The current mapping flags
+     */
+    slamtec_aurora_sdk_mapping_flag_t mappingFlags;
+
+    /**
+     * @brief The sliding window start keyframe ID used in the localization mode
+     */
+    uint64_t slidingWindowStartKFId;
+
 } slamtec_aurora_sdk_global_map_desc_t;
+
+
+enum slamtec_aurora_sdk_map_flags_t {
+    /**
+     * @brief The none map flag
+     */
+    SLAMTEC_AURORA_SDK_MAP_FLAG_NONE = 0,
+    /**
+     * @brief The bad map flag
+     */
+    SLAMTEC_AURORA_SDK_MAP_FLAG_BAD = (0x1 << 0),
+    /**
+     * @brief The fixed map flag
+     */
+    SLAMTEC_AURORA_SDK_MAP_FLAG_FIXED = (0x1 << 1),
+};
+
 
 
 /**
@@ -1067,7 +1100,7 @@ typedef struct _slamtec_aurora_sdk_map_desc_t {
      */
     uint32_t map_id;
     /**
-     * @brief The flags of the map
+     * @brief The flags of the map, check enum slamtec_aurora_sdk_map_flags_t for more details
      */
     uint32_t map_flags;
     /**
@@ -1096,7 +1129,25 @@ typedef struct _slamtec_aurora_sdk_map_desc_t {
      * @brief The ID of the last map point in the map
      */
     uint64_t map_point_id_end;
+
 } slamtec_aurora_sdk_map_desc_t;
+
+
+enum slamtec_aurora_sdk_keyframe_flags_t {
+    /**
+     * @brief The none keyframe flag
+     */
+    SLAMTEC_AURORA_SDK_KEYFRAME_FLAG_NONE = 0,
+    /**
+     * @brief The bad keyframe flag
+     */
+    SLAMTEC_AURORA_SDK_KEYFRAME_FLAG_BAD = (0x1 << 0),
+    /**
+     * @brief The fixed keyframe flag
+     */
+    SLAMTEC_AURORA_SDK_KEYFRAME_FLAG_FIXED = (0x1 << 1),
+};
+
 
 
 /**
@@ -1137,6 +1188,12 @@ typedef struct _slamtec_aurora_sdk_keyframe_desc_t {
      * @brief The count of the connected frames
      */
     size_t connected_frame_count;
+
+
+    /**
+     * @brief The flags of the keyframe, check enum slamtec_aurora_sdk_keyframe_flags_t for more details
+     */
+    uint32_t flags;
 } slamtec_aurora_sdk_keyframe_desc_t;
 
 

@@ -8,6 +8,8 @@ var struct__slamtec__aurora__sdk__global__map__desc__t =
     [ "lastMapCountToFetch", "struct__slamtec__aurora__sdk__global__map__desc__t.html#a95e651eeab4d074137a681ab593036c9", null ],
     [ "lastMPCountToFetch", "struct__slamtec__aurora__sdk__global__map__desc__t.html#a990698d0b11b938e5f2f3d020aedaa77", null ],
     [ "lastMPRetrieved", "struct__slamtec__aurora__sdk__global__map__desc__t.html#ad805effa699dbcbb3eecf0cd9af7e9d9", null ],
+    [ "mappingFlags", "struct__slamtec__aurora__sdk__global__map__desc__t.html#a794f57bb55c66e19854e2b5a8333a206", null ],
+    [ "slidingWindowStartKFId", "struct__slamtec__aurora__sdk__global__map__desc__t.html#a31ecd5d42ebf7ba2697763739a1ef85d", null ],
     [ "totalKFCount", "struct__slamtec__aurora__sdk__global__map__desc__t.html#af47fb42e28c1858fac01b4f9cfc46337", null ],
     [ "totalKFCountFetched", "struct__slamtec__aurora__sdk__global__map__desc__t.html#aa37e259e87296ca834ec2920d8f7a81b", null ],
     [ "totalMapCount", "struct__slamtec__aurora__sdk__global__map__desc__t.html#a744270a7d65d9e48eb22fbe42711d9c8", null ],

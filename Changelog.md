@@ -14,7 +14,23 @@ The SDK supports the following platforms and architectures:
 - Added API reference documentation
 
 
-### V1.2.0-rc2: 
+### V1.2.0-rc2:
 - Added LIDAR Scan Data Retrieval and Rendering Demo
 - Added LIDAR 2D Map Rendering Demo
 - Fixed the issue of drifting when stationary
+
+### V1.2.0-rc4:
+- Support loading maps in asb format
+- Added the API to enable and disable loop closure detection
+
+### V1.2.0-rc5:
+
+- Resolve the issue of map upload failure
+
+### V1.2.0-rc6:
+
+- Added support for neo pure localization mode
+
+### V1.2.0-rtm:
+
+- Fixed some bugs

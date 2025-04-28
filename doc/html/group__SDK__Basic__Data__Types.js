@@ -160,6 +160,8 @@ var group__SDK__Basic__Data__Types =
       [ "lastMapCountToFetch", "struct__slamtec__aurora__sdk__global__map__desc__t.html#a95e651eeab4d074137a681ab593036c9", null ],
       [ "lastMPCountToFetch", "struct__slamtec__aurora__sdk__global__map__desc__t.html#a990698d0b11b938e5f2f3d020aedaa77", null ],
       [ "lastMPRetrieved", "struct__slamtec__aurora__sdk__global__map__desc__t.html#ad805effa699dbcbb3eecf0cd9af7e9d9", null ],
+      [ "mappingFlags", "struct__slamtec__aurora__sdk__global__map__desc__t.html#a794f57bb55c66e19854e2b5a8333a206", null ],
+      [ "slidingWindowStartKFId", "struct__slamtec__aurora__sdk__global__map__desc__t.html#a31ecd5d42ebf7ba2697763739a1ef85d", null ],
       [ "totalKFCount", "struct__slamtec__aurora__sdk__global__map__desc__t.html#af47fb42e28c1858fac01b4f9cfc46337", null ],
       [ "totalKFCountFetched", "struct__slamtec__aurora__sdk__global__map__desc__t.html#aa37e259e87296ca834ec2920d8f7a81b", null ],
       [ "totalMapCount", "struct__slamtec__aurora__sdk__global__map__desc__t.html#a744270a7d65d9e48eb22fbe42711d9c8", null ],
@@ -179,6 +181,7 @@ var group__SDK__Basic__Data__Types =
     ] ],
     [ "_slamtec_aurora_sdk_keyframe_desc_t", "struct__slamtec__aurora__sdk__keyframe__desc__t.html", [
       [ "connected_frame_count", "struct__slamtec__aurora__sdk__keyframe__desc__t.html#a4d758ecdbdb64fee69542e4c6dbf5091", null ],
+      [ "flags", "struct__slamtec__aurora__sdk__keyframe__desc__t.html#aa141ddefc17bbd96943c02207fdef162", null ],
       [ "id", "struct__slamtec__aurora__sdk__keyframe__desc__t.html#a6762eca32c7f17841b77212843cab66b", null ],
       [ "looped_frame_count", "struct__slamtec__aurora__sdk__keyframe__desc__t.html#a6d677e6eb5e42c773132352580ec93ba", null ],
       [ "map_id", "struct__slamtec__aurora__sdk__keyframe__desc__t.html#a90593a997c4098f73145c5232e68133a", null ],
@@ -263,10 +266,21 @@ var group__SDK__Basic__Data__Types =
       [ "SLAMTEC_AURORA_SDK_DEVICE_MAP_SAVING_COMPLETED", "group__SDK__Basic__Data__Types.html#gga1d71fa469656986247d1604d8c690b86a2393d78a07e9ec591361ac202d432973", null ]
     ] ],
     [ "slamtec_aurora_sdk_errorcode_types", "group__SDK__Basic__Data__Types.html#gad2a362b177366365108872a09cad9fff", null ],
+    [ "slamtec_aurora_sdk_keyframe_flags_t", "group__SDK__Basic__Data__Types.html#gacbf28948f6f1c00633a123591ed97612", [
+      [ "SLAMTEC_AURORA_SDK_KEYFRAME_FLAG_NONE", "group__SDK__Basic__Data__Types.html#ggacbf28948f6f1c00633a123591ed97612ab2ade0e863b6c6e250f999f332bdaf90", null ],
+      [ "SLAMTEC_AURORA_SDK_KEYFRAME_FLAG_BAD", "group__SDK__Basic__Data__Types.html#ggacbf28948f6f1c00633a123591ed97612af3642bc704ce7b38f00a809ba2f6e659", null ],
+      [ "SLAMTEC_AURORA_SDK_KEYFRAME_FLAG_FIXED", "group__SDK__Basic__Data__Types.html#ggacbf28948f6f1c00633a123591ed97612ac9e4eb4420f0ee1ee1085bc32a30dfba", null ]
+    ] ],
+    [ "slamtec_aurora_sdk_map_flags_t", "group__SDK__Basic__Data__Types.html#ga68edecad837d258e1b32a41dd8aade93", [
+      [ "SLAMTEC_AURORA_SDK_MAP_FLAG_NONE", "group__SDK__Basic__Data__Types.html#gga68edecad837d258e1b32a41dd8aade93af8f24fb1ec264d0d07d274960893e891", null ],
+      [ "SLAMTEC_AURORA_SDK_MAP_FLAG_BAD", "group__SDK__Basic__Data__Types.html#gga68edecad837d258e1b32a41dd8aade93a8c8d6b0234d57eb0002fa9193e581f68", null ],
+      [ "SLAMTEC_AURORA_SDK_MAP_FLAG_FIXED", "group__SDK__Basic__Data__Types.html#gga68edecad837d258e1b32a41dd8aade93a1a0cfa6352f3a901907b2b666d25ff04", null ]
+    ] ],
     [ "slamtec_aurora_sdk_mapping_flag_types", "group__SDK__Basic__Data__Types.html#gaa7e147f0e0a8a79a4277351e3f6e5323", [
       [ "SLAMTEC_AURORA_SDK_MAPPING_FLAG_NONE", "group__SDK__Basic__Data__Types.html#ggaa7e147f0e0a8a79a4277351e3f6e5323a9951ea72dc0bf4b39fc5d07c91c02dde", null ],
       [ "SLAMTEC_AURORA_SDK_MAPPING_FLAG_LOC_MODE", "group__SDK__Basic__Data__Types.html#ggaa7e147f0e0a8a79a4277351e3f6e5323a004471f8ee0636ca135e7073144b17fa", null ],
       [ "SLAMTEC_AURORA_SDK_MAPPING_FLAG_LC_DISABLED", "group__SDK__Basic__Data__Types.html#ggaa7e147f0e0a8a79a4277351e3f6e5323a6aed8367d125c218deab64165864b4ac", null ],
+      [ "SLAMTEC_AURORA_SDK_MAPPING_FLAG_GBA_RUNNING", "group__SDK__Basic__Data__Types.html#ggaa7e147f0e0a8a79a4277351e3f6e5323a62a3f8a6f934d1be6aedf615f9f0bbc8", null ],
       [ "SLAMTEC_AURORA_SDK_MAPPING_FLAG_LOSTED", "group__SDK__Basic__Data__Types.html#ggaa7e147f0e0a8a79a4277351e3f6e5323aae0b8a8a4d24fe3a06c12868901947b1", null ],
       [ "SLAMTEC_AURORA_SDK_MAPPING_FLAG_STORAGE_IN_PROGRESS", "group__SDK__Basic__Data__Types.html#ggaa7e147f0e0a8a79a4277351e3f6e5323a210c4c52a12dbc9ecb98f24d75614da9", null ]
     ] ],

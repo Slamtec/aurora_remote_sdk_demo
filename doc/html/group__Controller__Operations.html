@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="slamtec.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SLAMTEC Aurora Public Remote SDK
-   &#160;<span id="projectnumber">1.2.0-rc2</span>
+   &#160;<span id="projectnumber">1.2.0-rtm</span>
    </div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -147,6 +147,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga5b844a511e4e67bb487778ec3d53ff01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__SDK__Basic__Data__Types.html#ga594824a6dfa667c6bdd6c8f95b3a37a3">slamtec_aurora_sdk_errorcode_t</a> AURORA_SDK_API&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Controller__Operations.html#ga5b844a511e4e67bb487778ec3d53ff01">slamtec_aurora_sdk_controller_cancel_relocalization</a> (<a class="el" href="group__SDK__Basic__Data__Types.html#ga28b02b17902e8c35063bba0df20bd715">slamtec_aurora_sdk_session_handle_t</a> handle, uint64_t timeout_ms)</td></tr>
 <tr class="memdesc:ga5b844a511e4e67bb487778ec3d53ff01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Require the remote Device to cancel the relocalization process.  <a href="group__Controller__Operations.html#ga5b844a511e4e67bb487778ec3d53ff01">More...</a><br /></td></tr>
 <tr class="separator:ga5b844a511e4e67bb487778ec3d53ff01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d9129f8886dfa143af3474342bed5aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__SDK__Basic__Data__Types.html#ga594824a6dfa667c6bdd6c8f95b3a37a3">slamtec_aurora_sdk_errorcode_t</a> AURORA_SDK_API&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Controller__Operations.html#ga3d9129f8886dfa143af3474342bed5aa">slamtec_aurora_sdk_controller_set_loop_closure</a> (<a class="el" href="group__SDK__Basic__Data__Types.html#ga28b02b17902e8c35063bba0df20bd715">slamtec_aurora_sdk_session_handle_t</a> handle, int enable, uint64_t timeout_ms)</td></tr>
+<tr class="memdesc:ga3d9129f8886dfa143af3474342bed5aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Require the remote Device to enable/disable the loop closure.  <a href="group__Controller__Operations.html#ga3d9129f8886dfa143af3474342bed5aa">More...</a><br /></td></tr>
+<tr class="separator:ga3d9129f8886dfa143af3474342bed5aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae6d24f8cd3314b95a834a0390c7d751b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__SDK__Basic__Data__Types.html#ga594824a6dfa667c6bdd6c8f95b3a37a3">slamtec_aurora_sdk_errorcode_t</a> AURORA_SDK_API&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Controller__Operations.html#gae6d24f8cd3314b95a834a0390c7d751b">slamtec_aurora_sdk_controller_send_custom_command</a> (<a class="el" href="group__SDK__Basic__Data__Types.html#ga28b02b17902e8c35063bba0df20bd715">slamtec_aurora_sdk_session_handle_t</a> handle, uint64_t timeout_ms, uint64_t cmd, const void *data, size_t data_size, void *response, size_t response_buffer_size, size_t *response_retrieved_size)</td></tr>
 <tr class="memdesc:gae6d24f8cd3314b95a834a0390c7d751b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a custom command to the remote Device.  <a href="group__Controller__Operations.html#gae6d24f8cd3314b95a834a0390c7d751b">More...</a><br /></td></tr>
 <tr class="separator:gae6d24f8cd3314b95a834a0390c7d751b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -622,6 +625,51 @@ Functions</h2></td></tr>
     <tr><td class="paramname">response</td><td>- the response buffer to store the response data </td></tr>
     <tr><td class="paramname">response_buffer_size</td><td>- the size of the response buffer </td></tr>
     <tr><td class="paramname">response_retrieved_size</td><td>- the size of the response data retrieved </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the error code </dd></dl>
+
+</div>
+</div>
+<a id="ga3d9129f8886dfa143af3474342bed5aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3d9129f8886dfa143af3474342bed5aa">&#9670;&nbsp;</a></span>slamtec_aurora_sdk_controller_set_loop_closure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__SDK__Basic__Data__Types.html#ga594824a6dfa667c6bdd6c8f95b3a37a3">slamtec_aurora_sdk_errorcode_t</a> AURORA_SDK_API slamtec_aurora_sdk_controller_set_loop_closure </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__SDK__Basic__Data__Types.html#ga28b02b17902e8c35063bba0df20bd715">slamtec_aurora_sdk_session_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>enable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>timeout_ms</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Require the remote Device to enable/disable the loop closure. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>- 1 to enable the loop closure, 0 to disable </td></tr>
+    <tr><td class="paramname">handle</td><td>- the session handle </td></tr>
+    <tr><td class="paramname">timeout_ms</td><td>- the timeout in milliseconds </td></tr>
   </table>
   </dd>
 </dl>

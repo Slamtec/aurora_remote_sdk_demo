@@ -12,6 +12,7 @@ var group__Controller__Operations =
     [ "slamtec_aurora_sdk_controller_require_relocalization", "group__Controller__Operations.html#ga61ea00d589db44bfbe53b4fcae0dd302", null ],
     [ "slamtec_aurora_sdk_controller_resync_map_data", "group__Controller__Operations.html#ga69a3c91798961f6e050abc8aaf030a7f", null ],
     [ "slamtec_aurora_sdk_controller_send_custom_command", "group__Controller__Operations.html#gae6d24f8cd3314b95a834a0390c7d751b", null ],
+    [ "slamtec_aurora_sdk_controller_set_loop_closure", "group__Controller__Operations.html#ga3d9129f8886dfa143af3474342bed5aa", null ],
     [ "slamtec_aurora_sdk_controller_set_low_rate_mode", "group__Controller__Operations.html#gaba9925238fd9ad0a7d509291e30e9dc9", null ],
     [ "slamtec_aurora_sdk_controller_set_map_data_syncing", "group__Controller__Operations.html#gacd4a4423da8095ad2c7d14f79a06e66d", null ],
     [ "slamtec_aurora_sdk_controller_set_raw_data_subscription", "group__Controller__Operations.html#ga1b16545b03d20a8b08804f4bd7950364", null ]

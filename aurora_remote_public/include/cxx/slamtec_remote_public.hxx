@@ -484,6 +484,20 @@ public:
         return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
     }
 
+    /**
+     * @brief Set the loop closure flag
+     * @param[in] enable True to enable the loop closure, false to disable
+     * @param[in] timeout_ms The timeout in milliseconds, default is 5000ms
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the loop closure is set successfully, false otherwise
+     */
+    bool setLoopClosure(bool enable, uint64_t timeout_ms = SLAMTEC_AURORA_SDK_REMOTE_SERVER_DEFAULT_TIMEOUT, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_controller_set_loop_closure(_sdk, enable ? 1 : 0, timeout_ms);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
 
     /**
      * @brief Send a custom command to the remote device

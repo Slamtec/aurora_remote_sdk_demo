@@ -273,6 +273,17 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_requ
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_cancel_relocalization(slamtec_aurora_sdk_session_handle_t handle, uint64_t timeout_ms);
 
 /**
+ * @brief Require the remote Device to enable/disable the loop closure
+ * @ingroup Controller_Operations Controller Operations
+ *
+ * @param enable - 1 to enable the loop closure, 0 to disable
+ * @param handle - the session handle
+ * @param timeout_ms - the timeout in milliseconds
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_set_loop_closure(slamtec_aurora_sdk_session_handle_t handle, int enable, uint64_t timeout_ms);
+
+/**
  * @brief Send a custom command to the remote Device
  * @ingroup Controller_Operations Controller Operations
  * 
