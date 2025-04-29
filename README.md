@@ -19,7 +19,7 @@ This repository contains the Demo code and project skeleton for using the SLAMTE
 - OpenCV 4.2 or above (if you want to compile the demo that uses OpenCV)
 
 ## ROS Integration
-- SLAMTEC provides Aurora ROS wrapper nodes for ROS 1 and ROS 2.
+- SLAMTEC provides Aurora ROS wrapper nodes for [ROS](https://github.com/Slamtec/aurora_ros) and [ROS2](https://github.com/Slamtec/aurora_ros/tree/ros2).
 - You can find the wrapper nodes on SLAMTEC Aurora Website. ([ROS Wrapper Nodes](https://developer.slamtec.com/docs/slamware/aurora_ros2_sdk_en/))
 - Some Aurora specific features are not supported in the ROS wrapper nodes, such as the auto floor detection.
 - If you want to use the Aurora specific features, you need to use the Remote SDK.
@@ -34,13 +34,9 @@ This repository contains the Demo code and project skeleton for using the SLAMTE
 We are highly recommend you to use the SLAMTEC Official Tool first for better evaluation and development experience.
 - Aurora Remote App
 ![Aurora Remote](res/aurora.remote.png)
-- RoboStudio
-![RoboStudio](res/slamtec.robostudio.png)
 
 They can be downloaded from the following links:
 - [SLAMTEC Aurora Website](https://www.slamtec.com/en/Aurora) / ([中文版点此](https://www.slamtec.com/cn/Aurora))
-- [RoboStudio](https://www.slamtec.com/en/RoboStudio)
-
 
 ## API Reference of the Remote SDK
 - [Remote SDK API Reference](doc/html/index.html)
