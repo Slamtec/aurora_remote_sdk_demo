@@ -68,6 +68,11 @@ extern "C" {
 
 
 /**
+* @defgroup EnhancedImaging_Operations Enhanced Imaging Operations
+* @brief Functions for accessing Enhanced Imaging data
+*/
+
+/**
  * @defgroup Utility_Functions Utility Functions
  * @brief Utility functions
  */
@@ -220,6 +225,42 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_set_
  */
 int AURORA_SDK_API slamtec_aurora_sdk_controller_is_raw_data_subscribed(slamtec_aurora_sdk_session_handle_t handle);
 
+
+/**
+ * @brief Set the enhanced imaging subscription
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @param type - the type of the enhanced imaging, refer to slamtec_aurora_sdk_enhanced_image_type_t for more details
+ * @param enable - non-zero to enable, zero to disable
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_set_enhanced_imaging_subscription(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_enhanced_image_type_t type, int enable);
+
+
+/**
+ * @brief Check if the enhanced imaging is subscribed
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @param type - the type of the enhanced imaging, refer to slamtec_aurora_sdk_enhanced_image_type_t for more details
+ * @return non-zero means subscribed
+ */
+int AURORA_SDK_API slamtec_aurora_sdk_controller_is_enhanced_imaging_subscribed(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_enhanced_image_type_t type);
+
+
+/**
+ * @brief Set the semantic segmentation alternative model
+ * @details Ask the remote device to use the alternative model for semantic segmentation.
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @param enable - non-zero to enable, zero to disable
+ * @param timeout_ms - the timeout in milliseconds
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_require_semantic_segmentation_alternative_model(slamtec_aurora_sdk_session_handle_t handle, int enable, uint64_t timeout_ms);
+
+
 /**
  * @brief Require the remote Device to reset the map, a.k.a. clear all the map data and restart the mapping process
  * @ingroup Controller_Operations Controller Operations
@@ -283,7 +324,19 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_canc
  */
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_set_loop_closure(slamtec_aurora_sdk_session_handle_t handle, int enable, uint64_t timeout_ms);
 
+
 /**
+ * @brief Force the remote Device to perform a global optimization of the map
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @param timeout_ms - the timeout in milliseconds
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_force_map_global_optimization(slamtec_aurora_sdk_session_handle_t handle, uint64_t timeout_ms);
+
+
+/**
+
  * @brief Send a custom command to the remote Device
  * @ingroup Controller_Operations Controller Operations
  * 
@@ -298,6 +351,18 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_set_
  * @return the error code
  */
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_controller_send_custom_command(slamtec_aurora_sdk_session_handle_t handle, uint64_t timeout_ms, uint64_t cmd, const void* data, size_t data_size, void* response, size_t response_buffer_size, size_t * response_retrieved_size);
+
+
+
+/**
+ * @brief Check if the device connection is alive
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @return non-zero means alive
+ */
+int AURORA_SDK_API slamtec_aurora_sdk_controller_is_device_connection_alive(slamtec_aurora_sdk_session_handle_t handle);
+
 
 
 
@@ -361,6 +426,28 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_mapmanager_quer
 
 // dataprovider operations
 ////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Get the camera calibration
+ * @details Caller can use this function to get the camera calibration.
+ * @ingroup DataProvider_Operations Data Provider Operations
+ * 
+ * @param handle - the session handle
+ * @param calibration_out - the camera calibration will be stored in this pointer
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_camera_calibration(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_camera_calibration_t* calibration_out);
+
+
+
+/**
+ * @brief Get the transform calibration
+ * @details Caller can use this function to get the transform calibration.
+ * @ingroup DataProvider_Operations Data Provider Operations
+ * 
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_transform_calibration(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_transform_calibration_t* calibration_out);
+
+
 /**
  * @brief Get the current pose (base to world) in SE3 format
  * @details Caller can use this function to get the current pose in SE3 format.
@@ -388,6 +475,54 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_ge
  */
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_current_pose(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_pose_t* pose_out);
 
+
+
+/**
+ * @brief Get the current pose (base to world) in SE3 format with timestamp
+ * @details Caller can use this function to get the current pose in SE3 format.
+ * @details The pose data retrieved is the cached data from previous fetched by the background data sync thread.
+ * @details The pose data may be outdated. If caller needs the latest pose data, it should using the SDK listener to get the pose update event.
+ * @ingroup DataProvider_Operations Data Provider Operations
+ * 
+ * @param handle - the session handle
+ * @param pose_out - the pose will be stored in this pointer
+ * @param timestamp_ns - the timestamp will be stored in this pointer, if set to NULL, the function will not return the timestamp
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_current_pose_se3_with_timestamp(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_pose_se3_t* pose_out, uint64_t* timestamp_ns);
+
+/**
+ * @brief Get the current pose (base to world) in Euler angles (Roll-Pitch-Yaw  RPY order) format with timestamp
+ * @details Caller can use this function to get the current pose in Euler angles format.
+ * @details The pose data retrieved is the cached data from previous fetched by the background data sync thread.
+ * @details The pose data may be outdated. If caller needs the latest pose data, it should using the SDK listener to get the pose update event.
+ * @details WARNING: gimbal lock may happen, please use the SE3 pose if possible.
+ * @ingroup DataProvider_Operations Data Provider Operations
+ * 
+ * @param handle - the session handle
+ * @param pose_out - the pose will be stored in this pointer
+ * @param timestamp_ns - the timestamp will be stored in this pointer, if set to NULL, the function will not return the timestamp
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_current_pose_with_timestamp(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_pose_t* pose_out, uint64_t* timestamp_ns);
+
+
+/**
+ * @brief Peek the history pose
+ * @details Caller can use this function to peek the history pose.
+ * @details The caller should check the return code to see if the pose is available.
+ * @ingroup DataProvider_Operations Data Provider Operations
+ * 
+ * @param handle - the session handle
+ * @param pose_out - the pose will be stored in this pointer
+ * @param timestamp_ns - the timestamp in nanoseconds, if set to 0, the function will return the latest pose
+ * @param allow_interpolation - if true, the function will return the interpolated pose, otherwise the function will return the exact pose at the timestamp if available
+ * @param max_time_diff_ns - the maximum time difference in nanoseconds, if the timestamp is too old, the function will return the error code SLAMTEC_AURORA_SDK_ERRORCODE_NOT_READY
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_peek_history_pose(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_pose_se3_t* pose_out, uint64_t timestamp_ns, int allow_interpolation, uint64_t max_time_diff_ns);
+
+
 /**
  * @brief Get the current mapping flags
  * @details Caller can use this function to get the current SLAM working flags, e.g. whether Loop Closure is disabled or not
@@ -410,6 +545,21 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_ge
  * @return the error code
  */
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_last_device_status(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_device_status_t* status_out, uint64_t * timestamp_ns_out);
+
+
+/**
+ * @brief Get the last device basic info
+ * @details Caller can use this function to get the last device basic info.
+ * @details The SDK keeps fetching the device basic info from the remote device periodically and caches the data.
+ * @ingroup DataProvider_Operations Data Provider Operations
+ * 
+ * @param handle - the session handle
+ * @param info_out - the info will be stored in this pointer
+ * @param timestamp_ns_out - the data timestamp will be stored in this pointer
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_get_last_device_basic_info(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_device_basic_info_t* info_out, uint64_t * timestamp_ns_out);
+
 
 /**
 * @brief Get the relocalization status
@@ -439,6 +589,23 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_ge
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_peek_tracking_data(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_tracking_info_t* tracking_data_out, const slamtec_aurora_sdk_tracking_data_buffer_t* provided_buffer_info);
 
 
+
+
+/**
+ * @brief Peek the camera preview image
+ * @details Caller can use this function to peek the camera preview image.
+ * @details The caller should provide a buffer to hold the image data.
+ * @details The caller should also provide a buffer to hold the image data.
+ * @ingroup DataProvider_Operations Data Provider Operations
+ * 
+ * @param handle - the session handle
+ * @param timestamp_ns - the timestamp in nanoseconds, if set to 0, the function will return the latest image
+ * @param desc_out - the description of the image
+ * @param provided_buffer_info - the buffer information
+ * @param allow_nearest_frame - if true, the function will return the nearest frame if the requested frame is not available
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_peek_camera_preview_image(slamtec_aurora_sdk_session_handle_t handle, uint64_t timestamp_ns, slamtec_aurora_sdk_stereo_image_pair_desc_t* desc_out, const slamtec_aurora_sdk_stereo_image_pair_buffer_t* provided_buffer_info, int allow_nearest_frame);
 
 /**
  * @brief Peek the most recent single layer LiDAR scan data and its pose
@@ -777,6 +944,172 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_autofloordetect
  * @return the error code
  */
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_autofloordetection_get_detection_histogram(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_floor_detection_histogram_info_t* header_out, float* histogram_buffer, size_t buffer_count);
+
+
+// Enhanced Imaging Operations
+////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * @brief Check if the depth camera is ready to retrieve data
+ * @details Caller can use this function to check if the depth camera is ready.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ */
+int AURORA_SDK_API slamtec_aurora_sdk_dataprovider_depthcam_is_ready(slamtec_aurora_sdk_session_handle_t handle);
+
+/**
+ * @brief Get the depth camera config info
+ * @details Caller can use this function to get the depth camera config info.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_depthcam_get_config_info(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_depthcam_config_info_t* config_info);
+
+
+/**
+ * @brief Wait for the next depth camera frame
+ * @details Caller can use this function to wait for the next depth camera frame.
+ * @details The function will block until a new frame is available or the timeout occurs.
+ * @details The function will return SLAMTEC_AURORA_SDK_ERRORCODE_NOT_READY if the timeout occurs.
+ * @details The function will return SLAMTEC_AURORA_SDK_ERRORCODE_OK if a new frame is available.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ * @param handle - the session handle
+ * @param timeout_ms - the timeout in milliseconds, if set to -1, the function will block until a new frame is available
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_depthcam_wait_next_frame(slamtec_aurora_sdk_session_handle_t handle, uint64_t timeout_ms);
+
+
+/**
+ * @brief Peek the current depth camera frame
+ * @details Caller can use this function to peek the current depth camera frame.
+ * @details The function will return SLAMTEC_AURORA_SDK_ERRORCODE_NOT_READY if there is no frame available.
+ * @details The caller must provide a buffer to store the frame data.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ * @param handle - the session handle
+ * @param frame_type - the frame type
+ * @param frame_desc - the frame description
+ * @param frame_buffer - the frame buffer
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_depthcam_peek_frame(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_depthcam_frame_type_t frame_type, slamtec_aurora_sdk_enhanced_imaging_frame_desc_t* frame_desc_out, const slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t* frame_buffer);
+
+
+/**
+ * @brief Peek the related rectified image of the current depth camera frame
+ * @details Caller should provide a timestamp to get the related rectified image.
+ * @details If the timestamp is too old, the function will return SLAMTEC_AURORA_SDK_ERRORCODE_NOT_READY.
+ * @details The caller must provide a buffer to store the rectified image.
+ * @details The buffer size must be at least as large as the size of the rectified image.
+ * @details The function will return SLAMTEC_AURORA_SDK_ERRORCODE_OK if a new rectified image is available.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ * @param handle - the session handle
+ * @param timestamp - the timestamp
+ * @param frame_desc_out - the frame description
+ * @param frame_buffer - the frame buffer
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_depthcam_peek_related_rectified_image(slamtec_aurora_sdk_session_handle_t handle, uint64_t timestamp, slamtec_aurora_sdk_enhanced_imaging_frame_desc_t* frame_desc_out, const slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t* frame_buffer);
+
+/**
+ * @brief Calculate the aligned segmentation map
+ * @details Caller can use this function to calculate the aligned segmentation map.
+ * @details The function will calculate the aligned segmentation map from the raw segmentation map that matches the coordinate of the depth map.
+ * @details The caller should provide the buffer of the raw segmentation map and the buffer of the aligned segmentation map.
+ * @details The function will return SLAMTEC_AURORA_SDK_ERRORCODE_OK if the aligned segmentation map is calculated successfully.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ * @param handle - the session handle
+ * @param desc_in - the description of the raw segmentation map
+ * @param raw_segment_data - the buffer of the raw segmentation map
+ * @param desc_out - the description of the aligned segmentation map
+ * @param aligned_segment_data - the buffer of the aligned segmentation map
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_depthcam_calc_aligned_segmentation_map(slamtec_aurora_sdk_session_handle_t handle, const slamtec_aurora_sdk_image_desc_t * desc_in, const void * raw_segment_data, slamtec_aurora_sdk_image_desc_t * desc_out, const slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t * aligned_segment_data);
+
+/**
+ * @brief Check if the semantic segmentation is ready to retrieve data
+ * @details Caller can use this function to check if the semantic segmentation is ready.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ */
+int AURORA_SDK_API slamtec_aurora_sdk_dataprovider_semantic_segmentation_is_ready(slamtec_aurora_sdk_session_handle_t handle);
+
+
+
+/**
+ * @brief Check if the semantic segmentation is using the alternative model
+ * @details Caller can use this function to check if the semantic segmentation is using the alternative model.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ */
+int AURORA_SDK_API slamtec_aurora_sdk_dataprovider_semantic_segmentation_is_using_alternative_model(slamtec_aurora_sdk_session_handle_t handle);
+
+/**
+ * @brief Get the semantic segmentation config info
+ * @details Caller can use this function to get the semantic segmentation config info.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_semantic_segmentation_get_config_info(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_semantic_segmentation_config_info_t* config_info);
+
+
+
+/**
+ * @brief Wait for the next semantic segmentation frame
+ * @details Caller can use this function to wait for the next semantic segmentation frame.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ * @param handle - the session handle
+ * @param timeout_ms - the timeout in milliseconds, if set to -1, the function will block until a new frame is available
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_semantic_segmentation_wait_next_frame(slamtec_aurora_sdk_session_handle_t handle, uint64_t timeout_ms);
+
+
+/**
+ * @brief Get the label set name
+ * @details Caller can use this function to get the label set name.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ * @param handle - the session handle
+ * @param label_set_name_buffer - the label set name buffer
+ * @param buffer_size - the buffer size, if set to 0, the function will return the label set name length
+ * @return the label set name length copied to the buffer
+ */
+size_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_semantic_segmentation_get_label_set_name(slamtec_aurora_sdk_session_handle_t handle,  char* label_set_name_buffer, size_t buffer_size);
+
+
+
+/**
+ * @brief Get the all labels
+ * @details Caller can use this function to get the all labels.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ * @param handle - the session handle
+ * @param label_info - the label info
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_semantic_segmentation_get_labels(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_semantic_segmentation_label_info_t* label_info);
+
+
+/**
+ * @brief Peek the current semantic segmentation frame
+ * @details Caller can use this function to peek the current semantic segmentation frame.
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ * @param handle - the session handle
+ * @param frame_type - the frame type
+ * @param frame_desc_out - the frame description
+ * @param frame_buffer - the frame buffer
+ * @return the error code
+ */
+slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_semantic_segmentation_peek_frame(slamtec_aurora_sdk_session_handle_t handle, slamtec_aurora_sdk_enhanced_imaging_frame_desc_t* frame_desc_out, const slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t* frame_buffer);
+
 
 
 #ifdef __cplusplus

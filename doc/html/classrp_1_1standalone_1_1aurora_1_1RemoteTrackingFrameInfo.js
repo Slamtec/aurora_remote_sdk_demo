@@ -14,6 +14,7 @@ var classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo =
     [ "getKeypointsRightCount", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a0f3de8685cd6b585f6ef39fda2481024", null ],
     [ "operator=", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a8da67d13d22f0890f5a7027d9aa3f26b", null ],
     [ "operator=", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a7f4e8f26524a317471a5891474d195d1", null ],
+    [ "reset", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a45a864810ad0dda35033f9a2310b1169", null ],
     [ "_imgbuffer_left", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ab9b4e33dd47dbd812006329daaf6104e", null ],
     [ "_imgbuffer_right", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a68c1936367b8c52ed9e0475799b57d78", null ],
     [ "_keypoints_buffer_left", "classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a6157945816e58919efb662ce1432cefd", null ],

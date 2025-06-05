@@ -70,6 +70,13 @@
  * @brief The Auto Floor Detection classes
  */
 
+/**
+ * @defgroup Cxx_Enhanced_Imaging_Operations Enhanced Imaging Operations
+ * @brief The enhanced imaging classes
+ */
+
+
+
 /** @} */ // end of SDK_Cxx_Wrapper
 
 
@@ -82,6 +89,8 @@ class RemoteDataProvider;
 class RemoteController;
 class RemoteMapManager;
 class LIDAR2DMapBuilder;
+
+class EnhancedImaging;
 
 /**
  * @brief The listener base class for receiving the data stream from the remote device
@@ -143,6 +152,38 @@ public:
      */
     virtual void onLIDARScan(const slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t& header, const slamtec_aurora_sdk_lidar_scan_point_t* points) {}
 
+
+    /**
+     * @brief The callback for the camera preview image data
+     * @ingroup SDK_Callback_Types SDK Callback Types
+     * @details The callback to receive the camera preview image data from the remote device
+     */
+    virtual void onCameraPreviewImage(uint64_t timestamp_ns, const RemoteImageRef& left, const RemoteImageRef & right) {}
+
+    /**
+     * @brief The callback for the connection status
+     * @ingroup SDK_Callback_Types SDK Callback Types
+     * @details The callback to receive the connection status from the remote device
+     */
+    virtual void onConnectionStatus(slamtec_aurora_sdk_connection_status_t status) {}
+
+    /**
+     * @brief The callback for the depth camera data
+     * @ingroup Caller can invoke the peek interface to get the depth camera data
+     * @ingroup SDK_Callback_Types SDK Callback Types
+     * @details The callback to receive the depth camera data from the remote device
+     */
+    virtual void onDepthCameraDataArrived(uint64_t timestamp_ns) {}
+
+    /**
+     * @brief The callback for the semantic segmentation data
+     * @ingroup Caller can invoke the peek interface to get the semantic segmentation data
+     * @ingroup SDK_Callback_Types SDK Callback Types
+     * @details The callback to receive the semantic segmentation data from the remote device
+     */
+    virtual void onSemanticSegmentationDataArrived(uint64_t timestamp_ns) {}
+
+
 private:
 
     void _binding() {
@@ -186,6 +227,27 @@ private:
             This->onLIDARScan(*header, points);
         };
 
+        _sdk_listener_obj.on_camera_preview_image = [](void* user_data, uint64_t timestamp_ns, const slamtec_aurora_sdk_image_desc_t* left_desc, const void* left_data, const slamtec_aurora_sdk_image_desc_t* right_desc, const void* right_data) {
+            RemoteSDKListener* This = reinterpret_cast<RemoteSDKListener*>(user_data);
+            RemoteImageRef left(*left_desc, left_data);
+            RemoteImageRef right(*right_desc, right_data);
+            This->onCameraPreviewImage(timestamp_ns, left, right);
+        };
+
+        _sdk_listener_obj.on_connection_status = [](void* user_data, slamtec_aurora_sdk_connection_status_t status) {
+            RemoteSDKListener* This = reinterpret_cast<RemoteSDKListener*>(user_data);
+            This->onConnectionStatus(status);
+        };
+
+        _sdk_listener_obj.on_depthcam_image_arrived = [](void* user_data, uint64_t timestamp_ns) {
+            RemoteSDKListener* This = reinterpret_cast<RemoteSDKListener*>(user_data);
+            This->onDepthCameraDataArrived(timestamp_ns);
+        };
+
+        _sdk_listener_obj.on_semantic_segmentation_image_arrived = [](void* user_data, uint64_t timestamp_ns) {
+            RemoteSDKListener* This = reinterpret_cast<RemoteSDKListener*>(user_data);
+            This->onSemanticSegmentationDataArrived(timestamp_ns);
+        };
     }
 
 protected:
@@ -366,6 +428,16 @@ public:
     }
 
     /**
+     * @brief Check if the device connection is alive
+     * @return True if the device connection is alive, false otherwise
+     * @details SDK will periodically check if the device connection is alive, and if the device is not responding, the SDK will try to reconnect to the device
+     * @details User can register a SDK listener to get the connection status
+     */
+    bool isDeviceConnectionAlive() {
+        return slamtec_aurora_sdk_controller_is_device_connection_alive(_sdk) != 0;
+    }
+
+    /**
      * @brief Set the low rate mode
      * @details Once the low rate mode is enabled, the SDK will disable the IMU data and Raw image data subscription to reduce the data traffic
      * @details Some SDK operations like map streaming will automatically set the low rate mode to true, and the mode will be automatically disabled after the map streaming operation is done
@@ -411,6 +483,25 @@ public:
      */
     bool isRawDataSubscribed() {
         return slamtec_aurora_sdk_controller_is_raw_data_subscribed(_sdk) != 0;
+    }
+
+    /**
+     * @brief Set the enhanced image subscription
+     * @param[in] type The type of the enhanced image to subscribe
+     * @param[in] enable True to enable the enhanced image subscription, false to disable
+     * @return True if the enhanced image subscription is set successfully, false otherwise
+     */
+    bool setEnhancedImagingSubscription(slamtec_aurora_sdk_enhanced_image_type_t type, bool enable) {
+        return slamtec_aurora_sdk_controller_set_enhanced_imaging_subscription(_sdk, type, enable ? 1 : 0) == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Check if the enhanced image subscription is enabled
+     * @param[in] type The type of the enhanced image to check
+     * @return True if the enhanced image subscription is enabled, false otherwise
+     */
+    bool isEnhancedImagingSubscribed(slamtec_aurora_sdk_enhanced_image_type_t type) {
+        return slamtec_aurora_sdk_controller_is_enhanced_imaging_subscribed(_sdk, type) != 0;
     }
 
     /**
@@ -471,6 +562,21 @@ public:
     }
 
     /**
+     * @brief Require the remote device to use the alternative semantic segmentation model
+     * @param[in] useAlternativeModel True to use the alternative semantic segmentation model, false to use the default model
+     * @param[in] timeout_ms The timeout in milliseconds, default is 5000ms
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the semantic segmentation alternative model request is sent and performed successfully, false otherwise
+     */
+    bool requireSemanticSegmentationAlternativeModel(bool useAlternativeModel, uint64_t timeout_ms = SLAMTEC_AURORA_SDK_REMOTE_SERVER_DEFAULT_TIMEOUT, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_controller_require_semantic_segmentation_alternative_model(_sdk, useAlternativeModel ? 1 : 0, timeout_ms);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
     * @brief Cancel the relocalization
     * @param[in] timeout_ms The timeout in milliseconds, default is 5000ms
     * @param[out] errcode The error code, set to nullptr if not interested
@@ -493,6 +599,15 @@ public:
      */
     bool setLoopClosure(bool enable, uint64_t timeout_ms = SLAMTEC_AURORA_SDK_REMOTE_SERVER_DEFAULT_TIMEOUT, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
         auto result = slamtec_aurora_sdk_controller_set_loop_closure(_sdk, enable ? 1 : 0, timeout_ms);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+
+    bool forceMapGlobalOptimization(uint64_t timeout_ms = SLAMTEC_AURORA_SDK_REMOTE_SERVER_DEFAULT_TIMEOUT, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_controller_force_map_global_optimization(_sdk, timeout_ms);
         if (errcode) {
             *errcode = result;
         }
@@ -656,6 +771,42 @@ public:
         return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
     }
 
+    /** 
+     * @brief Get the current device pose in SE3 format with timestamp
+     * @details Caller can use this function to get the current pose in SE3 format with timestamp.
+     * @details The pose data retrieved is the cached data from previous fetched by the background data sync thread.
+     * @details The pose data may be outdated. If caller needs the latest pose data, it should using the SDK listener to get the pose update event.
+     * @param[out] poseOut The current pose in SE3 format
+     * @param[out] timestamp_ns The timestamp of the pose
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the pose is retrieved successfully, false otherwise
+     */
+    bool getCurrentPoseSE3WithTimestamp(slamtec_aurora_sdk_pose_se3_t& poseOut, uint64_t& timestamp_ns, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_dataprovider_get_current_pose_se3_with_timestamp(_sdk, &poseOut, &timestamp_ns);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Get the current device pose in Euler angles (Roll-Pitch-Yaw  RPY order) format with timestamp
+     * @details Caller can use this function to get the current pose in Euler angles format with timestamp.
+     * @details The pose data retrieved is the cached data from previous fetched by the background data sync thread.
+     * @details The pose data may be outdated. If caller needs the latest pose data, it should using the SDK listener to get the pose update event.
+     * @param[out] poseOut The current pose in Euler angles format
+     * @param[out] timestamp_ns The timestamp of the pose
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the pose is retrieved successfully, false otherwise
+     */
+    bool getCurrentPoseWithTimestamp(slamtec_aurora_sdk_pose_t& poseOut, uint64_t& timestamp_ns, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_dataprovider_get_current_pose_with_timestamp(_sdk, &poseOut, &timestamp_ns);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
     /**
      * @brief Get the current device pose in Euler angles (Roll-Pitch-Yaw  RPY order) format
      * @details Caller can use this function to get the current pose in Euler angles format.
@@ -668,6 +819,54 @@ public:
      */
     bool getCurrentPose(slamtec_aurora_sdk_pose_t& poseOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
         auto result = slamtec_aurora_sdk_dataprovider_get_current_pose(_sdk, &poseOut);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Get the transform calibration
+     * @details Caller can use this function to get the transform calibration
+     * @param[out] calibrationOut The transform calibration
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the transform calibration is retrieved successfully, false otherwise
+     */
+    bool getTransformCalibration(slamtec_aurora_sdk_transform_calibration_t& calibrationOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_dataprovider_get_transform_calibration(_sdk, &calibrationOut);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Get the camera calibration
+     * @details Caller can use this function to get the camera calibration
+     * @param[out] calibrationOut The camera calibration
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the camera calibration is retrieved successfully, false otherwise
+     */
+    bool getCameraCalibration(slamtec_aurora_sdk_camera_calibration_t& calibrationOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_dataprovider_get_camera_calibration(_sdk, &calibrationOut);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+
+    /**
+     * @brief Get the last device basic info
+     * @details Caller can use this function to get the last device basic info
+     * @details The basic info is the cached data from previous fetched by the background data sync thread.
+     * @param[out] infoOut The last device basic info
+     * @param[out] timestamp_ns The timestamp of the last device basic info
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the last device basic info is retrieved successfully, false otherwise
+     */
+    bool getLastDeviceBasicInfo(RemoteDeviceBasicInfo& infoOut, uint64_t & timestamp_ns, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_dataprovider_get_last_device_basic_info(_sdk, &infoOut, &timestamp_ns);
         if (errcode) {
             *errcode = result;
         }
@@ -699,6 +898,24 @@ public:
      */
     bool getLastDeviceStatus(slamtec_aurora_sdk_device_status_t& statusOut, uint64_t & timestamp_ns, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
         auto result = slamtec_aurora_sdk_dataprovider_get_last_device_status(_sdk, &statusOut, &timestamp_ns);
+        if (errcode) {
+            *errcode = result;
+        }
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Peek the history pose
+     * @details Caller can use this function to peek the history pose
+     * @param[out] poseOut The history pose
+     * @param[in] timestamp_ns The timestamp in nanoseconds, if set to 0, the function will return the latest pose
+     * @param[in] allowInterpolation If true, the function will return the interpolated pose, otherwise the function will return the exact pose at the timestamp if available
+     * @param[in] max_time_diff_ns The maximum time difference in nanoseconds, if the timestamp is too old, the function will return the error code SLAMTEC_AURORA_SDK_ERRORCODE_NOT_READY
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the history pose is retrieved successfully, false otherwise
+     */
+    bool peekHistoryPose(slamtec_aurora_sdk_pose_se3_t& poseOut, uint64_t timestamp_ns, bool allowInterpolation = true, uint64_t max_time_diff_ns = 1e9/2, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        auto result = slamtec_aurora_sdk_dataprovider_peek_history_pose(_sdk, &poseOut, timestamp_ns, allowInterpolation, max_time_diff_ns);
         if (errcode) {
             *errcode = result;
         }
@@ -767,7 +984,66 @@ public:
         return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
     }
 
-    //peek peek VSLAM System Status
+    /**
+     * @brief Peek the camera preview image
+     * @details Caller can use this function to peek the camera preview image
+     * @details The image is the cached data from previous fetched by the background data sync thread.
+     * @details The device firmware must be updated to 2.0.0 or later to use this function.
+     * @param[out] imgPair The camera preview image
+     * @param[in] timestamp_ns The timestamp in nanoseconds, if set to 0, the function will return the latest image
+     * @param[in] allowNearest If true, the function will return the nearest image, otherwise the function will return the exact image at the timestamp if available
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the camera preview image is retrieved successfully, false otherwise
+     */
+    bool peekCameraPreviewImage(RemoteStereoImagePair& imgPair, uint64_t timestamp_ns = 0, bool allowNearest = true, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        slamtec_aurora_sdk_stereo_image_pair_desc_t desc;
+        slamtec_aurora_sdk_stereo_image_pair_buffer_t buffer;
+
+        std::vector<uint8_t> imgbufferLeft, imgbufferRight;
+
+        // fetch the images
+        memset(&buffer, 0, sizeof(buffer));
+
+        auto result = slamtec_aurora_sdk_dataprovider_peek_camera_preview_image(_sdk, timestamp_ns, &desc, &buffer, allowNearest ? 1 : 0);
+
+        if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            if (errcode) {
+                *errcode = result;
+            }
+            return false;
+        }
+
+
+        imgbufferLeft.resize(desc.left_image_desc.data_size);
+        imgbufferRight.resize(desc.right_image_desc.data_size);
+
+        buffer.imgdata_left = imgbufferLeft.data();
+        buffer.imgdata_right = imgbufferRight.data();
+
+        buffer.imgdata_left_size = imgbufferLeft.size();
+        buffer.imgdata_right_size = imgbufferRight.size();
+
+        result = slamtec_aurora_sdk_dataprovider_peek_camera_preview_image(_sdk, timestamp_ns, &desc, &buffer, allowNearest ? 1 : 0);
+
+        if (errcode) {
+            *errcode = result;
+        }
+
+        if (result == SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            imgPair = std::move(RemoteStereoImagePair(desc, std::move(imgbufferLeft), std::move(imgbufferRight)));
+        }
+
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+
+    /**
+     * @brief Peek the VSLAM system status
+     * @details Caller can use this function to peek the VSLAM system status
+     * @param[out] statusOut The VSLAM system status
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the VSLAM system status is retrieved successfully, false otherwise
+     */
     bool peekVSLAMSystemStatus(slamtec_aurora_sdk_device_status_desc_t& statusOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
         auto result = slamtec_aurora_sdk_dataprovider_get_last_device_status(_sdk, &statusOut.status, &statusOut.timestamp_ns);
         if (errcode) {
@@ -776,6 +1052,13 @@ public:
         return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
     }
 
+    /**
+     * @brief Peek the relocalization status
+     * @details Caller can use this function to peek the relocalization status
+     * @param[out] statusOut The relocalization status
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the relocalization status is retrieved successfully, false otherwise
+     */
     bool peekRelocalizationStatus(slamtec_aurora_sdk_relocalization_status_t & statusOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
         auto result = slamtec_aurora_sdk_dataprovider_get_relocalization_status(_sdk, &statusOut.status, &statusOut.timestamp_ns);
         if (errcode) {
@@ -962,8 +1245,316 @@ public:
         return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
     }
 
+    /**
+     * @brief Check if the camera preview stream is supported by the device
+     * @return True if the camera preview stream is supported, false otherwise
+     */
+    bool isCameraPreviewStreamSupported() {
+        RemoteDeviceBasicInfo info;
+        auto result = slamtec_aurora_sdk_dataprovider_get_last_device_basic_info(_sdk, &info, nullptr);
+        if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            return false;
+        }
+        return info.isSupportCameraPreviewStream();
+    }
+
 protected:
     RemoteDataProvider(slamtec_aurora_sdk_session_handle_t& sdk)
+        : _sdk(sdk)
+    {}
+
+    slamtec_aurora_sdk_session_handle_t _sdk;
+};
+
+
+
+
+/**
+ * @brief The data provider class for accessing the data retrieved from the remote device
+ * @details Use this class to access the data retrieved from the remote device
+ * @ingroup Cxx_Enhanced_Imaging_Operations Enhanced Imaging Operations
+ */
+class EnhancedImaging : public Noncopyable {
+    friend class RemoteSDK;
+public:
+    /**
+     * @brief Check if the depth camera is supported by the device
+     * @return True if the depth camera is supported, false otherwise
+     */
+    bool isDepthCameraSupported() {
+        RemoteDeviceBasicInfo info;
+        auto result = slamtec_aurora_sdk_dataprovider_get_last_device_basic_info(_sdk, &info, nullptr);
+        if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            return false;
+        }
+        return info.isSupportDepthCamera();
+    }
+
+    /**
+     * @brief Check if the semantic segmentation is supported by the device
+     * @return True if the semantic segmentation is supported, false otherwise
+     */
+    bool isSemanticSegmentationSupported() {
+        RemoteDeviceBasicInfo info;
+        auto result = slamtec_aurora_sdk_dataprovider_get_last_device_basic_info(_sdk, &info, nullptr);
+        if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            return false;
+        }
+        return info.isSupportSemanticSegmentation();
+    }
+
+    /**
+     * @brief Check if the depth camera is ready
+     * @return True if the depth camera is ready, false otherwise
+     */
+    bool isDepthCameraReady() {
+        return slamtec_aurora_sdk_dataprovider_depthcam_is_ready(_sdk) != 0;
+    }
+
+    /**
+     * @brief Check if the semantic segmentation is ready
+     * @return True if the semantic segmentation is ready, false otherwise
+     */
+    bool isSemanticSegmentationReady() {
+        return slamtec_aurora_sdk_dataprovider_semantic_segmentation_is_ready(_sdk) != 0;
+    }
+
+    /**
+     * @brief Get the depth camera config
+     * @param[out] configOut The depth camera config
+     * @return True if the depth camera config is retrieved successfully, false otherwise
+     */
+    bool getDepthCameraConfig(slamtec_aurora_sdk_depthcam_config_info_t& configOut) {
+        return slamtec_aurora_sdk_dataprovider_depthcam_get_config_info(_sdk, &configOut) == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Get the semantic segmentation config
+     * @param[out] configOut The semantic segmentation config
+     * @return True if the semantic segmentation config is retrieved successfully, false otherwise
+     */
+    bool getSemanticSegmentationConfig(slamtec_aurora_sdk_semantic_segmentation_config_info_t& configOut) {
+        return slamtec_aurora_sdk_dataprovider_semantic_segmentation_get_config_info(_sdk, &configOut) == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Wait for the next depth camera frame
+     * @param[in] timeout_us The timeout in microseconds, set to -1 to wait indefinitely
+     * @return True if the next depth camera frame is retrieved successfully, false otherwise
+     */
+    bool waitDepthCameraNextFrame(uint64_t timeout_ms = (uint64_t)-1) {
+        return slamtec_aurora_sdk_dataprovider_depthcam_wait_next_frame(_sdk, timeout_ms) == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Wait for the next semantic segmentation frame
+     * @param[in] timeout_ms The timeout in milliseconds, set to -1 to wait indefinitely
+     * @return True if the next semantic segmentation frame is retrieved successfully, false otherwise
+     */
+    bool waitSemanticSegmentationNextFrame(uint64_t timeout_ms = (uint64_t)-1) {
+        return slamtec_aurora_sdk_dataprovider_semantic_segmentation_wait_next_frame(_sdk, timeout_ms) == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Peek the next depth camera frame
+     * @param[out] frameOut The next depth camera frame
+     * @param[in] frame_type The frame type
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the next depth camera frame is retrieved successfully, false otherwise
+     */
+    bool peekDepthCameraFrame(RemoteEnhancedImagingFrame& frameOut, slamtec_aurora_sdk_depthcam_frame_type_t frame_type = SLAMTEC_AURORA_SDK_DEPTHCAM_FRAME_TYPE_POINT3D, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        slamtec_aurora_sdk_enhanced_imaging_frame_desc_t desc;
+        slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t buffer;
+
+        std::vector<uint8_t> imgBuffer;
+
+        // fetch the frame
+        memset(&buffer, 0, sizeof(buffer));
+
+        auto result = slamtec_aurora_sdk_dataprovider_depthcam_peek_frame(_sdk, frame_type, &desc, &buffer);
+
+        if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            if (errcode) {
+                *errcode = result;
+            }
+            return false;
+        }
+
+        imgBuffer.resize(desc.image_desc.data_size);
+
+        buffer.frame_data = imgBuffer.data();
+        buffer.frame_data_size = imgBuffer.size();
+        
+        result = slamtec_aurora_sdk_dataprovider_depthcam_peek_frame(_sdk, frame_type, &desc, &buffer);
+
+        if (errcode) {
+            *errcode = result;
+        }
+
+        if (result == SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            frameOut = std::move(RemoteEnhancedImagingFrame(desc, std::move(imgBuffer)));
+        }
+
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Peek the related rectified image
+     * @param[out] frameOut The related rectified image
+     * @param[in] timestamp The timestamp
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the related rectified image is retrieved successfully, false otherwise
+     */
+    bool peekDepthCameraRelatedRectifiedImage(RemoteEnhancedImagingFrame& frameOut, uint64_t timestamp, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        slamtec_aurora_sdk_enhanced_imaging_frame_desc_t desc;
+        slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t buffer;
+
+        std::vector<uint8_t> imgBuffer;
+
+        // fetch the frame
+        memset(&buffer, 0, sizeof(buffer));
+
+        auto result = slamtec_aurora_sdk_dataprovider_depthcam_peek_related_rectified_image(_sdk, timestamp, &desc, &buffer);
+
+        if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            if (errcode) {
+                *errcode = result;
+            }
+            return false;
+        }
+
+        imgBuffer.resize(desc.image_desc.data_size);
+
+        buffer.frame_data = imgBuffer.data();
+        buffer.frame_data_size = imgBuffer.size();
+        
+        result = slamtec_aurora_sdk_dataprovider_depthcam_peek_related_rectified_image(_sdk, timestamp, &desc, &buffer);
+
+        if (errcode) {
+            *errcode = result;
+        }
+
+        if (result == SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            frameOut = std::move(RemoteEnhancedImagingFrame(desc, std::move(imgBuffer)));
+        }
+
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+
+    }
+
+    /**
+     * @brief Calculate the aligned segmentation map
+     * @param[in] segMap The segmentation map
+     * @param[out] alignedSegMap The aligned segmentation map
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the aligned segmentation map is calculated successfully, false otherwise
+     */
+    bool calcDepthCameraAlignedSegmentationMap(const RemoteImageRef & segMap, RemoteEnhancedImagingFrame & alignedSegMap, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        slamtec_aurora_sdk_enhanced_imaging_frame_desc_t desc;
+        slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t buffer;
+
+        std::vector<uint8_t> imgBuffer;
+
+        imgBuffer.resize(segMap._desc.data_size);
+
+        memset(&buffer, 0, sizeof(buffer));
+
+        buffer.frame_data = imgBuffer.data();
+        buffer.frame_data_size = imgBuffer.size();
+        desc.timestamp_ns = 0;
+        auto result = slamtec_aurora_sdk_dataprovider_depthcam_calc_aligned_segmentation_map(_sdk, &segMap._desc, segMap._data, &desc.image_desc, &buffer);
+
+        if (errcode) {
+            *errcode = result;
+        }
+
+        if (result == SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            alignedSegMap = std::move(RemoteEnhancedImagingFrame(desc, std::move(imgBuffer)));
+        }
+
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Check if the semantic segmentation is using alternative model
+     * @return True if the semantic segmentation is using alternative model, false otherwise
+     */
+    bool isSemanticSegmentationAlternativeModel() {
+        return slamtec_aurora_sdk_dataprovider_semantic_segmentation_is_using_alternative_model(_sdk) != 0;
+    }
+
+    /**
+     * @brief Get the semantic segmentation label set name
+     * @param[out] labelSetName The label set name
+     * @return True if the label set name is retrieved successfully, false otherwise
+     */
+    bool getSemanticSegmentationLabelSetName(std::string& labelSetName) {
+        size_t labelSetNameLength = 0;
+        labelSetNameLength = slamtec_aurora_sdk_dataprovider_semantic_segmentation_get_label_set_name(_sdk, nullptr, 0);
+
+        if (labelSetNameLength == 0) {
+            labelSetName = "";
+            return false;
+        }
+
+        labelSetName.resize(labelSetNameLength+1);
+
+        return slamtec_aurora_sdk_dataprovider_semantic_segmentation_get_label_set_name(_sdk, &labelSetName[0], labelSetName.size()) > 0;
+    }
+
+    /**
+     * @brief Get the semantic segmentation labels
+     * @param[out] labelInfo The label info
+     * @return True if the labels are retrieved successfully, false otherwise
+     */
+    bool getSemanticSegmentationLabels(slamtec_aurora_sdk_semantic_segmentation_label_info_t & labelInfo) {
+        return slamtec_aurora_sdk_dataprovider_semantic_segmentation_get_labels(_sdk, &labelInfo) == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Peek the next semantic segmentation frame
+     * @param[out] frameOut The next semantic segmentation frame
+     * @param[out] errcode The error code, set to nullptr if not interested
+     * @return True if the next semantic segmentation frame is retrieved successfully, false otherwise
+     */
+    bool peekSemanticSegmentationFrame(RemoteEnhancedImagingFrame& frameOut, slamtec_aurora_sdk_errorcode_t* errcode = nullptr) {
+        slamtec_aurora_sdk_enhanced_imaging_frame_desc_t desc;
+        slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t buffer;
+
+        std::vector<uint8_t> imgBuffer;
+
+        // fetch the frame
+        memset(&buffer, 0, sizeof(buffer));
+
+        auto result = slamtec_aurora_sdk_dataprovider_semantic_segmentation_peek_frame(_sdk, &desc, &buffer);
+
+        if (result != SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            if (errcode) {
+                *errcode = result;
+            }
+            return false;
+        }
+
+        imgBuffer.resize(desc.image_desc.data_size);
+
+        buffer.frame_data = imgBuffer.data();
+        buffer.frame_data_size = imgBuffer.size();
+        
+        result = slamtec_aurora_sdk_dataprovider_semantic_segmentation_peek_frame(_sdk, &desc, &buffer);
+
+        if (errcode) {
+            *errcode = result;
+        }
+
+        if (result == SLAMTEC_AURORA_SDK_ERRORCODE_OK) {
+            frameOut = std::move(RemoteEnhancedImagingFrame(desc, std::move(imgBuffer)));
+        }
+
+        return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+protected:
+    EnhancedImaging(slamtec_aurora_sdk_session_handle_t& sdk)
         : _sdk(sdk)
     {}
 
@@ -1433,6 +2024,17 @@ public:
         return controller.setMapDataSyncing(false);
     }
 
+    /**
+     * @brief Set the enhanced imaging subscription
+     * @details Caller can use this function to set the enhanced imaging subscription. This is an alias of the setEnhancedImagingSubscription function in the controller.
+     * @param[in] type The type of the enhanced imaging
+     * @param[in] enable True to enable the subscription, false to disable
+     * @return True if the subscription is set successfully, false otherwise
+     */
+    bool setEnhancedImagingSubscription(slamtec_aurora_sdk_enhanced_image_type_t type, bool enable) {
+        return controller.setEnhancedImagingSubscription(type, enable);
+    }
+
 public:
 
     ~RemoteSDK() {
@@ -1471,6 +2073,13 @@ public:
      * @brief The floor detector class object
      */
     FloorDetector floorDetector;
+
+
+    /**
+     * @brief The enhanced imaging class object
+     */
+    EnhancedImaging enhancedImaging;
+
 protected:
 
 
@@ -1484,6 +2093,7 @@ protected:
         , mapManager(obj)
         , lidar2DMapBuilder(obj)
         , floorDetector(obj)
+        , enhancedImaging(obj)
     {}
 
 

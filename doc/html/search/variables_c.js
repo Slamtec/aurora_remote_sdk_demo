@@ -1,12 +1,18 @@
 var searchData=
 [
-  ['on_5fdevice_5fstatus_703',['on_device_status',['../struct__slamtec__aurora__sdk__listener__t.html#a98c98a830dfc3036d6f8a1f77ca35fdd',1,'_slamtec_aurora_sdk_listener_t']]],
-  ['on_5fimu_5fdata_704',['on_imu_data',['../struct__slamtec__aurora__sdk__listener__t.html#acd69219d54cbe86212e5447dfbf588c9',1,'_slamtec_aurora_sdk_listener_t']]],
-  ['on_5fkeyframe_705',['on_keyframe',['../struct__slamtec__aurora__sdk__map__data__visitor__t.html#a5253ea2441c1e0403f5e6b2e84fdc169',1,'_slamtec_aurora_sdk_map_data_visitor_t']]],
-  ['on_5flidar_5fscan_706',['on_lidar_scan',['../struct__slamtec__aurora__sdk__listener__t.html#a4bce1867c55517a70683a1550474de4c',1,'_slamtec_aurora_sdk_listener_t']]],
-  ['on_5fmap_5fdesc_707',['on_map_desc',['../struct__slamtec__aurora__sdk__map__data__visitor__t.html#ad34fddc1cca42625c3b0fd6b9b714a1c',1,'_slamtec_aurora_sdk_map_data_visitor_t']]],
-  ['on_5fmap_5fpoint_708',['on_map_point',['../struct__slamtec__aurora__sdk__map__data__visitor__t.html#acbc13e808d7aa54c64b3816bbab955d7',1,'_slamtec_aurora_sdk_map_data_visitor_t']]],
-  ['on_5fmapping_5fflags_709',['on_mapping_flags',['../struct__slamtec__aurora__sdk__listener__t.html#acecff8c1235ac878480d9f279b5d025e',1,'_slamtec_aurora_sdk_listener_t']]],
-  ['on_5fraw_5fimage_5fdata_710',['on_raw_image_data',['../struct__slamtec__aurora__sdk__listener__t.html#a7a48a7a14bfda0f8b2ef8439446b1059',1,'_slamtec_aurora_sdk_listener_t']]],
-  ['on_5ftracking_5fdata_711',['on_tracking_data',['../struct__slamtec__aurora__sdk__listener__t.html#afd79507bee83b3a3e514fa48d836bf22',1,'_slamtec_aurora_sdk_listener_t']]]
+  ['map_5fcanvas_5fheight_862',['map_canvas_height',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a350aebef0eb4330596d9a540f287be37',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t']]],
+  ['map_5fcanvas_5fwidth_863',['map_canvas_width',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a524d28b45308865c1e2c21fff9d276df',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t']]],
+  ['map_5fflags_864',['map_flags',['../struct__slamtec__aurora__sdk__map__desc__t.html#a9e0878b5d6dff13c905d1590c69d73f8',1,'_slamtec_aurora_sdk_map_desc_t']]],
+  ['map_5fid_865',['map_id',['../struct__slamtec__aurora__sdk__map__desc__t.html#a5891d80ba89738ee156ccf372075cfe9',1,'_slamtec_aurora_sdk_map_desc_t::map_id()'],['../struct__slamtec__aurora__sdk__keyframe__desc__t.html#a90593a997c4098f73145c5232e68133a',1,'_slamtec_aurora_sdk_keyframe_desc_t::map_id()'],['../struct__slamtec__aurora__sdk__map__point__desc__t.html#a60c2e873a0ddef8b4013801cea971abd',1,'_slamtec_aurora_sdk_map_point_desc_t::map_id()']]],
+  ['map_5fpoint_5fcount_866',['map_point_count',['../struct__slamtec__aurora__sdk__map__desc__t.html#a9b05db3dea81806c7cbbde4503bfd3bb',1,'_slamtec_aurora_sdk_map_desc_t']]],
+  ['map_5fpoint_5fid_5fend_867',['map_point_id_end',['../struct__slamtec__aurora__sdk__map__desc__t.html#a0ae926d32c3b5d62a38c320f7ce42cb2',1,'_slamtec_aurora_sdk_map_desc_t']]],
+  ['map_5fpoint_5fid_5fstart_868',['map_point_id_start',['../struct__slamtec__aurora__sdk__map__desc__t.html#a5089a201ecc91067e570f28af37cbbc7',1,'_slamtec_aurora_sdk_map_desc_t']]],
+  ['mapmanager_869',['mapManager',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a6efc994d92a0f5559e6f8f9286aa3ceb',1,'rp::standalone::aurora::RemoteSDK']]],
+  ['mappingflags_870',['mappingFlags',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a794f57bb55c66e19854e2b5a8333a206',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
+  ['max_5fheight_871',['max_height',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a77af6dcb42c83026766788e26c2c7fa7',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t::max_height()'],['../struct__slamtec__aurora__sdk__floor__detection__desc__t.html#a225854787156a55db1d5e574e54eecc1',1,'_slamtec_aurora_sdk_floor_detection_desc_t::max_height()']]],
+  ['max_5fx_872',['max_x',['../struct__slamtec__aurora__sdk__2d__gridmap__dimension__t.html#a328a2d8ee8ac7c4faea9796bdf87e2ce',1,'_slamtec_aurora_sdk_2d_gridmap_dimension_t']]],
+  ['max_5fy_873',['max_y',['../struct__slamtec__aurora__sdk__2d__gridmap__dimension__t.html#a0b23e248bfc01796271b5b50bdf597ff',1,'_slamtec_aurora_sdk_2d_gridmap_dimension_t']]],
+  ['min_5fheight_874',['min_height',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a148658e88e5bbfe7fbd94ded956f7be6',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t::min_height()'],['../struct__slamtec__aurora__sdk__floor__detection__desc__t.html#a11b1b4de668b437042a25eae65ed2d4d',1,'_slamtec_aurora_sdk_floor_detection_desc_t::min_height()']]],
+  ['min_5fx_875',['min_x',['../struct__slamtec__aurora__sdk__2d__gridmap__dimension__t.html#a9f26bb7f8609f59f4cb267d98e380d82',1,'_slamtec_aurora_sdk_2d_gridmap_dimension_t']]],
+  ['min_5fy_876',['min_y',['../struct__slamtec__aurora__sdk__2d__gridmap__dimension__t.html#acd09407914f64b6f99e61b68725f13d2',1,'_slamtec_aurora_sdk_2d_gridmap_dimension_t']]]
 ];

@@ -11,6 +11,8 @@
  */
 
 #include <type_traits>
+#include <sstream>
+#include <optional>
 
 #pragma once
 
@@ -58,7 +60,7 @@ public:
         snprintf(this->protocol_type, sizeof(this->protocol_type), "%s", proto);
     }
 
-    SDKConnectionInfo(const SDKConnectionInfo& other) : SDKConnectionInfo() {
+    SDKConnectionInfo(const SDKConnectionInfo& other) {
         memcpy(this, &other, sizeof(SDKConnectionInfo));
     }
 
@@ -67,7 +69,7 @@ public:
         return *this;
     }
 
-    SDKConnectionInfo(const slamtec_aurora_sdk_connection_info_t& other) : SDKConnectionInfo() {
+    SDKConnectionInfo(const slamtec_aurora_sdk_connection_info_t& other) {
         memcpy(this, &other, sizeof(slamtec_aurora_sdk_connection_info_t));
     }
 
@@ -273,6 +275,75 @@ public:
 
 };
 
+
+class RemoteDeviceBasicInfo : public slamtec_aurora_sdk_device_basic_info_t {
+public:
+    RemoteDeviceBasicInfo() : slamtec_aurora_sdk_device_basic_info_t() {
+        memset(this, 0, sizeof(slamtec_aurora_sdk_device_basic_info_t));
+    }
+
+    RemoteDeviceBasicInfo(const slamtec_aurora_sdk_device_basic_info_t& other) {
+        memcpy(this, &other, sizeof(slamtec_aurora_sdk_device_basic_info_t));
+    }
+
+    RemoteDeviceBasicInfo(const RemoteDeviceBasicInfo& other) {
+        memcpy(this, &other, sizeof(slamtec_aurora_sdk_device_basic_info_t));
+    }
+
+    RemoteDeviceBasicInfo& operator=(const slamtec_aurora_sdk_device_basic_info_t& other) {
+        memcpy(this, &other, sizeof(slamtec_aurora_sdk_device_basic_info_t));
+        return *this;
+    }
+
+    RemoteDeviceBasicInfo& operator=(const RemoteDeviceBasicInfo& other) {
+        memcpy(this, &other, sizeof(slamtec_aurora_sdk_device_basic_info_t));
+        return *this;
+    }
+
+    std::string getDeviceSerialNumberString() const {
+        std::string sn;
+        sn.resize(32);
+
+        for (int i = 0; i < 16; ++i)
+        {
+            snprintf(&sn[i * 2], 3, "%02X", device_sn[i]);
+        }
+
+        return sn;
+    }
+
+    std::string getDeviceModelString() const {
+        std::stringstream ss;
+        if (model_major == 0 && model_sub == 0) {
+            ss << "A1M1";
+        }
+        else {
+            
+            ss << "A" << std::to_string(model_major) << "M" << std::to_string(model_sub);
+        }
+
+        if (model_revision) {
+            ss << "-r" << std::to_string(model_revision);
+        }
+        return ss.str();
+    }
+
+
+    bool isSupportDepthCamera() const {
+        return sensing_feature_bitmaps & SLAMTEC_AURORA_SDK_SENSING_FEATURE_BIT_STEREO_DENSE_DISPARITY;
+    }
+
+    bool isSupportSemanticSegmentation() const {
+        return sensing_feature_bitmaps & SLAMTEC_AURORA_SDK_SENSING_FEATURE_BIT_SEMANTIC_SEGMENTATION;
+    }
+
+    bool isSupportCameraPreviewStream() const {
+        return swfeature_bitmaps & SLAMTEC_AURORA_SDK_SW_FEATURE_BIT_CAMREA_PREVIEW_STREAM;
+    }
+    
+};
+
+
 /**
  * @brief The image reference class wraps the image description and data
  * @details This class is used to wrap the image description and data.
@@ -308,23 +379,60 @@ public:
     template <typename T>
     typename std::enable_if<std::is_same<T, cv::Mat>::value, bool>::type
     toMat(T &mat)const {
+        if (isEmpty()) {
+            mat = T();
+            return false;
+        }
+
         switch (_desc.format)
         {
         case 0: // mono
             mat = T(_desc.height, _desc.width, 0, (void*)_data, _desc.stride);
             break;
         case 1: // bgr
-            mat = T(_desc.height, _desc.width, (2<<3), (void*)_data, _desc.stride);
+            mat = T(_desc.height, _desc.width, 0x10, (void*)_data, _desc.stride);
             break;
         case 2: // rgba
-            mat = T(_desc.height, _desc.width, (3<<3), (void*)_data, _desc.stride);
+            mat = T(_desc.height, _desc.width, 0x18, (void*)_data, _desc.stride);
             break;
+        case 3: // depth (float32)
+            mat = T(_desc.height, _desc.width, 5, (void*)_data, _desc.stride);
+            break;
+        case 4: // point3D (floatx3 XYZ)
+            mat = T(_desc.height, _desc.width, 0x15, (void*)_data, _desc.stride);
+            break;
+
+            
         default:
             mat = T();
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * @brief Convert the image to a point cloud array
+     * @details If the image format is not point3D, the function will return nullptr.
+     * @return The point cloud array
+     */
+    const std::array<float, 3>* toPoint3D() const {
+        if (_desc.format != 4) {
+            return nullptr;
+        }
+
+        return reinterpret_cast<const std::array<float,3>*>(_data);
+    }
+
+
+
+    size_t getPointCount() const {
+        return _desc.height * _desc.width;
+    }
+
+
+    bool isEmpty() const {
+        return (_data == nullptr || _desc.height == 0 || _desc.width == 0);
     }
 
 };
@@ -465,6 +573,19 @@ public:
         return trackingInfo.keypoints_right_count;
     }
 
+    void reset() {
+        memset(&trackingInfo, 0, sizeof(slamtec_aurora_sdk_tracking_info_t));
+        leftImage._data = nullptr;
+        rightImage._data = nullptr;
+        _keypoints_left = nullptr;
+        _keypoints_right = nullptr;
+        _imgbuffer_left.clear();
+        _imgbuffer_right.clear();
+        _keypoints_buffer_left.clear();
+        _keypoints_buffer_rightf.clear();
+    }
+
+
 
 public: 
 
@@ -554,6 +675,224 @@ protected:
     std::vector< slamtec_aurora_sdk_keypoint_t> _keypoints_buffer_rightf;
 
 };
+
+
+struct RemoteStereoImagePair {
+
+public:
+    RemoteStereoImagePair() 
+        : leftImage(desc.left_image_desc, nullptr)
+        , rightImage(desc.right_image_desc, nullptr) 
+    {
+        memset(&desc, 0, sizeof(slamtec_aurora_sdk_stereo_image_pair_desc_t));
+    }
+
+    RemoteStereoImagePair(const slamtec_aurora_sdk_stereo_image_pair_desc_t& desc, const slamtec_aurora_sdk_stereo_image_pair_buffer_t& buffer)
+        : desc(desc)
+        , leftImage(desc.left_image_desc, buffer.imgdata_left)
+        , rightImage(desc.right_image_desc, buffer.imgdata_right)
+    {
+    }
+
+    RemoteStereoImagePair(const slamtec_aurora_sdk_stereo_image_pair_desc_t & info,
+        std::vector<uint8_t> && left_buffer,
+        std::vector<uint8_t> && right_buffer
+    )
+        : desc(info)
+        , leftImage(info.left_image_desc, left_buffer.data())
+        , rightImage(info.right_image_desc, right_buffer.data())
+        , _imgbuffer_left(std::move(left_buffer))
+        , _imgbuffer_right(std::move(right_buffer))
+    {
+    }
+
+    RemoteStereoImagePair(const RemoteStereoImagePair& other)
+        : desc(other.desc)
+        , leftImage(desc.left_image_desc, nullptr)
+        , rightImage(desc.right_image_desc, nullptr)
+    {
+        _copyFrom(other);
+    }
+
+    RemoteStereoImagePair(RemoteStereoImagePair && other)
+        : desc(other.desc)
+        , leftImage(desc.left_image_desc, nullptr)
+        , rightImage(desc.right_image_desc, nullptr)
+    {
+        if (!other._isOwnBuffer()) {
+            _copyFrom(other);
+        } else {
+            _moveFrom(other);
+        }
+    }
+
+    RemoteStereoImagePair& operator=(const RemoteStereoImagePair& other) {
+        desc = other.desc;
+        _copyFrom(other);
+        return *this;
+    }
+
+    RemoteStereoImagePair& operator=(RemoteStereoImagePair && other) {
+        desc = other.desc;
+        if (!other._isOwnBuffer()) {
+            _copyFrom(other);
+        } else {
+            _moveFrom(other);
+        }
+        return *this;
+    }
+
+public:
+    RemoteImageRef leftImage;
+    RemoteImageRef rightImage;
+    slamtec_aurora_sdk_stereo_image_pair_desc_t desc;
+
+
+protected:
+    bool _isOwnBuffer() const {
+        return (_imgbuffer_left.data() == leftImage._data);
+    }
+
+    void _moveFrom(RemoteStereoImagePair& other) {
+        _imgbuffer_left = std::move(other._imgbuffer_left);
+        _imgbuffer_right = std::move(other._imgbuffer_right);
+
+
+        leftImage._data = _imgbuffer_left.data();
+        rightImage._data = _imgbuffer_right.data();
+
+    }
+
+    void _copyFrom(const RemoteStereoImagePair& other) {
+        if (other.leftImage._data) {
+            _imgbuffer_left.resize(other.desc.left_image_desc.data_size);
+            memcpy(_imgbuffer_left.data(), other.leftImage._data, other.desc.left_image_desc.data_size);
+            leftImage._data = _imgbuffer_left.data();
+        }
+        else {
+            leftImage._data = nullptr;
+            _imgbuffer_left.clear();
+        }
+
+        if (other.rightImage._data) {
+            _imgbuffer_right.resize(other.desc.right_image_desc.data_size);
+            memcpy(_imgbuffer_right.data(), other.rightImage._data, other.desc.right_image_desc.data_size);
+            rightImage._data = _imgbuffer_right.data();
+        }
+        else {
+            rightImage._data = nullptr;
+            _imgbuffer_right.clear();
+        }
+    }
+
+protected:
+    std::vector<uint8_t> _imgbuffer_left;
+    std::vector<uint8_t> _imgbuffer_right;
+};
+
+
+struct RemoteEnhancedImagingFrame {
+
+public:
+    RemoteEnhancedImagingFrame() 
+        : image(desc.image_desc, nullptr)
+    {
+        memset(&desc, 0, sizeof(slamtec_aurora_sdk_enhanced_imaging_frame_desc_t));
+    }
+
+    RemoteEnhancedImagingFrame(const slamtec_aurora_sdk_enhanced_imaging_frame_desc_t& desc, const slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t& buffer)
+        : desc(desc)
+        , image(desc.image_desc, buffer.frame_data)
+    {
+    }
+
+    RemoteEnhancedImagingFrame(const slamtec_aurora_sdk_enhanced_imaging_frame_desc_t & info,
+        std::vector<uint8_t> && buffer
+    )
+        : desc(info)
+        , image(info.image_desc, buffer.data())
+        , _imgbuffer(std::move(buffer))
+    {
+    }
+
+    RemoteEnhancedImagingFrame(const RemoteEnhancedImagingFrame& other)
+        : desc(other.desc)
+        , image(desc.image_desc, nullptr)
+    {
+        _copyFrom(other);
+    }
+
+    RemoteEnhancedImagingFrame(RemoteEnhancedImagingFrame && other)
+        : desc(other.desc)
+        , image(desc.image_desc, nullptr)
+    {
+        if (!other._isOwnBuffer()) {
+            _copyFrom(other);
+        } else {
+            _moveFrom(other);
+        }
+    }
+
+    RemoteEnhancedImagingFrame& operator=(const RemoteEnhancedImagingFrame& other) {
+        desc = other.desc;
+        _copyFrom(other);
+        return *this;
+    }
+
+    RemoteEnhancedImagingFrame& operator=(RemoteEnhancedImagingFrame && other) {
+        desc = other.desc;
+        if (!other._isOwnBuffer()) {
+            _copyFrom(other);
+        } else {
+            _moveFrom(other);
+        }
+        return *this;
+    }
+
+public:
+    RemoteImageRef image;
+    slamtec_aurora_sdk_enhanced_imaging_frame_desc_t desc;
+
+
+protected:
+    bool _isOwnBuffer() const {
+        return (_imgbuffer.data() == image._data);
+    }
+
+    void _moveFrom(RemoteEnhancedImagingFrame& other) {
+        _imgbuffer = std::move(other._imgbuffer);
+
+
+        image._data = _imgbuffer.data();
+
+    }
+
+    void _copyFrom(const RemoteEnhancedImagingFrame& other) {
+        if (other.image._data) {
+            _imgbuffer.resize(other.desc.image_desc.data_size);
+            memcpy(_imgbuffer.data(), other.image._data, other.desc.image_desc.data_size);
+            image._data = _imgbuffer.data();
+        }
+        else {
+            image._data = nullptr;
+            _imgbuffer.clear();
+        }
+
+        if (other.image._data) {
+            _imgbuffer.resize(other.desc.image_desc.data_size);
+            memcpy(_imgbuffer.data(), other.image._data, other.desc.image_desc.data_size);
+            image._data = _imgbuffer.data();
+        }
+        else {
+            image._data = nullptr;
+            _imgbuffer.clear();
+        }
+    }
+
+protected:
+    std::vector<uint8_t> _imgbuffer;
+};
+
 
 /**
  * @brief The keyframe data class wraps the keyframe description and its data

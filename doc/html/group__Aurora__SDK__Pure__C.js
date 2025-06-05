@@ -19,5 +19,6 @@ var group__Aurora__SDK__Pure__C =
     [ "Data Provider Operations", "group__DataProvider__Operations.html", "group__DataProvider__Operations" ],
     [ "LIDAR 2D Map Operations", "group__LIDAR2DMap__Operations.html", "group__LIDAR2DMap__Operations" ],
     [ "Auto Floor Detection Operations", "group__AutoFloorDetection__Operations.html", "group__AutoFloorDetection__Operations" ],
+    [ "Enhanced Imaging Operations", "group__EnhancedImaging__Operations.html", "group__EnhancedImaging__Operations" ],
     [ "Utility Functions", "group__Utility__Functions.html", "group__Utility__Functions" ]
 ];

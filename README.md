@@ -72,91 +72,80 @@ This is the API reference for the Remote SDK. It contains the function prototype
 - For Linux platforms, also make sure the glibc version is 2.31 or above.
 
 ## About the Demos
-### map_render
-![map_render](res/demo_vertical_map.gif)
-- This demo shows how to render the VSLAM map data from the Aurora device.
-- It will subscribe the map data, keyframe data, and map point data from the device, and render the map, keyframes, and map points on the screen.
-- The map will be rendered in the vertical view, and the keyframes will be rendered on the map.
-- Opencv is required for this demo.
 
-### frame_preview
+### Core Functionality Demos
+
+#### simple_pose
+- Basic demo showing how to retrieve device pose (position and orientation).
+- [📖 Detailed README](demo/simple_pose/README.md)
+
+#### relocalization  
+- Demonstrates how to trigger relocalization to establish device position in a known map.
+- [📖 Detailed README](demo/relocalization/README.md)
+
+#### pure_c_demo
+- Pure C implementation without C++ wrapper dependencies.
+- [📖 Detailed README](demo/pure_c_demo/README.md)
+
+### Enhanced Imaging Demos (SDK 2.0)
+
+#### depthcam_view
+![depthcam_view](res/demo_depthcam.gif)
+- Depth camera visualization with 3D point cloud export capabilities.
+- Requires OpenCV.
+- [📖 Detailed README](demo/depthcam_view/README.md)
+
+#### semantic_segmentation
+![Semantic Segmentation Demo](res/demo_sematic_seg.gif)
+- Real-time semantic segmentation with interactive visualization and model switching.
+- Requires OpenCV.
+- [📖 Detailed README](demo/semantic_segmentation/README.md)
+
+### Sensor Data Demos
+
+#### imu_fetcher
+- Real-time IMU (accelerometer and gyroscope) data retrieval and display.
+- [📖 Detailed README](demo/imu_fetcher/README.md)
+
+#### frame_preview
 ![frame_preview](res/demo_tracking_prev_full.png)
-- This demo shows how to subscribe the tracking frame and raw camera image from the Aurora device.
-- Opencv is required for this demo.
+- Captures and displays tracking frames and raw stereo camera images.
+- Requires OpenCV.
+- [📖 Detailed README](demo/frame_preview/README.md)
 
+#### lidar_scan_plot
+![lidar_scan_plot](res/demo.lidar.scan.rendering.gif)  
+- Real-time LiDAR scan visualization with distance and quality data.
+- Requires OpenCV.
+- [📖 Detailed README](demo/lidar_scan_plot/README.md)
 
-### lidar_scan_plot
-![lidar_scan_plot](res/demo.lidar.scan.rendering.gif)
-- This demo shows how to retrieve and render the built-in 2D lidar scan data from the Aurora device.
-- Two retrieving methods are provided:
-   1. via Callback Listener
-   2. via Polling
-- The Scan Point Quality (RSSI) is also retrieved and rendered.
-- Opencv is required for this demo.
+### Mapping and Visualization Demos
 
+#### map_render
+![map_render](res/demo_vertical_map.gif)
+- Renders VSLAM map data including keyframes and map points.
+- Requires OpenCV.
+- [📖 Detailed README](demo/map_render/README.md)
 
-### lidar_2dmap_render
+#### lidar_2dmap_render
 ![lidar_2dmap_render](res/demo_lidar_2dmap.gif)
-- This demo shows how to retrieve and render the 2D lidar map from the Aurora device.
-- Also, the auto floor detection is enabled in this demo.
-- Opencv is required for this demo.
+- Generates and visualizes 2D occupancy grid maps from LiDAR data.
+- Requires OpenCV.
+- [📖 Detailed README](demo/lidar_2dmap_render/README.md)
+
+#### vslam_map_saveload
+- Command-line tool for downloading/uploading VSLAM maps to/from devices.
+- [📖 Detailed README](demo/vslam_map_saveload/README.md)
 
 
-### simple_pose
-```
-Aurora SDK Version: 1.1.0-rc1
-Device connection string not provided, try to discover aurora devices...
-Waiting for aurora devices...
-Found 1 aurora devices
-Device 0
-  option 0: tcp/[fe80::ad94:89de:cef2:dcb4]:7447
-  option 1: tcp/192.168.1.212:7447
-Selected first device: 
-Connecting to the selected device...
-Connected to the selected device
-Current pose: 0, 0, 0 Euler: 0, 0, 0
-Current pose: -33.4066, 72.7162, 0.946953 Euler: -1.55303, -0.0350474, -0.506329
-Current pose: -33.3551, 72.8021, 0.941662 Euler: -1.5259, -0.0374291, -0.504501
-Current pose: -33.3551, 72.8021, 0.941662 Euler: -1.5259, -0.0374291, -0.504501
-Current pose: -33.2553, 72.9822, 0.962029 Euler: -1.49077, -0.0652254, -0.45777
-Current pose: -33.2125, 73.0723, 0.976967 Euler: -1.52022, -0.0478041, -0.425694
-Current pose: -33.1693, 73.1591, 0.983566 Euler: -1.54432, -0.0495824, -0.389488
-Current pose: -33.1236, 73.2395, 0.972832 Euler: -1.51365, -0.0605495, -0.412273
-```
 
-- This demo shows how to get the current pose from the Aurora device.
+### Calibration and Device Info Demos (SDK 2.0)
 
-### vslam_map_saveload
-```
-Defaulting to download
-Trying to discover and select aurora device...
-Found 1 aurora devices
-Device 0
-  option 0: tcp/[fe80::ad94:89de:cef2:dcb4]:7447
-  option 1: tcp/192.168.1.212:7447
-Selected first device: 
-Downloading vslam map to auroramap.asb
-Downloading vslam map 6.67%
-```
-- This demo shows how to save and load the map from the Aurora device.
-- It can be used as a command line tool to save and load the map.
+#### calibration_exporter
+- Command-line tool for exporting camera and transform calibration data.
+- Requires OpenCV.
+- [📖 Detailed README](demo/calibration_exporter/README.md)
 
-
-### imu_fetcher
-```
-IMU Data: Accel: -0.941162, 0.406982, -0.0390625 Gyro: 1.95312, 4.08936, -1.2207
-IMU Data: Accel: -0.9375, 0.407593, -0.0388184 Gyro: 2.2583, 3.84521, -1.64795
-IMU Data: Accel: -0.936646, 0.407715, -0.0360107 Gyro: 2.68555, 3.35693, -2.19727
-IMU Data: Accel: -0.934448, 0.405762, -0.0372314 Gyro: 2.86865, 3.11279, -2.62451
-IMU Data: Accel: -0.933716, 0.40686, -0.0350342 Gyro: 3.05176, 2.80762, -2.74658
-IMU Data: Accel: -0.934082, 0.406494, -0.0325928 Gyro: 3.11279, 2.74658, -2.62451
-IMU Data: Accel: -0.938843, 0.407959, -0.0310059 Gyro: 3.11279, 2.99072, -2.44141
-IMU Data: Accel: -0.936157, 0.406006, -0.0313721 Gyro: 3.23486, 3.23486, -2.31934
-IMU Data: Accel: -0.938721, 0.402832, -0.026123 Gyro: 3.35693, 3.54004, -2.0752
-IMU Data: Accel: -0.936279, 0.403931, -0.0252686 Gyro: 3.17383, 3.78418, -2.01416
-IMU Data: Accel: -0.936768, 0.40332, -0.0247803 Gyro: 3.05176, 4.02832, -1.77002
-```
-- This demo shows how to subscribe the IMU data from the Aurora device.
-
-### pure_c_demo
-- This demo shows how to use the Aurora Remote SDK in pure C code.
+#### device_info_monitor
+- Real-time monitoring of device basic information and status.
+- [📖 Detailed README](demo/device_info_monitor/README.md)

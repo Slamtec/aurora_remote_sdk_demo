@@ -415,6 +415,16 @@ enum slamtec_aurora_sdk_mapping_flag_types {
  */
 typedef uint32_t slamtec_aurora_sdk_mapping_flag_t; //bitwise OR of enum slamtec_aurora_sdk_mapping_flag_types
 
+
+enum slamtec_aurora_sdk_connection_status {
+    SLAMTEC_AURORA_SDK_CONNECTION_STATUS_LOST = 0,
+    SLAMTEC_AURORA_SDK_CONNECTION_STATUS_RESTORED = 1,
+    SLAMTEC_AURORA_SDK_CONNECTION_STATUS_DEVICE_CONFIG_CHANGED = 2,
+};
+
+typedef uint32_t slamtec_aurora_sdk_connection_status_t; //value selected from enum slamtec_aurora_sdk_connection_status
+
+
 /**
  * @brief The device status types
  * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
@@ -473,6 +483,22 @@ enum slamtec_aurora_sdk_device_status_types {
      * @brief The device map saving completed
      */
     SLAMTEC_AURORA_SDK_DEVICE_MAP_SAVING_COMPLETED,
+    /**
+     * @brief The device is in relocalization
+     */
+    SLAMTEC_AURORA_SDK_DEVICE_RELOCALIZATION_SUCCESS,
+    /**
+     * @brief The device relocalization failed
+     */
+    SLAMTEC_AURORA_SDK_DEVICE_RELOCALIZATION_FAILED,
+    /**
+     * @brief The device relocalization is cancelled
+     */
+    SLAMTEC_AURORA_SDK_DEVICE_RELOCALIZATION_CANCELLED,
+    /**
+     * @brief The device relocalization is started
+     */
+    SLAMTEC_AURORA_SDK_DEVICE_RELOCALIZATION_STARTED,
 };
 
 /**
@@ -493,6 +519,62 @@ typedef struct _slamtec_aurora_sdk_device_status_desc
     uint64_t timestamp_ns;
 } slamtec_aurora_sdk_device_status_desc_t;
 
+
+
+enum slamtec_aurora_sdk_device_hw_feature_bitmaps {
+    SLAMTEC_AURORA_SDK_HW_FEATURE_BIT_2D_LIDAR = (0x1ULL<<0),
+
+    SLAMTEC_AURORA_SDK_HW_FEATURE_BIT_IMU = (0x1ULL<<4),
+    
+};
+
+enum slamtec_aurora_sdk_device_sensing_feature_bitmaps {
+    SLAMTEC_AURORA_SDK_SENSING_FEATURE_BIT_VSLAM_VIO = (0x1ULL<<0),
+    SLAMTEC_AURORA_SDK_SENSING_FEATURE_BIT_VSLAM_SPARSE_MAPPING = (0x1ULL<<1),
+    SLAMTEC_AURORA_SDK_SENSING_FEATURE_BIT_VSLAM_LOOP_CLOSURE = (0x1ULL<<2),
+    SLAMTEC_AURORA_SDK_SENSING_FEATURE_BIT_VSLAM_LOCALIZATION = (0x1ULL<<3),
+    SLAMTEC_AURORA_SDK_SENSING_FEATURE_BIT_VSLAM_GLOBAL_LOCALIZATION = (0x1ULL<<4),
+
+
+    SLAMTEC_AURORA_SDK_SENSING_FEATURE_BIT_STEREO_DENSE_DISPARITY = (0x1ULL<<16),
+    SLAMTEC_AURORA_SDK_SENSING_FEATURE_BIT_SEMANTIC_SEGMENTATION = (0x1ULL<<17),
+};
+
+enum slamtec_aurora_sdk_device_sw_feature_bitmaps {
+    SLAMTEC_AURORA_SDK_SW_FEATURE_BIT_CAMREA_PREVIEW_STREAM = (0x1ULL<<0),
+};
+
+
+
+
+
+/**
+ * @brief The device basic info structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The device basic info structure contains the basic info of the device.
+ */
+typedef struct _slamtec_aurora_sdk_device_basic_info
+{
+    uint16_t  model_major;
+    uint16_t  model_sub;
+    uint16_t  model_revision;
+
+    char      firmware_version_string[32];
+    char      firmware_build_date[16];
+    char      firmware_build_time[16];
+
+    uint8_t   device_sn[16];
+    char      device_name[16];
+
+    uint64_t  hwfeature_bitmaps; // check enum slamtec_aurora_sdk_device_hw_feature_bitmaps
+    uint64_t  sensing_feature_bitmaps; // check enum slamtec_aurora_sdk_device_sensing_feature_bitmaps
+    uint64_t  swfeature_bitmaps; // check enum slamtec_aurora_sdk_device_sw_feature_bitmaps
+
+    uint64_t  device_uptime_us; // in microseconds
+} slamtec_aurora_sdk_device_basic_info_t;
+
+
+
 enum slamtec_aurora_sdk_relocalization_status_types {
     SLAMTEC_AURORA_SDK_RELOCALIZATION_NONE = 0,
     SLAMTEC_AURORA_SDK_RELOCALIZATION_STARTED,
@@ -508,6 +590,15 @@ typedef struct _slamtec_aurora_sdk_relocalization_status
     slamtec_aurora_sdk_relocalization_status_type_t status;
     uint64_t timestamp_ns;
 } slamtec_aurora_sdk_relocalization_status_t;
+
+
+enum slamtec_aurora_sdk_enhanced_image_type {
+    SLAMTEC_AURORA_SDK_ENHANCED_IMAGE_TYPE_NONE = 0,
+    SLAMTEC_AURORA_SDK_ENHANCED_IMAGE_TYPE_DEPTH,
+    SLAMTEC_AURORA_SDK_ENHANCED_IMAGE_TYPE_SEMANTIC,
+};
+
+typedef uint32_t slamtec_aurora_sdk_enhanced_image_type_t;
 
 /**
  * @brief The image description structure
@@ -533,9 +624,9 @@ typedef struct _slamtec_aurora_sdk_image_desc_t {
     /**
      * @brief The format of the image
      * @details The format of the image is the format of the image.
-     * @details 0: gray, 1: rgb, 2: rgba
+     * @details 0: gray(uint8_t), 1: rgb, 2: rgba, 3: depth (float32), 4: point3D (floatx3 XYZ)
      */
-    uint32_t format; // 0: gray, 1: rgb, 2: rgba
+    uint32_t format; // 0: gray, 1: rgb, 2: rgba, 3: depth, 4: point3D
     /**
      * @brief The size of the image data in bytes
      * @details The size of the image data is the size of the image data in bytes.
@@ -630,6 +721,7 @@ typedef struct _slamtec_aurora_sdk_tracking_data_buffer_t {
 } slamtec_aurora_sdk_tracking_data_buffer_t;
 
 
+
 /**
  * @brief The tracking status types
  * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
@@ -702,6 +794,69 @@ typedef struct _slamtec_aurora_sdk_tracking_info {
      */
     uint32_t keypoints_right_count;
 } slamtec_aurora_sdk_tracking_info_t;
+
+
+
+/**
+ * @brief The stereo image pair description structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The stereo image pair description structure contains the stereo image pair description.
+ */
+typedef struct _slamtec_aurora_sdk_stereo_image_pair_desc_t {
+    /**
+     * @brief The timestamp of the stereo image pair
+     * @details The nanoseconds timestamp of the stereo image pair
+     */
+    uint64_t timestamp_ns;
+
+    /**
+     * @brief Whether the tracking is stereo
+     */
+    uint32_t is_stereo;
+
+    /**
+     * @brief The description of the left image
+     * @details The description of the left image is the description of the left image.
+     */
+    slamtec_aurora_sdk_image_desc_t left_image_desc;
+    /**
+     * @brief The description of the right image
+     * @details The description of the right image is the description of the right image.
+     */
+    slamtec_aurora_sdk_image_desc_t right_image_desc;
+} slamtec_aurora_sdk_stereo_image_pair_desc_t;
+
+/**
+ * @brief The stereo image pair buffer structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The stereo image pair buffer structure contains the stereo image pair buffer.
+ */
+typedef struct _slamtec_aurora_sdk_stereo_image_pair_buffer_t {
+    /**
+     * @brief The buffer to hold image data of the left camera
+     * @details The buffer should be provided by the caller, 
+     * @details nullptr to disable image data copy
+     */
+    void* imgdata_left; //buffer to hold image data of the left camera
+    /**
+     * @brief The buffer to hold image data of the right camera
+     * @details The buffer should be provided by the caller, 
+     * @details nullptr to disable image data copy
+     */
+    void* imgdata_right;
+
+    /**
+     * @brief The size of the buffer to hold image data of the left camera
+     * @details The size of the buffer is the size of the buffer.
+     */
+    size_t imgdata_left_size;
+
+    /**
+     * @brief The size of the buffer to hold image data of the right camera
+     * @details The size of the buffer is the size of the buffer.
+     */
+    size_t imgdata_right_size;
+} slamtec_aurora_sdk_stereo_image_pair_buffer_t;
 
 
 /**
@@ -1227,6 +1382,124 @@ typedef struct _slamtec_aurora_sdk_map_point_desc_t {
     uint32_t flags;
 } slamtec_aurora_sdk_map_point_desc_t;
 
+// -- Calibration Data Types
+
+/**
+ * @brief The transform calibration structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The transform calibration structure contains the transform calibration information.
+ */
+typedef struct _slamtec_aurora_sdk_transform_calibration_t {
+    slamtec_aurora_sdk_pose_se3_t t_base_cam;
+    slamtec_aurora_sdk_pose_se3_t t_camera_imu;
+} slamtec_aurora_sdk_transform_calibration_t;
+
+
+enum slamtec_aurora_sdk_len_type {
+    SLAMTEC_AURORA_SDK_LEN_TYPE_PINHOLE = 0,
+    SLAMTEC_AURORA_SDK_LEN_TYPE_RECTIFIED = 1,
+    SLAMTEC_AURORA_SDK_LEN_TYPE_KANNALABRANDT = 2,
+};
+
+typedef uint32_t slamtec_aurora_sdk_len_type_t;
+
+
+enum slamtec_aurora_sdk_camera_color_mode {
+    SLAMTEC_AURORA_SDK_CAMERA_COLOR_MODE_RGB = 0,
+    SLAMTEC_AURORA_SDK_CAMERA_COLOR_MODE_MONO = 1,
+};
+
+typedef uint32_t slamtec_aurora_sdk_camera_color_mode_t;
+
+typedef struct _slamtec_aurora_sdk_single_camera_calibration_t {
+    slamtec_aurora_sdk_len_type_t len_type;
+    slamtec_aurora_sdk_camera_color_mode_t color_mode;
+    int width;
+    int height;
+    int fps;
+    float intrinsics[4]; // fx, fy, cx, cy
+    float distortion[5]; // k1, k2, k3, k4
+} slamtec_aurora_sdk_single_camera_calibration_t;
+
+enum slamtec_aurora_sdk_camera_type {
+    SLAMTEC_AURORA_SDK_CAMERA_TYPE_MONO = 0,
+    SLAMTEC_AURORA_SDK_CAMERA_TYPE_STEREO = 1,
+};
+
+typedef uint32_t slamtec_aurora_sdk_camera_type_t;
+
+
+typedef struct _slamtec_aurora_sdk_ext_camera_transform_t {
+    float t_c2_c1[16]; // 4x4 matrix with row major order
+} slamtec_aurora_sdk_ext_camera_transform_t;
+
+
+/**
+ * @brief The camera calibration structure
+ * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
+ * @details The camera calibration structure contains the camera calibration information.
+ */
+typedef struct _slamtec_aurora_sdk_camera_calibration_t {
+    slamtec_aurora_sdk_camera_type_t camera_type;
+    slamtec_aurora_sdk_single_camera_calibration_t camera_calibration[4];
+    slamtec_aurora_sdk_ext_camera_transform_t ext_camera_transform[4];
+} slamtec_aurora_sdk_camera_calibration_t;
+
+// -- Enhanced Imaging Data Types
+// ------------------------------------------------------------------------------------------------
+
+typedef struct _slamtec_aurora_sdk_enhanced_imaging_frame_desc {
+    uint64_t timestamp_ns;
+    slamtec_aurora_sdk_image_desc_t image_desc;
+} slamtec_aurora_sdk_enhanced_imaging_frame_desc_t;
+
+
+typedef struct _slamtec_aurora_sdk_enhanced_imaging_frame_buffer {
+    void * frame_data;
+    size_t frame_data_size;
+} slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t;
+
+// -- Depth Camera Data Types
+typedef struct _slamtec_aurora_sdk_depthcam_config_info {
+    float fps;
+    int frame_skip;
+    int image_width;
+    int image_height;
+
+    int binded_cam_id;
+
+} slamtec_aurora_sdk_depthcam_config_info_t;
+
+
+
+
+enum slamtec_aurora_sdk_depthcam_frame_type {
+    SLAMTEC_AURORA_SDK_DEPTHCAM_FRAME_TYPE_DEPTH_MAP = 0,
+    SLAMTEC_AURORA_SDK_DEPTHCAM_FRAME_TYPE_POINT3D = 1,
+};
+
+typedef int32_t slamtec_aurora_sdk_depthcam_frame_type_t; 
+
+
+// -- Semantic Segmentation Data Types
+typedef struct _slamtec_aurora_sdk_semantic_segmentation_config_info {
+    float fps;
+    int frame_skip;
+    int image_width;
+    int image_height;
+    int support_alternative_model;
+
+} slamtec_aurora_sdk_semantic_segmentation_config_info_t;
+
+typedef struct _slamtec_aurora_sdk_semantic_segmentation_label_name {
+    char name[64];
+} slamtec_aurora_sdk_semantic_segmentation_label_name_t;
+
+typedef struct _slamtec_aurora_sdk_semantic_segmentation_label_info {
+    size_t label_count;
+    slamtec_aurora_sdk_semantic_segmentation_label_name_t label_names[256];
+} slamtec_aurora_sdk_semantic_segmentation_label_info_t;
+
 // callbacks
 
 /**
@@ -1304,6 +1577,39 @@ typedef void (*slamtec_aurora_sdk_on_lidar_scan_callback_t)(void* user_data, con
 
 
 /**
+ * @brief The camera preview image status callback
+ * @ingroup SDK_Callback_Types SDK Callback Types
+ * @details The camera preview image status callback to receive the camera preview image status from the device.
+ */
+typedef void (*slamtec_aurora_sdk_on_camera_preview_image_callback_t)(void* user_data, uint64_t timestamp_ns, const slamtec_aurora_sdk_image_desc_t* left_desc, const void* left_data, const slamtec_aurora_sdk_image_desc_t* right_desc, const void* right_data);
+
+
+
+/**
+ * @brief The connection status callback
+ * @ingroup SDK_Callback_Types SDK Callback Types
+ * @details The connection status callback to receive the connection status from the device.
+ */
+typedef void (*slamtec_aurora_sdk_on_connection_status_callback_t)(void* user_data, slamtec_aurora_sdk_connection_status_t status);
+
+
+/**
+ * @brief The depthcam image arrived callback
+ * @ingroup SDK_Callback_Types SDK Callback Types
+ * @details The depthcam image arrived callback to receive the depthcam image arrived from the device.
+ */
+typedef void (*slamtec_aurora_sdk_on_depthcam_image_arrived_callback_t)(void* user_data, uint64_t timestamp_ns);
+
+
+/**
+ * @brief The semantic segmentation image arrived callback
+ * @ingroup SDK_Callback_Types SDK Callback Types
+ * @details The semantic segmentation image arrived callback to receive the semantic segmentation image arrived from the device.
+ */
+typedef void (*slamtec_aurora_sdk_on_semantic_segmentation_image_arrived_callback_t)(void* user_data, uint64_t timestamp_ns);
+
+
+/**
  * @brief The listener structure
  * @ingroup SDK_Basic_Data_Types SDK Basic Data Types
  * @details The listener structure contains the listener.
@@ -1339,6 +1645,29 @@ typedef struct _slamtec_aurora_sdk_listener_t {
      * @brief The callback for the lidar scan data, set to NULL to ignore this callback
      */
     slamtec_aurora_sdk_on_lidar_scan_callback_t on_lidar_scan;
+
+
+    /**
+     * @brief The callback for the camera preview image status, set to NULL to ignore this callback
+     */
+    slamtec_aurora_sdk_on_camera_preview_image_callback_t on_camera_preview_image;
+
+    /**
+     * @brief The callback for the connection status, set to NULL to ignore this callback
+     */
+    slamtec_aurora_sdk_on_connection_status_callback_t on_connection_status;
+
+
+    /**
+     * @brief The callback for the depthcam image arrived, set to NULL to ignore this callback
+     */
+    slamtec_aurora_sdk_on_depthcam_image_arrived_callback_t on_depthcam_image_arrived;
+
+    /**
+     * @brief The callback for the semantic segmentation image arrived, set to NULL to ignore this callback
+     */
+    slamtec_aurora_sdk_on_semantic_segmentation_image_arrived_callback_t on_semantic_segmentation_image_arrived;
+
 
 } slamtec_aurora_sdk_listener_t;
 

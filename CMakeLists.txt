@@ -55,8 +55,14 @@ elseif(UNIX AND NOT APPLE)
     else()
         message(FATAL_ERROR "Unsupported architecture for Linux. Only aarch64 and x86_64 are supported.")
     endif()
+elseif(APPLE)
+    if(CMAKE_SYSTEM_PROCESSOR MATCHES "arm64")
+        set(AURORA_LIB_PATH "${PROJECT_SOURCE_DIR}/aurora_remote_public/lib/macos_arm64")
+    else()
+        message(FATAL_ERROR "Unsupported architecture for macOS. Only arm64 is supported.")
+    endif()
 else()
-    message(FATAL_ERROR "Unsupported platform. Only Windows and Linux are supported.")
+    message(FATAL_ERROR "Unsupported platform. Only Windows, Linux, and macOS are supported.")
 endif()
 
 # Set the library name
@@ -108,6 +114,10 @@ target_link_libraries(imu_fetcher ${AURORA_LIB_NAME})
 add_executable(vslam_map_saveload demo/vslam_map_saveload/src/vslam_map_saveload.cpp)
 target_link_libraries(vslam_map_saveload ${AURORA_LIB_NAME})
 
+## device_info_monitor
+add_executable(device_info_monitor demo/device_info_monitor/src/device_info_monitor.cpp)
+target_link_libraries(device_info_monitor ${AURORA_LIB_NAME})
+
 ## frame preview, only enabled when ENABLE_DEMOS_WITH_OPENCV is ON
 if(ENABLE_DEMOS_WITH_OPENCV)
 
@@ -131,5 +141,19 @@ add_executable(lidar_2dmap_render demo/lidar_2dmap_render/src/lidar_2dmap_render
 target_include_directories(lidar_2dmap_render PRIVATE ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(lidar_2dmap_render ${AURORA_LIB_NAME}  ${OpenCV_LIBS})
 
+## depth camera view
+add_executable(depthcam_view demo/depthcam_view/src/depthcam_view.cpp)
+target_include_directories(depthcam_view PRIVATE ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(depthcam_view ${AURORA_LIB_NAME}  ${OpenCV_LIBS})
+
+## semantic segmentation
+add_executable(semantic_segmentation demo/semantic_segmentation/src/semantic_segmentation.cpp)
+target_include_directories(semantic_segmentation PRIVATE ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(semantic_segmentation ${AURORA_LIB_NAME}  ${OpenCV_LIBS})
+
+## calibration exporter
+add_executable(calibration_exporter demo/calibration_exporter/src/calibration_exporter.cpp)
+target_include_directories(calibration_exporter PRIVATE ${OpenCV_INCLUDE_DIRS})
+target_link_libraries(calibration_exporter ${AURORA_LIB_NAME}  ${OpenCV_LIBS})
 
 endif()
