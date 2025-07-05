@@ -1304,6 +1304,19 @@ enum slamtec_aurora_sdk_keyframe_flags_t {
 };
 
 
+enum slamtec_aurora_sdk_keyframe_fetch_flags_t {
+    /**
+     * @brief The none keyframe fetch flag
+     */
+    SLAMTEC_AURORA_SDK_KEYFRAME_FETCH_FLAG_NONE = 0,
+    /**
+     * @brief The related map point flag
+     */
+    SLAMTEC_AURORA_SDK_KEYFRAME_FETCH_FLAG_RELATED_MP = (0x1 << 0),
+    
+};
+
+
 
 /**
  * @brief The keyframe description structure
@@ -1346,10 +1359,27 @@ typedef struct _slamtec_aurora_sdk_keyframe_desc_t {
 
 
     /**
+     * @brief The count of the related map points
+     * @details The related map points are the map points that are observed by the keyframe.
+     * @details Users must enable the related map points fetching flag to make SDK synchronize the related map points.
+     */
+    size_t related_mp_count;
+
+
+    /**
      * @brief The flags of the keyframe, check enum slamtec_aurora_sdk_keyframe_flags_t for more details
      */
     uint32_t flags;
 } slamtec_aurora_sdk_keyframe_desc_t;
+
+
+enum slamtec_aurora_sdk_map_point_fetch_flags_t {
+    /**
+     * @brief The none map point fetch flag
+     */
+    SLAMTEC_AURORA_SDK_MAP_POINT_FETCH_FLAG_NONE = 0,
+    
+};
 
 
 /**
@@ -1678,8 +1708,13 @@ typedef struct _slamtec_aurora_sdk_listener_t {
  * @brief The callback for accessing the keyframe data
  * @ingroup SDK_Callback_Types SDK Callback Types
  * @details The callback to receive the keyframe data locally cached by the SDK
+ * @param user_data The user data to be passed to the callback
+ * @param keyframe_desc The keyframe description
+ * @param looped_frame_ids The looped frame ids
+ * @param connected_frame_ids The connected frame ids
+ * @param related_mp_ids The related map point ids, this array is only valid when the related map point flag is enabled
  */
-typedef void (*slamtec_aurora_sdk_on_map_keyframe_callback_t)(void* user_data, const slamtec_aurora_sdk_keyframe_desc_t* keyframe_desc, const uint64_t * looped_frame_ids, const uint64_t * connected_frame_ids);
+typedef void (*slamtec_aurora_sdk_on_map_keyframe_callback_t)(void* user_data, const slamtec_aurora_sdk_keyframe_desc_t* keyframe_desc, const uint64_t * looped_frame_ids, const uint64_t * connected_frame_ids, const uint64_t * related_mp_ids);
 /**
  * @brief The callback for accessing the map point data
  * @ingroup SDK_Callback_Types SDK Callback Types

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="slamtec.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SLAMTEC Aurora Public Remote SDK
-   &#160;<span id="projectnumber">2.0.0-beta1</span>
+   &#160;<span id="projectnumber">2.0.1-beta1</span>
    </div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -548,6 +548,13 @@ Enumerations</h2></td></tr>
 <a class="el" href="group__SDK__Basic__Data__Types.html#ggacbf28948f6f1c00633a123591ed97612ac9e4eb4420f0ee1ee1085bc32a30dfba">SLAMTEC_AURORA_SDK_KEYFRAME_FLAG_FIXED</a> = (0x1 &lt;&lt; 1)
  }</td></tr>
 <tr class="separator:gacbf28948f6f1c00633a123591ed97612"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga15346a37b62d4f550d7032c452670106"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SDK__Basic__Data__Types.html#ga15346a37b62d4f550d7032c452670106">slamtec_aurora_sdk_keyframe_fetch_flags_t</a> { <a class="el" href="group__SDK__Basic__Data__Types.html#gga15346a37b62d4f550d7032c452670106a91012b381cdda9ee946d8689803bdd21">SLAMTEC_AURORA_SDK_KEYFRAME_FETCH_FLAG_NONE</a> = 0, 
+<a class="el" href="group__SDK__Basic__Data__Types.html#gga15346a37b62d4f550d7032c452670106aa898a010f34e2e4ccd8cfbcaa81f3382">SLAMTEC_AURORA_SDK_KEYFRAME_FETCH_FLAG_RELATED_MP</a> = (0x1 &lt;&lt; 0)
+ }</td></tr>
+<tr class="separator:ga15346a37b62d4f550d7032c452670106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad2200e5cedd1804bd497d39a3e98b54a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__SDK__Basic__Data__Types.html#gad2200e5cedd1804bd497d39a3e98b54a">slamtec_aurora_sdk_map_point_fetch_flags_t</a> { <a class="el" href="group__SDK__Basic__Data__Types.html#ggad2200e5cedd1804bd497d39a3e98b54aa9d5315b7d0242614ea0b07313a967999">SLAMTEC_AURORA_SDK_MAP_POINT_FETCH_FLAG_NONE</a> = 0
+ }</td></tr>
+<tr class="separator:gad2200e5cedd1804bd497d39a3e98b54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4d7a6e77e41d8b7a6cad594f224de673"><td class="memItemLeft" align="right" valign="top"><a id="ga4d7a6e77e41d8b7a6cad594f224de673"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>slamtec_aurora_sdk_len_type</b> { <b>SLAMTEC_AURORA_SDK_LEN_TYPE_PINHOLE</b> = 0, 
 <b>SLAMTEC_AURORA_SDK_LEN_TYPE_RECTIFIED</b> = 1, 
 <b>SLAMTEC_AURORA_SDK_LEN_TYPE_KANNALABRANDT</b> = 2
@@ -1358,6 +1365,26 @@ Enumerations</h2></td></tr>
 
 </div>
 </div>
+<a id="ga15346a37b62d4f550d7032c452670106"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga15346a37b62d4f550d7032c452670106">&#9670;&nbsp;</a></span>slamtec_aurora_sdk_keyframe_fetch_flags_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__SDK__Basic__Data__Types.html#ga15346a37b62d4f550d7032c452670106">slamtec_aurora_sdk_keyframe_fetch_flags_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="gga15346a37b62d4f550d7032c452670106a91012b381cdda9ee946d8689803bdd21"></a>SLAMTEC_AURORA_SDK_KEYFRAME_FETCH_FLAG_NONE&#160;</td><td class="fielddoc"><p>The none keyframe fetch flag. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="gga15346a37b62d4f550d7032c452670106aa898a010f34e2e4ccd8cfbcaa81f3382"></a>SLAMTEC_AURORA_SDK_KEYFRAME_FETCH_FLAG_RELATED_MP&#160;</td><td class="fielddoc"><p>The related map point flag. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="gacbf28948f6f1c00633a123591ed97612"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gacbf28948f6f1c00633a123591ed97612">&#9670;&nbsp;</a></span>slamtec_aurora_sdk_keyframe_flags_t</h2>
 
@@ -1397,6 +1424,24 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="gga68edecad837d258e1b32a41dd8aade93a8c8d6b0234d57eb0002fa9193e581f68"></a>SLAMTEC_AURORA_SDK_MAP_FLAG_BAD&#160;</td><td class="fielddoc"><p>The bad map flag. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga68edecad837d258e1b32a41dd8aade93a1a0cfa6352f3a901907b2b666d25ff04"></a>SLAMTEC_AURORA_SDK_MAP_FLAG_FIXED&#160;</td><td class="fielddoc"><p>The fixed map flag. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="gad2200e5cedd1804bd497d39a3e98b54a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad2200e5cedd1804bd497d39a3e98b54a">&#9670;&nbsp;</a></span>slamtec_aurora_sdk_map_point_fetch_flags_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="group__SDK__Basic__Data__Types.html#gad2200e5cedd1804bd497d39a3e98b54a">slamtec_aurora_sdk_map_point_fetch_flags_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ggad2200e5cedd1804bd497d39a3e98b54aa9d5315b7d0242614ea0b07313a967999"></a>SLAMTEC_AURORA_SDK_MAP_POINT_FETCH_FLAG_NONE&#160;</td><td class="fielddoc"><p>The none map point fetch flag. </p>
 </td></tr>
 </table>
 

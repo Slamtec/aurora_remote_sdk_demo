@@ -5,6 +5,8 @@ var group__Controller__Operations =
     [ "slamtec_aurora_sdk_controller_disconnect", "group__Controller__Operations.html#gaf8d50c871bf3c21ad8e01867bd5d3680", null ],
     [ "slamtec_aurora_sdk_controller_force_map_global_optimization", "group__Controller__Operations.html#gab62615d0d10a4f0824610c88982df7be", null ],
     [ "slamtec_aurora_sdk_controller_get_discovered_servers", "group__Controller__Operations.html#gad2c65d8eec1e216dcbb23b9664fbed79", null ],
+    [ "slamtec_aurora_sdk_controller_get_keyframe_fetch_flags", "group__Controller__Operations.html#gaf684f528298e42add8ed90a0d9433678", null ],
+    [ "slamtec_aurora_sdk_controller_get_map_point_fetch_flags", "group__Controller__Operations.html#ga610b9de405aa515611b98750bcdbc10c", null ],
     [ "slamtec_aurora_sdk_controller_is_connected", "group__Controller__Operations.html#ga4e0bca5f102374737483880cd573da08", null ],
     [ "slamtec_aurora_sdk_controller_is_device_connection_alive", "group__Controller__Operations.html#ga41d77061c7f95bea5149fe266543c3c2", null ],
     [ "slamtec_aurora_sdk_controller_is_enhanced_imaging_subscribed", "group__Controller__Operations.html#gacf6930fee2037ac56bc49383ee10ef11", null ],
@@ -17,8 +19,10 @@ var group__Controller__Operations =
     [ "slamtec_aurora_sdk_controller_resync_map_data", "group__Controller__Operations.html#ga69a3c91798961f6e050abc8aaf030a7f", null ],
     [ "slamtec_aurora_sdk_controller_send_custom_command", "group__Controller__Operations.html#gae6d24f8cd3314b95a834a0390c7d751b", null ],
     [ "slamtec_aurora_sdk_controller_set_enhanced_imaging_subscription", "group__Controller__Operations.html#gae1d855a36041ff748ba9892196c8acdb", null ],
+    [ "slamtec_aurora_sdk_controller_set_keyframe_fetch_flags", "group__Controller__Operations.html#ga63a526cbd4eb338d0cee9b630865f5fb", null ],
     [ "slamtec_aurora_sdk_controller_set_loop_closure", "group__Controller__Operations.html#ga3d9129f8886dfa143af3474342bed5aa", null ],
     [ "slamtec_aurora_sdk_controller_set_low_rate_mode", "group__Controller__Operations.html#gaba9925238fd9ad0a7d509291e30e9dc9", null ],
     [ "slamtec_aurora_sdk_controller_set_map_data_syncing", "group__Controller__Operations.html#gacd4a4423da8095ad2c7d14f79a06e66d", null ],
+    [ "slamtec_aurora_sdk_controller_set_map_point_fetch_flags", "group__Controller__Operations.html#ga4d7252fbc8300965ee1eff816b2b00f8", null ],
     [ "slamtec_aurora_sdk_controller_set_raw_data_subscription", "group__Controller__Operations.html#ga1b16545b03d20a8b08804f4bd7950364", null ]
 ];

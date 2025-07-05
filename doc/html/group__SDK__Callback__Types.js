@@ -25,7 +25,7 @@ var group__SDK__Callback__Types =
     [ "slamtec_aurora_sdk_on_imu_data_callback_t", "group__SDK__Callback__Types.html#gaee9f7fb9def5fd87f99a916a03f6fdbd", null ],
     [ "slamtec_aurora_sdk_on_lidar_scan_callback_t", "group__SDK__Callback__Types.html#ga968c8e715a75f053a89c7d8663457535", null ],
     [ "slamtec_aurora_sdk_on_map_desc_callback_t", "group__SDK__Callback__Types.html#ga660edb291a0bdec5e55ce9ca6b9c260d", null ],
-    [ "slamtec_aurora_sdk_on_map_keyframe_callback_t", "group__SDK__Callback__Types.html#ga717b3abd20ba0c3a45a3848ca7b61e8c", null ],
+    [ "slamtec_aurora_sdk_on_map_keyframe_callback_t", "group__SDK__Callback__Types.html#ga2e6f2b5e2798a593ee10cacfd2e04ea4", null ],
     [ "slamtec_aurora_sdk_on_map_point_callback_t", "group__SDK__Callback__Types.html#gaa03850d2175726b24f4e2d670643c381", null ],
     [ "slamtec_aurora_sdk_on_mapping_flags_callback_t", "group__SDK__Callback__Types.html#gafb9db0e6781c1337bdfe326049fad6ef", null ],
     [ "slamtec_aurora_sdk_on_semantic_segmentation_image_arrived_callback_t", "group__SDK__Callback__Types.html#ga7e0a15c14041d3f9242cb75a16c61ee9", null ],

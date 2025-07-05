@@ -205,6 +205,46 @@ void AURORA_SDK_API slamtec_aurora_sdk_controller_set_map_data_syncing(slamtec_a
  */
 void AURORA_SDK_API slamtec_aurora_sdk_controller_resync_map_data(slamtec_aurora_sdk_session_handle_t handle, int invalidate_cache);
 
+
+/**
+ * @brief Set the keyframe fetch flags
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @param flags - the flags to control the keyframe fetch, check enum slamtec_aurora_sdk_keyframe_fetch_flags_t for more details
+ */
+void AURORA_SDK_API slamtec_aurora_sdk_controller_set_keyframe_fetch_flags(slamtec_aurora_sdk_session_handle_t handle, uint64_t flags);
+
+/**
+ * @brief Get the keyframe fetch flags
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @return the flags of the keyframe fetch, check enum slamtec_aurora_sdk_keyframe_fetch_flags_t for more details
+ */
+uint64_t AURORA_SDK_API slamtec_aurora_sdk_controller_get_keyframe_fetch_flags(slamtec_aurora_sdk_session_handle_t handle);
+
+/**
+ * @brief Set the map point fetch flags
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @param flags - the flags to control the map point fetch, check enum slamtec_aurora_sdk_map_point_fetch_flags_t for more details
+ */
+void AURORA_SDK_API slamtec_aurora_sdk_controller_set_map_point_fetch_flags(slamtec_aurora_sdk_session_handle_t handle, uint64_t flags);
+
+
+/**
+ * @brief Get the map point fetch flags
+ * @ingroup Controller_Operations Controller Operations
+ * 
+ * @param handle - the session handle
+ * @return the flags of the map point fetch, check enum slamtec_aurora_sdk_map_point_fetch_flags_t for more details
+ */
+uint64_t AURORA_SDK_API slamtec_aurora_sdk_controller_get_map_point_fetch_flags(slamtec_aurora_sdk_session_handle_t handle);
+
+
+
 /**
  * @brief Set the raw data subscription
  * @details Ask the controller to subscribe the raw camera image data from the server.
@@ -1030,6 +1070,22 @@ slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_de
  * @return the error code
  */
 slamtec_aurora_sdk_errorcode_t AURORA_SDK_API slamtec_aurora_sdk_dataprovider_depthcam_calc_aligned_segmentation_map(slamtec_aurora_sdk_session_handle_t handle, const slamtec_aurora_sdk_image_desc_t * desc_in, const void * raw_segment_data, slamtec_aurora_sdk_image_desc_t * desc_out, const slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t * aligned_segment_data);
+
+
+
+/**
+ * @brief Set the post filtering of the depth camera
+ * @details Post filtering is used to refine the depth estimation from the depth camera module. It is enabled by default. 
+ * @details Caller can use this function to enable or disable the post filtering.
+ *
+ * @param handle - the session handle
+ * @param enable - the enable flag, if set to non-zero, the post filtering will be enabled, otherwise it will be disabled
+ * @param flags - the flags to control the post filtering, currently it is not used, set to 0
+ * @ingroup EnhancedImaging_Operations Enhanced Imaging Operations
+ * 
+ */
+void AURORA_SDK_API slamtec_aurora_sdk_dataprovider_depthcam_set_postfiltering(slamtec_aurora_sdk_session_handle_t handle, int enable, uint64_t flags);
+
 
 /**
  * @brief Check if the semantic segmentation is ready to retrieve data

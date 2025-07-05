@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="slamtec.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SLAMTEC Aurora Public Remote SDK
-   &#160;<span id="projectnumber">2.0.0-beta1</span>
+   &#160;<span id="projectnumber">2.0.1-beta1</span>
    </div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -139,6 +139,9 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="st
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__slamtec__aurora__sdk__keyframe__desc__t.html#a4d758ecdbdb64fee69542e4c6dbf5091">connected_frame_count</a></td></tr>
 <tr class="memdesc:a4d758ecdbdb64fee69542e4c6dbf5091"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of the connected frames. <br /></td></tr>
 <tr class="separator:a4d758ecdbdb64fee69542e4c6dbf5091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b59ada37485982bc96f6f483bcb60d3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__slamtec__aurora__sdk__keyframe__desc__t.html#a7b59ada37485982bc96f6f483bcb60d3">related_mp_count</a></td></tr>
+<tr class="memdesc:a7b59ada37485982bc96f6f483bcb60d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The count of the related map points.  <a href="struct__slamtec__aurora__sdk__keyframe__desc__t.html#a7b59ada37485982bc96f6f483bcb60d3">More...</a><br /></td></tr>
+<tr class="separator:a7b59ada37485982bc96f6f483bcb60d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa141ddefc17bbd96943c02207fdef162"><td class="memItemLeft" align="right" valign="top"><a id="aa141ddefc17bbd96943c02207fdef162"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__slamtec__aurora__sdk__keyframe__desc__t.html#aa141ddefc17bbd96943c02207fdef162">flags</a></td></tr>
 <tr class="memdesc:aa141ddefc17bbd96943c02207fdef162"><td class="mdescLeft">&#160;</td><td class="mdescRight">The flags of the keyframe, check enum slamtec_aurora_sdk_keyframe_flags_t for more details. <br /></td></tr>
@@ -147,7 +150,26 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The keyframe description structure. </p>
 <p>The keyframe description structure contains the keyframe description. </p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a7b59ada37485982bc96f6f483bcb60d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b59ada37485982bc96f6f483bcb60d3">&#9670;&nbsp;</a></span>related_mp_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t _slamtec_aurora_sdk_keyframe_desc_t::related_mp_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The count of the related map points. </p>
+<p>The related map points are the map points that are observed by the keyframe.</p>
+<p>Users must enable the related map points fetching flag to make SDK synchronize the related map points. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>inc/<a class="el" href="aurora__pubsdk__objects_8h_source.html">aurora_pubsdk_objects.h</a></li>
 </ul>
 </div><!-- contents -->

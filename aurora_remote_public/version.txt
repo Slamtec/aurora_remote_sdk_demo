@@ -1,7 +1,7 @@
 SLAMTEC Aurora
 Aurora Cpp SDK
 
-2.0.0-beta1
-2025-05-31 14:15:28
+2.0.1-beta1
+2025-07-06 00:21:27
 
 visit www.slamtec.com for more info

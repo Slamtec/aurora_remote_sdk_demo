@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="slamtec.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SLAMTEC Aurora Public Remote SDK
-   &#160;<span id="projectnumber">2.0.0-beta1</span>
+   &#160;<span id="projectnumber">2.0.1-beta1</span>
    </div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -153,6 +153,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8c3423ed3496bc837e61b41b58469c51"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a8c3423ed3496bc837e61b41b58469c51">calcDepthCameraAlignedSegmentationMap</a> (const <a class="el" href="classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html">RemoteImageRef</a> &amp;segMap, <a class="el" href="structrp_1_1standalone_1_1aurora_1_1RemoteEnhancedImagingFrame.html">RemoteEnhancedImagingFrame</a> &amp;alignedSegMap, <a class="el" href="group__SDK__Basic__Data__Types.html#ga594824a6dfa667c6bdd6c8f95b3a37a3">slamtec_aurora_sdk_errorcode_t</a> *errcode=nullptr)</td></tr>
 <tr class="memdesc:a8c3423ed3496bc837e61b41b58469c51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the aligned segmentation map.  <a href="classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a8c3423ed3496bc837e61b41b58469c51">More...</a><br /></td></tr>
 <tr class="separator:a8c3423ed3496bc837e61b41b58469c51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca247abf44ba4ba93c51ccd88578f2a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#aca247abf44ba4ba93c51ccd88578f2a1">setDepthCameraPostFiltering</a> (bool enable, uint64_t flags=0)</td></tr>
+<tr class="memdesc:aca247abf44ba4ba93c51ccd88578f2a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the post filtering of the depth camera.  <a href="classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#aca247abf44ba4ba93c51ccd88578f2a1">More...</a><br /></td></tr>
+<tr class="separator:aca247abf44ba4ba93c51ccd88578f2a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a828d6fd045a9826719dbd2af8ed8571e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a828d6fd045a9826719dbd2af8ed8571e">isSemanticSegmentationAlternativeModel</a> ()</td></tr>
 <tr class="memdesc:a828d6fd045a9826719dbd2af8ed8571e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the semantic segmentation is using alternative model.  <a href="classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a828d6fd045a9826719dbd2af8ed8571e">More...</a><br /></td></tr>
 <tr class="separator:a828d6fd045a9826719dbd2af8ed8571e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -683,6 +686,51 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>RemoteSDK</b></td></
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the next semantic segmentation frame is retrieved successfully, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="aca247abf44ba4ba93c51ccd88578f2a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca247abf44ba4ba93c51ccd88578f2a1">&#9670;&nbsp;</a></span>setDepthCameraPostFiltering()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rp::standalone::aurora::EnhancedImaging::setDepthCameraPostFiltering </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>flags</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the post filtering of the depth camera. </p>
+<p>The post filtering is used to refine the depth data. It is enabled by default. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">enable</td><td>Whether to enable the post filtering </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">flags</td><td>The flags of the post filtering, currently ignored, set to 0 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

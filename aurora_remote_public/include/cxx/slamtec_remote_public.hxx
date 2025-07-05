@@ -331,9 +331,9 @@ public:
      */
     void subscribeKeyFrameData(const KeyFrameDataCallback& keyFrameDataCallback) {
         _keyFrameDataCallback = (keyFrameDataCallback);
-        _visitor_obj.on_keyframe = [](void* user_data, const slamtec_aurora_sdk_keyframe_desc_t* keyframe_data, const uint64_t * lcIDs, const uint64_t * connIDs) {
+        _visitor_obj.on_keyframe = [](void* user_data, const slamtec_aurora_sdk_keyframe_desc_t* keyframe_data, const uint64_t * lcIDs, const uint64_t * connIDs, const uint64_t * relatedMPIDs) {
             RemoteMapDataVisitor* This = reinterpret_cast<RemoteMapDataVisitor*>(user_data);
-            RemoteKeyFrameData kframeData(*keyframe_data, lcIDs, connIDs);
+            RemoteKeyFrameData kframeData(*keyframe_data, lcIDs, connIDs, relatedMPIDs);
             
             This->_keyFrameDataCallback(kframeData);
             };
@@ -466,6 +466,42 @@ public:
      */
     void resyncMapData(bool invalidateCache = false) {
         slamtec_aurora_sdk_controller_resync_map_data(_sdk, invalidateCache ? 1 : 0);
+    }
+
+    /**
+     * @brief Set the keyframe fetch flags  
+     * @details Set the keyframe fetch flags to control how map data is fetched from the remote device
+     * @param[in] flags The keyframe fetch flags, refer to @ref slamtec_aurora_sdk_keyframe_fetch_flags_t for the available flags
+     */
+    void setKeyFrameFetchFlags(uint64_t flags) {
+        slamtec_aurora_sdk_controller_set_keyframe_fetch_flags(_sdk, flags);
+    }
+
+    /**
+     * @brief Get the keyframe fetch flags
+     * @details Get the keyframe fetch flags from the remote device
+     * @return The keyframe fetch flags
+     */
+    uint64_t getKeyFrameFetchFlags() {
+        return slamtec_aurora_sdk_controller_get_keyframe_fetch_flags(_sdk);
+    }
+
+    /**
+     * @brief Set the map point fetch flags
+     * @details Set the map point fetch flags to control how map point data is fetched from the remote device
+     * @param[in] flags The map point fetch flags, refer to @ref slamtec_aurora_sdk_map_point_fetch_flags_t for the available flags
+     */
+    void setMapPointFetchFlags(uint64_t flags) {
+        slamtec_aurora_sdk_controller_set_map_point_fetch_flags(_sdk, flags);
+    }
+
+    /**
+     * @brief Get the map point fetch flags
+     * @details Get the map point fetch flags from the remote device
+     * @return The map point fetch flags
+     */
+    uint64_t getMapPointFetchFlags() {
+        return slamtec_aurora_sdk_controller_get_map_point_fetch_flags(_sdk);
     }
 
     /**
@@ -1473,6 +1509,16 @@ public:
         }
 
         return result == SLAMTEC_AURORA_SDK_ERRORCODE_OK;
+    }
+
+    /**
+     * @brief Set the post filtering of the depth camera
+     * @details The post filtering is used to refine the depth data. It is enabled by default.
+     * @param[in] enable Whether to enable the post filtering
+     * @param[in] flags The flags of the post filtering, currently ignored, set to 0
+     */
+    void setDepthCameraPostFiltering(bool enable, uint64_t flags = 0) {
+        slamtec_aurora_sdk_dataprovider_depthcam_set_postfiltering(_sdk, enable ? 1 : 0, flags);
     }
 
     /**

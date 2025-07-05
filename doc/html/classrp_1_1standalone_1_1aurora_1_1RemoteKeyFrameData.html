@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="slamtec.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SLAMTEC Aurora Public Remote SDK
-   &#160;<span id="projectnumber">2.0.0-beta1</span>
+   &#160;<span id="projectnumber">2.0.1-beta1</span>
    </div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -109,9 +109,9 @@ $(document).ready(function(){initNavTree('classrp_1_1standalone_1_1aurora_1_1Rem
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9fc52a6df4e5e63ead440e2dd078a7a8"><td class="memItemLeft" align="right" valign="top"><a id="a9fc52a6df4e5e63ead440e2dd078a7a8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>RemoteKeyFrameData</b> (const <a class="el" href="group__SDK__Basic__Data__Types.html#ga5e2be75c51a90e11f8364858171a63f1">slamtec_aurora_sdk_keyframe_desc_t</a> &amp;<a class="el" href="classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a484efaf20ce217892685e8e5bc48a10b">desc</a>, const uint64_t *lcIDs, const uint64_t *connIDs)</td></tr>
-<tr class="separator:a9fc52a6df4e5e63ead440e2dd078a7a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6785eb6392d55467830b3e7758d71786"><td class="memItemLeft" align="right" valign="top"><a id="a6785eb6392d55467830b3e7758d71786"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>RemoteKeyFrameData</b> (const <a class="el" href="group__SDK__Basic__Data__Types.html#ga5e2be75c51a90e11f8364858171a63f1">slamtec_aurora_sdk_keyframe_desc_t</a> &amp;<a class="el" href="classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a484efaf20ce217892685e8e5bc48a10b">desc</a>, const uint64_t *lcIDs, const uint64_t *connIDs, const uint64_t *relatedMPIDs)</td></tr>
+<tr class="separator:a6785eb6392d55467830b3e7758d71786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8d215a938bbed7d5c6f5ea57acc15f6"><td class="memItemLeft" align="right" valign="top"><a id="ac8d215a938bbed7d5c6f5ea57acc15f6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>RemoteKeyFrameData</b> (const <a class="el" href="classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html">RemoteKeyFrameData</a> &amp;other)</td></tr>
 <tr class="separator:ac8d215a938bbed7d5c6f5ea57acc15f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +139,10 @@ std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"
 std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#ab626627c7e36c504b339a27cd084f9b7">connectedKeyFrameIDs</a></td></tr>
 <tr class="memdesc:ab626627c7e36c504b339a27cd084f9b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The connected keyframe IDs. <br /></td></tr>
 <tr class="separator:ab626627c7e36c504b339a27cd084f9b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a652c12a36be38b6db2bf7a96b2c0b5d3"><td class="memItemLeft" align="right" valign="top"><a id="a652c12a36be38b6db2bf7a96b2c0b5d3"></a>
+std::vector&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a652c12a36be38b6db2bf7a96b2c0b5d3">relatedMapPointIDs</a></td></tr>
+<tr class="memdesc:a652c12a36be38b6db2bf7a96b2c0b5d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The related map point IDs. <br /></td></tr>
+<tr class="separator:a652c12a36be38b6db2bf7a96b2c0b5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The keyframe data class wraps the keyframe description and its data. </p>

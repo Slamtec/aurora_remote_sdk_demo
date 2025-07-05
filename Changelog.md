@@ -42,3 +42,8 @@ The SDK supports the following platforms and architectures:
 ### V2.0.0-beta1:
 
 - Added Timestamp enabled get pose API
+
+### V2.0.1-beta1:
+
+- Added depth camera post filtering support
+- Added Keyframe/Map point fetching control APIs

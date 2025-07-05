@@ -44,9 +44,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc.html#a21563bc0fccf03e2d46f4a4e31c9a174",
-"group__SDK__Callback__Types.html#ga968c8e715a75f053a89c7d8663457535",
-"struct__slamtec__aurora__sdk__single__camera__calibration__t.html#aeafd7e960c59ccc35db26dfe88ff2b07"
+"classrp_1_1standalone_1_1aurora_1_1SDKConnectionInfo.html#a43548468654e9673b192f876c52b156c",
+"group__SDK__Callback__Types.html#ga0e118ff8d359a8b731e0fb6538042fcb",
+"struct__slamtec__aurora__sdk__semantic__segmentation__label__info.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

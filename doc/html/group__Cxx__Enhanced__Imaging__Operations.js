@@ -15,6 +15,7 @@ var group__Cxx__Enhanced__Imaging__Operations =
       [ "peekDepthCameraFrame", "classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a3d4df2af85ddb5e080af126572ed4cb9", null ],
       [ "peekDepthCameraRelatedRectifiedImage", "classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a0d18b406f19011cba350612d06352455", null ],
       [ "peekSemanticSegmentationFrame", "classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#af8bab5da5833c2c9aab0f67056e81336", null ],
+      [ "setDepthCameraPostFiltering", "classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#aca247abf44ba4ba93c51ccd88578f2a1", null ],
       [ "waitDepthCameraNextFrame", "classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a49f4a7cc89834cda9d7c91ba8e210f96", null ],
       [ "waitSemanticSegmentationNextFrame", "classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a4c74a7fd7756ab51123e857bcc990a7b", null ],
       [ "RemoteSDK", "classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a3d7224f06f82e9b871760e360315effe", null ],

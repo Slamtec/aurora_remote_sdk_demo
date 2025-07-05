@@ -904,7 +904,7 @@ public:
     RemoteKeyFrameData() : desc{ 0 } {
     }
 
-    RemoteKeyFrameData(const slamtec_aurora_sdk_keyframe_desc_t& desc, const uint64_t * lcIDs, const uint64_t * connIDs)
+    RemoteKeyFrameData(const slamtec_aurora_sdk_keyframe_desc_t& desc, const uint64_t * lcIDs, const uint64_t * connIDs, const uint64_t * relatedMPIDs)
         : desc(desc)
     {
         if (lcIDs && desc.looped_frame_count) {
@@ -916,25 +916,32 @@ public:
             connectedKeyFrameIDs.reserve(desc.connected_frame_count);
             connectedKeyFrameIDs.insert(connectedKeyFrameIDs.end(), connIDs, connIDs + desc.connected_frame_count);
         }
+
+        if (relatedMPIDs && desc.related_mp_count) {
+            relatedMapPointIDs.reserve(desc.related_mp_count);
+            relatedMapPointIDs.insert(relatedMapPointIDs.end(), relatedMPIDs, relatedMPIDs + desc.related_mp_count);
+        }
     }
 
-    RemoteKeyFrameData(const RemoteKeyFrameData& other) : desc(other.desc), loopedKeyFrameIDs(other.loopedKeyFrameIDs), connectedKeyFrameIDs(other.connectedKeyFrameIDs) {
+    RemoteKeyFrameData(const RemoteKeyFrameData& other) : desc(other.desc), loopedKeyFrameIDs(other.loopedKeyFrameIDs), connectedKeyFrameIDs(other.connectedKeyFrameIDs), relatedMapPointIDs(other.relatedMapPointIDs) {
     }
 
     RemoteKeyFrameData& operator=(const RemoteKeyFrameData& other) {
         desc = other.desc;
         loopedKeyFrameIDs = other.loopedKeyFrameIDs;
         connectedKeyFrameIDs = other.connectedKeyFrameIDs;
+        relatedMapPointIDs = other.relatedMapPointIDs;
         return *this;
     }
 
-    RemoteKeyFrameData(RemoteKeyFrameData&& other) : desc(other.desc), loopedKeyFrameIDs(std::move(other.loopedKeyFrameIDs)), connectedKeyFrameIDs(std::move(other.connectedKeyFrameIDs)) {
+    RemoteKeyFrameData(RemoteKeyFrameData&& other) : desc(other.desc), loopedKeyFrameIDs(std::move(other.loopedKeyFrameIDs)), connectedKeyFrameIDs(std::move(other.connectedKeyFrameIDs)), relatedMapPointIDs(std::move(other.relatedMapPointIDs)) {
     }
 
     RemoteKeyFrameData& operator=(RemoteKeyFrameData&& other) {
         desc = other.desc;
         loopedKeyFrameIDs = std::move(other.loopedKeyFrameIDs);
         connectedKeyFrameIDs = std::move(other.connectedKeyFrameIDs);
+        relatedMapPointIDs = std::move(other.relatedMapPointIDs);
         return *this;
     }
 
@@ -953,6 +960,11 @@ public:
      * @brief The connected keyframe IDs
      */
     std::vector<uint64_t> connectedKeyFrameIDs;
+
+    /**
+     * @brief The related map point IDs
+     */
+    std::vector<uint64_t> relatedMapPointIDs;
 };
 
 

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="slamtec.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">SLAMTEC Aurora Public Remote SDK
-   &#160;<span id="projectnumber">2.0.0-beta1</span>
+   &#160;<span id="projectnumber">2.0.1-beta1</span>
    </div>
   </td>
    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -123,6 +123,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga7ac5e77aa9967ef174771f52f6992798"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__SDK__Basic__Data__Types.html#ga594824a6dfa667c6bdd6c8f95b3a37a3">slamtec_aurora_sdk_errorcode_t</a> AURORA_SDK_API&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__EnhancedImaging__Operations.html#ga7ac5e77aa9967ef174771f52f6992798">slamtec_aurora_sdk_dataprovider_depthcam_calc_aligned_segmentation_map</a> (<a class="el" href="group__SDK__Basic__Data__Types.html#ga28b02b17902e8c35063bba0df20bd715">slamtec_aurora_sdk_session_handle_t</a> handle, const <a class="el" href="group__SDK__Basic__Data__Types.html#ga5f138e270c00c7a940be176c40f1f84d">slamtec_aurora_sdk_image_desc_t</a> *desc_in, const void *raw_segment_data, <a class="el" href="group__SDK__Basic__Data__Types.html#ga5f138e270c00c7a940be176c40f1f84d">slamtec_aurora_sdk_image_desc_t</a> *desc_out, const <a class="el" href="struct__slamtec__aurora__sdk__enhanced__imaging__frame__buffer.html">slamtec_aurora_sdk_enhanced_imaging_frame_buffer_t</a> *aligned_segment_data)</td></tr>
 <tr class="memdesc:ga7ac5e77aa9967ef174771f52f6992798"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the aligned segmentation map.  <a href="group__EnhancedImaging__Operations.html#ga7ac5e77aa9967ef174771f52f6992798">More...</a><br /></td></tr>
 <tr class="separator:ga7ac5e77aa9967ef174771f52f6992798"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac87ede68c1a678b641dd63fc70e1383"><td class="memItemLeft" align="right" valign="top">void AURORA_SDK_API&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__EnhancedImaging__Operations.html#gaac87ede68c1a678b641dd63fc70e1383">slamtec_aurora_sdk_dataprovider_depthcam_set_postfiltering</a> (<a class="el" href="group__SDK__Basic__Data__Types.html#ga28b02b17902e8c35063bba0df20bd715">slamtec_aurora_sdk_session_handle_t</a> handle, int enable, uint64_t flags)</td></tr>
+<tr class="memdesc:gaac87ede68c1a678b641dd63fc70e1383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the post filtering of the depth camera.  <a href="group__EnhancedImaging__Operations.html#gaac87ede68c1a678b641dd63fc70e1383">More...</a><br /></td></tr>
+<tr class="separator:gaac87ede68c1a678b641dd63fc70e1383"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gabd690554a092b5d6693296d46e1d90a1"><td class="memItemLeft" align="right" valign="top">int AURORA_SDK_API&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__EnhancedImaging__Operations.html#gabd690554a092b5d6693296d46e1d90a1">slamtec_aurora_sdk_dataprovider_semantic_segmentation_is_ready</a> (<a class="el" href="group__SDK__Basic__Data__Types.html#ga28b02b17902e8c35063bba0df20bd715">slamtec_aurora_sdk_session_handle_t</a> handle)</td></tr>
 <tr class="memdesc:gabd690554a092b5d6693296d46e1d90a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the semantic segmentation is ready to retrieve data.  <a href="group__EnhancedImaging__Operations.html#gabd690554a092b5d6693296d46e1d90a1">More...</a><br /></td></tr>
 <tr class="separator:gabd690554a092b5d6693296d46e1d90a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -372,6 +375,52 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the error code </dd></dl>
+
+</div>
+</div>
+<a id="gaac87ede68c1a678b641dd63fc70e1383"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaac87ede68c1a678b641dd63fc70e1383">&#9670;&nbsp;</a></span>slamtec_aurora_sdk_dataprovider_depthcam_set_postfiltering()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AURORA_SDK_API slamtec_aurora_sdk_dataprovider_depthcam_set_postfiltering </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__SDK__Basic__Data__Types.html#ga28b02b17902e8c35063bba0df20bd715">slamtec_aurora_sdk_session_handle_t</a>&#160;</td>
+          <td class="paramname"><em>handle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>enable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>flags</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the post filtering of the depth camera. </p>
+<p>Post filtering is used to refine the depth estimation from the depth camera module. It is enabled by default.</p>
+<p>Caller can use this function to enable or disable the post filtering.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handle</td><td>- the session handle </td></tr>
+    <tr><td class="paramname">enable</td><td>- the enable flag, if set to non-zero, the post filtering will be enabled, otherwise it will be disabled </td></tr>
+    <tr><td class="paramname">flags</td><td>- the flags to control the post filtering, currently it is not used, set to 0 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

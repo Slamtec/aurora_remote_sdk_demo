@@ -8,5 +8,6 @@ var struct__slamtec__aurora__sdk__keyframe__desc__t =
     [ "parent_id", "struct__slamtec__aurora__sdk__keyframe__desc__t.html#afa9bcf46bedc1c8bd05f49cff8b6802e", null ],
     [ "pose", "struct__slamtec__aurora__sdk__keyframe__desc__t.html#a8626c4abd849ff710f6979aa3dfd403e", null ],
     [ "pose_se3", "struct__slamtec__aurora__sdk__keyframe__desc__t.html#aaa840492e948822841c57dc075563fd0", null ],
+    [ "related_mp_count", "struct__slamtec__aurora__sdk__keyframe__desc__t.html#a7b59ada37485982bc96f6f483bcb60d3", null ],
     [ "timestamp", "struct__slamtec__aurora__sdk__keyframe__desc__t.html#aa656c3f76851a27484971c08a19aaf4c", null ]
 ];
