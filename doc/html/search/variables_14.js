@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['w_755',['w',['../struct__slamtec__aurora__sdk__quaternion__t.html#a3817f84e360e3092a697d0029deb5b88',1,'_slamtec_aurora_sdk_quaternion_t']]],
-  ['width_756',['width',['../struct__slamtec__aurora__sdk__image__desc__t.html#a72519dec07af3a4e49743813755576af',1,'_slamtec_aurora_sdk_image_desc_t::width()'],['../struct__slamtec__aurora__sdk__rect__t.html#a2f07fc1d71d1ef00183f0611e2c0af07',1,'_slamtec_aurora_sdk_rect_t::width()']]]
+  ['valid_1019',['valid',['../struct__slamtec__aurora__sdk__imu__info__t.html#a89f818cab816e8062bc7aacd865ada39',1,'_slamtec_aurora_sdk_imu_info_t']]],
+  ['version_1020',['version',['../struct__slamtec__aurora__sdk__session__config__t.html#a4688f2f62fca5322b4737583f4c29f48',1,'_slamtec_aurora_sdk_session_config_t']]]
 ];

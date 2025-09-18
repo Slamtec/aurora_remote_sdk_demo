@@ -31,6 +31,7 @@ The SDK supports the following platforms and architectures:
 
 - Added support for neo pure localization mode
 
-### V1.2.0-rtm:
+### V2.0.1-rc2:
 
-- Fixed some bugs
+- Refined some APIs
+- added reloc status retriving interface

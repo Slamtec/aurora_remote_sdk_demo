@@ -7,12 +7,16 @@ var classrp_1_1standalone_1_1aurora_1_1RemoteSDK =
     [ "getDiscoveredServers", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a98950e0982086a1eff2284877fe20ed9", null ],
     [ "isConnected", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a4b5f1a26b76f3bfe221e81460ca9bb95", null ],
     [ "release", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#ad70b7a47ff51ac1515002df4d8d65703", null ],
+    [ "setEnhancedImagingSubscription", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#ae6f0f0800fb4db6d53f13c71094809c5", null ],
     [ "startBackgroundMapDataSyncing", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#aa4b955efbbad15c1e64d24aeb0f75d86", null ],
     [ "stopBackgroundMapDataSyncing", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a65c79b0886548851e04f1fd9ac6e15cc", null ],
+    [ "colmapDataRecorder", "group__Cxx__Data__Recorder__Operations.html#ga1c376494f3ea1b81562036fb6893d79f", null ],
     [ "controller", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a24d22d4958d4a4d45d3190dfff0c4e7b", null ],
     [ "dataProvider", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a3e8f1471eefd0414c84ced62b4fe8897", null ],
+    [ "enhancedImaging", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#aaab5b262621110d58e7c81b5e37c6c3e", null ],
     [ "floorDetector", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a6889240d574696d0af8275232a4efe9a", null ],
     [ "handle", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#aa5156449a55d476ff788fbb449a60fc9", null ],
     [ "lidar2DMapBuilder", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#aaec692cc68218881d6af5ae16135035f", null ],
-    [ "mapManager", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a6efc994d92a0f5559e6f8f9286aa3ceb", null ]
+    [ "mapManager", "classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a6efc994d92a0f5559e6f8f9286aa3ceb", null ],
+    [ "rawDataRecorder", "group__Cxx__Data__Recorder__Operations.html#gaf2e2215161948e09c5ee12aad654c335", null ]
 ];

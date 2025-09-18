@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['lastkfcounttofetch_677',['lastKFCountToFetch',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a5d1ff5fb4c610ca9645a0baa30815c2e',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['lastkfretrieved_678',['lastKFRetrieved',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#ad8a7875306abf62db075e24885b2730f',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['lastmapcounttofetch_679',['lastMapCountToFetch',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a95e651eeab4d074137a681ab593036c9',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['lastmpcounttofetch_680',['lastMPCountToFetch',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a990698d0b11b938e5f2f3d020aedaa77',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['lastmpretrieved_681',['lastMPRetrieved',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#ad805effa699dbcbb3eecf0cd9af7e9d9',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['layer_5fid_682',['layer_id',['../struct__slamtec__aurora__sdk__lidar__singlelayer__scandata__info__t.html#ab660cc57057d21e58efbd75a5ac56e16',1,'_slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t']]],
-  ['left_5fimage_5fdesc_683',['left_image_desc',['../struct__slamtec__aurora__sdk__tracking__info.html#a4ce62fedc867e3244f4a0bc7d273907b',1,'_slamtec_aurora_sdk_tracking_info']]],
-  ['leftimage_684',['leftImage',['../classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a5e41a721b09d67f0ba35aac174874cfb',1,'rp::standalone::aurora::RemoteTrackingFrameInfo']]],
-  ['lidar2dmapbuilder_685',['lidar2DMapBuilder',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#aaec692cc68218881d6af5ae16135035f',1,'rp::standalone::aurora::RemoteSDK']]],
-  ['looped_5fframe_5fcount_686',['looped_frame_count',['../struct__slamtec__aurora__sdk__keyframe__desc__t.html#a6d677e6eb5e42c773132352580ec93ba',1,'_slamtec_aurora_sdk_keyframe_desc_t']]],
-  ['loopedkeyframeids_687',['loopedKeyFrameIDs',['../classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a2b3e1e6bb8ee97b2974b4125ff2ddd61',1,'rp::standalone::aurora::RemoteKeyFrameData']]]
+  ['keyframe_5fcount_927',['keyframe_count',['../struct__slamtec__aurora__sdk__map__desc__t.html#ae1b91904b83e387799d97d92956c25f0',1,'_slamtec_aurora_sdk_map_desc_t']]],
+  ['keyframe_5fid_5fend_928',['keyframe_id_end',['../struct__slamtec__aurora__sdk__map__desc__t.html#aa7c99fb627bc76bde9b289dadc77edf4',1,'_slamtec_aurora_sdk_map_desc_t']]],
+  ['keyframe_5fid_5fstart_929',['keyframe_id_start',['../struct__slamtec__aurora__sdk__map__desc__t.html#a9716004aa5e3ecdbd8b5f6f5d32a26c7',1,'_slamtec_aurora_sdk_map_desc_t']]],
+  ['keypoints_5fleft_930',['keypoints_left',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#a1ace261dc4c57b20a127382d2a89efff',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
+  ['keypoints_5fleft_5fbuffer_5fcount_931',['keypoints_left_buffer_count',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#a8421d2acf85081d05c54fc4a9ad455d9',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
+  ['keypoints_5fleft_5fcount_932',['keypoints_left_count',['../struct__slamtec__aurora__sdk__tracking__info.html#a27a71a48b6c12ab721ee0d3b11135640',1,'_slamtec_aurora_sdk_tracking_info']]],
+  ['keypoints_5fright_933',['keypoints_right',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#a167523d6acda2f0ab1ecff9a00032ec3',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
+  ['keypoints_5fright_5fbuffer_5fcount_934',['keypoints_right_buffer_count',['../struct__slamtec__aurora__sdk__tracking__data__buffer__t.html#aafdf30ac541dc52a837656880fc0338f',1,'_slamtec_aurora_sdk_tracking_data_buffer_t']]],
+  ['keypoints_5fright_5fcount_935',['keypoints_right_count',['../struct__slamtec__aurora__sdk__tracking__info.html#aa6f90fd61503a4d3600287e122deabb9',1,'_slamtec_aurora_sdk_tracking_info']]]
 ];

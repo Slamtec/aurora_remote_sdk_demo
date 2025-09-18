@@ -18,7 +18,7 @@
 
 
 ## 用于ROS
-- SLAMTEC官方提供Aurora的ROS包装节点，支持 [ROS](https://github.com/Slamtec/aurora_ros) 和 [ROS2](https://github.com/Slamtec/aurora_ros/tree/ros2)。
+- SLAMTEC官方提供Aurora的ROS包装节点，支持[ROS](https://github.com/Slamtec/aurora_ros) 和 [ROS2](https://github.com/Slamtec/aurora_ros/tree/ros2)。
 - 您可以在SLAMTEC Aurora网站上找到这些包装节点。([ROS Wrapper Nodes](https://developer.slamtec.com/docs/slamware/aurora_ros2_sdk/))
 - 一些Aurora特有的功能在ROS包装节点中不受支持，例如自动楼层检测。
 - 如果您想使用Aurora特有的功能，您需要使用Remote SDK。

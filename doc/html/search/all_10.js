@@ -1,28 +1,8 @@
 var searchData=
 [
-  ['readcelldata_201',['readCellData',['../classrp_1_1standalone_1_1aurora_1_1OccupancyGridMap2DRef.html#a34eb0a28a1925c301bba1601507af9fd',1,'rp::standalone::aurora::OccupancyGridMap2DRef::readCellData(const slamtec_aurora_sdk_rect_t &amp;rect, slamtec_aurora_sdk_2d_gridmap_fetch_info_t &amp;fetchInfoOut, std::vector&lt; uint8_t &gt; &amp;dataOut, bool l2pMapping=true) const'],['../classrp_1_1standalone_1_1aurora_1_1OccupancyGridMap2DRef.html#af627ddeba8e453c433f2dcb83109013c',1,'rp::standalone::aurora::OccupancyGridMap2DRef::readCellData(const slamtec_aurora_sdk_rect_t &amp;rect, slamtec_aurora_sdk_2d_gridmap_fetch_info_t &amp;fetchInfoOut, uint8_t *dataBuffer, size_t dataBufferSize, bool l2pMapping=true) const']]],
-  ['real_5fx_202',['real_x',['../struct__slamtec__aurora__sdk__2d__gridmap__fetch__info__t.html#a82a535b8dbdd9bd9a80eb7a62da66427',1,'_slamtec_aurora_sdk_2d_gridmap_fetch_info_t']]],
-  ['real_5fy_203',['real_y',['../struct__slamtec__aurora__sdk__2d__gridmap__fetch__info__t.html#ac313d63e2655f0981c6c0143620430f9',1,'_slamtec_aurora_sdk_2d_gridmap_fetch_info_t']]],
-  ['release_204',['release',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#ad70b7a47ff51ac1515002df4d8d65703',1,'rp::standalone::aurora::RemoteSDK']]],
-  ['remotecontroller_205',['RemoteController',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html',1,'rp::standalone::aurora']]],
-  ['remotedataprovider_206',['RemoteDataProvider',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html',1,'rp::standalone::aurora']]],
-  ['remoteimageref_207',['RemoteImageRef',['../classrp_1_1standalone_1_1aurora_1_1RemoteImageRef.html',1,'rp::standalone::aurora']]],
-  ['remotekeyframedata_208',['RemoteKeyFrameData',['../classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html',1,'rp::standalone::aurora']]],
-  ['remotemapdatavisitor_209',['RemoteMapDataVisitor',['../classrp_1_1standalone_1_1aurora_1_1RemoteMapDataVisitor.html',1,'rp::standalone::aurora']]],
-  ['remotemapmanager_210',['RemoteMapManager',['../classrp_1_1standalone_1_1aurora_1_1RemoteMapManager.html',1,'rp::standalone::aurora']]],
-  ['remotesdk_211',['RemoteSDK',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html',1,'rp::standalone::aurora']]],
-  ['remotesdklistener_212',['RemoteSDKListener',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDKListener.html',1,'rp::standalone::aurora']]],
-  ['remotetrackingframeinfo_213',['RemoteTrackingFrameInfo',['../classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a4d2952abbdd133db9cdc1fdf8ae2733a',1,'rp::standalone::aurora::RemoteTrackingFrameInfo::RemoteTrackingFrameInfo(const slamtec_aurora_sdk_tracking_info_t &amp;info, const slamtec_aurora_sdk_tracking_data_buffer_t &amp;buffer)'],['../classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a8ce9dcbb91c2ea2d67be8ad2e09d1131',1,'rp::standalone::aurora::RemoteTrackingFrameInfo::RemoteTrackingFrameInfo(const slamtec_aurora_sdk_tracking_info_t &amp;info, std::vector&lt; uint8_t &gt; &amp;&amp;imgbuffer_left, std::vector&lt; uint8_t &gt; &amp;&amp;imgbuffer_right, std::vector&lt; slamtec_aurora_sdk_keypoint_t &gt; &amp;&amp;keypoints_buffer_left, std::vector&lt; slamtec_aurora_sdk_keypoint_t &gt; &amp;&amp;keypoints_buffer_right)'],['../classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html',1,'rp::standalone::aurora::RemoteTrackingFrameInfo']]],
-  ['requiremappingmode_214',['requireMappingMode',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a1ca76fd99c47ca3917d45efc3fd9e5b1',1,'rp::standalone::aurora::RemoteController']]],
-  ['requiremapreset_215',['requireMapReset',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#add505a0c532f76f57b2d00caa0e238c7',1,'rp::standalone::aurora::RemoteController']]],
-  ['requirepurelocalizationmode_216',['requirePureLocalizationMode',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a73928218cff85ce00f0bc77fb36f44e8',1,'rp::standalone::aurora::RemoteController']]],
-  ['requireredrawpreviewmap_217',['requireRedrawPreviewMap',['../classrp_1_1standalone_1_1aurora_1_1LIDAR2DMapBuilder.html#a9f52070abe78004b13153dbbb6adb7e5',1,'rp::standalone::aurora::LIDAR2DMapBuilder']]],
-  ['requirerelocalization_218',['requireRelocalization',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#ae43df2e2abfc7036ecb12edba06d150d',1,'rp::standalone::aurora::RemoteController']]],
-  ['reserved_219',['reserved',['../struct__slamtec__aurora__sdk__session__config__t.html#a6ad74b6ff5ca864a9feeba628f02e656',1,'_slamtec_aurora_sdk_session_config_t']]],
-  ['resolution_220',['resolution',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a69c3bd98554d092a5ea8371283995999',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t']]],
-  ['resyncmapdata_221',['resyncMapData',['../classrp_1_1standalone_1_1aurora_1_1RemoteController.html#a9e14968391ecf3edfd94bda77622ff2a',1,'rp::standalone::aurora::RemoteController']]],
-  ['right_5fimage_5fdesc_222',['right_image_desc',['../struct__slamtec__aurora__sdk__tracking__info.html#a965c559cabe83a191721eee0facf6789',1,'_slamtec_aurora_sdk_tracking_info']]],
-  ['rightimage_223',['rightImage',['../classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#ae74a8adfc41edea0e8f6fd514662d8c9',1,'rp::standalone::aurora::RemoteTrackingFrameInfo']]],
-  ['roll_224',['roll',['../struct__slamtec__aurora__sdk__euler__angle__t.html#a69591a2fa8546bf5c017997b99621fcf',1,'_slamtec_aurora_sdk_euler_angle_t']]],
-  ['rpy_225',['rpy',['../struct__slamtec__aurora__sdk__pose__t.html#af13da7e73e79a69d43202dc4cf6ba7f2',1,'_slamtec_aurora_sdk_pose_t']]]
+  ['quality_258',['quality',['../struct__slamtec__aurora__sdk__lidar__scan__point__t.html#a6cb09ecba9d3c9ab210986ee65bf7ea4',1,'_slamtec_aurora_sdk_lidar_scan_point_t']]],
+  ['quaternion_259',['quaternion',['../struct__slamtec__aurora__sdk__pose__se3__t.html#a8eff7eab348ca1d588e88d5851a08809',1,'_slamtec_aurora_sdk_pose_se3_t']]],
+  ['querysessionstatus_260',['querySessionStatus',['../classrp_1_1standalone_1_1aurora_1_1RemoteMapManager.html#aeaa00ab2944dd396dab225bedefb7599',1,'rp::standalone::aurora::RemoteMapManager']]],
+  ['querystatusfloat64_261',['queryStatusFloat64',['../classrp_1_1standalone_1_1aurora_1_1DataRecorder.html#a4baa6ce0fe8609ec21ef50ea55dae03a',1,'rp::standalone::aurora::DataRecorder']]],
+  ['querystatusint64_262',['queryStatusInt64',['../classrp_1_1standalone_1_1aurora_1_1DataRecorder.html#ae6d76da51f67b8eb8204c4399baf5e9f',1,'rp::standalone::aurora::DataRecorder']]]
 ];

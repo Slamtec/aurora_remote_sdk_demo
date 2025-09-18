@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['y_428',['y',['../struct__slamtec__aurora__sdk__position3d__t.html#a0d1122cf7866e5010ee5722efb7f572f',1,'_slamtec_aurora_sdk_position3d_t::y()'],['../struct__slamtec__aurora__sdk__quaternion__t.html#a09a98d21a493783f68c1ce3988283431',1,'_slamtec_aurora_sdk_quaternion_t::y()'],['../struct__slamtec__aurora__sdk__keypoint__t.html#aeeeb33259f242f44ecc56f2512d6b4eb',1,'_slamtec_aurora_sdk_keypoint_t::y()'],['../struct__slamtec__aurora__sdk__rect__t.html#ae5b42d7a4211d5ebd263df309653ba63',1,'_slamtec_aurora_sdk_rect_t::y()']]],
-  ['yaw_429',['yaw',['../struct__slamtec__aurora__sdk__euler__angle__t.html#af2453a359f36abff57ff56b5cd31f7cc',1,'_slamtec_aurora_sdk_euler_angle_t']]]
+  ['x_573',['x',['../struct__slamtec__aurora__sdk__position3d__t.html#af5cdbed2cc397d2419f3de2f0b77115d',1,'_slamtec_aurora_sdk_position3d_t::x()'],['../struct__slamtec__aurora__sdk__quaternion__t.html#a8abcb8ed99934fa2f3f786471bc791b3',1,'_slamtec_aurora_sdk_quaternion_t::x()'],['../struct__slamtec__aurora__sdk__keypoint__t.html#a773f93a574c61c54e1ee09d6e9851260',1,'_slamtec_aurora_sdk_keypoint_t::x()'],['../struct__slamtec__aurora__sdk__rect__t.html#acb7dfae38c3137e41aee6ec06b065785',1,'_slamtec_aurora_sdk_rect_t::x()']]]
 ];

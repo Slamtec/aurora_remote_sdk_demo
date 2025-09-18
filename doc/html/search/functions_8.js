@@ -1,8 +1,15 @@
 var searchData=
 [
-  ['peekimudata_533',['peekIMUData',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a9aa3bd005a4f0d6e13ba02c992736237',1,'rp::standalone::aurora::RemoteDataProvider']]],
-  ['peekrecentlidarscansinglelayer_534',['peekRecentLIDARScanSingleLayer',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a00c02b12393c2b3e1c5bf7ac3fc54ea9',1,'rp::standalone::aurora::RemoteDataProvider']]],
-  ['peektrackingdata_535',['peekTrackingData',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a448d3da5892ddce8c9751f95a65e9c19',1,'rp::standalone::aurora::RemoteDataProvider']]],
-  ['pop_5fback_536',['pop_back',['../classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc.html#a9d14c8cea3bfc58b2e105f93e63883b4',1,'rp::standalone::aurora::SDKServerConnectionDesc']]],
-  ['push_5fback_537',['push_back',['../classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc.html#aae82178f9f0fc839ccc031e874d7b5d8',1,'rp::standalone::aurora::SDKServerConnectionDesc']]]
+  ['peekcamerapreviewimage_725',['peekCameraPreviewImage',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a6eefba14f1c9dc5a81e619821ce759f6',1,'rp::standalone::aurora::RemoteDataProvider']]],
+  ['peekdepthcameraframe_726',['peekDepthCameraFrame',['../classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a3d4df2af85ddb5e080af126572ed4cb9',1,'rp::standalone::aurora::EnhancedImaging']]],
+  ['peekdepthcamerarelatedrectifiedimage_727',['peekDepthCameraRelatedRectifiedImage',['../classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#a0d18b406f19011cba350612d06352455',1,'rp::standalone::aurora::EnhancedImaging']]],
+  ['peekhistorypose_728',['peekHistoryPose',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a2133fad2e279e1303836de273db1e3aa',1,'rp::standalone::aurora::RemoteDataProvider']]],
+  ['peekimudata_729',['peekIMUData',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a9aa3bd005a4f0d6e13ba02c992736237',1,'rp::standalone::aurora::RemoteDataProvider']]],
+  ['peekrecentlidarscansinglelayer_730',['peekRecentLIDARScanSingleLayer',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a00c02b12393c2b3e1c5bf7ac3fc54ea9',1,'rp::standalone::aurora::RemoteDataProvider']]],
+  ['peekrelocalizationstatus_731',['peekRelocalizationStatus',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#af92b02eacad65a10e0c6a10cf8518fd6',1,'rp::standalone::aurora::RemoteDataProvider']]],
+  ['peeksemanticsegmentationframe_732',['peekSemanticSegmentationFrame',['../classrp_1_1standalone_1_1aurora_1_1EnhancedImaging.html#af8bab5da5833c2c9aab0f67056e81336',1,'rp::standalone::aurora::EnhancedImaging']]],
+  ['peektrackingdata_733',['peekTrackingData',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a448d3da5892ddce8c9751f95a65e9c19',1,'rp::standalone::aurora::RemoteDataProvider']]],
+  ['peekvslamsystemstatus_734',['peekVSLAMSystemStatus',['../classrp_1_1standalone_1_1aurora_1_1RemoteDataProvider.html#a5aeffeeed7f264b35a44ff675e760a23',1,'rp::standalone::aurora::RemoteDataProvider']]],
+  ['pop_5fback_735',['pop_back',['../classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc.html#a9d14c8cea3bfc58b2e105f93e63883b4',1,'rp::standalone::aurora::SDKServerConnectionDesc']]],
+  ['push_5fback_736',['push_back',['../classrp_1_1standalone_1_1aurora_1_1SDKServerConnectionDesc.html#aae82178f9f0fc839ccc031e874d7b5d8',1,'rp::standalone::aurora::SDKServerConnectionDesc']]]
 ];

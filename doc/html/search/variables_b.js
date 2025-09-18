@@ -1,18 +1,14 @@
 var searchData=
 [
-  ['map_5fcanvas_5fheight_688',['map_canvas_height',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a350aebef0eb4330596d9a540f287be37',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t']]],
-  ['map_5fcanvas_5fwidth_689',['map_canvas_width',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a524d28b45308865c1e2c21fff9d276df',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t']]],
-  ['map_5fflags_690',['map_flags',['../struct__slamtec__aurora__sdk__map__desc__t.html#a9e0878b5d6dff13c905d1590c69d73f8',1,'_slamtec_aurora_sdk_map_desc_t']]],
-  ['map_5fid_691',['map_id',['../struct__slamtec__aurora__sdk__map__desc__t.html#a5891d80ba89738ee156ccf372075cfe9',1,'_slamtec_aurora_sdk_map_desc_t::map_id()'],['../struct__slamtec__aurora__sdk__keyframe__desc__t.html#a90593a997c4098f73145c5232e68133a',1,'_slamtec_aurora_sdk_keyframe_desc_t::map_id()'],['../struct__slamtec__aurora__sdk__map__point__desc__t.html#a60c2e873a0ddef8b4013801cea971abd',1,'_slamtec_aurora_sdk_map_point_desc_t::map_id()']]],
-  ['map_5fpoint_5fcount_692',['map_point_count',['../struct__slamtec__aurora__sdk__map__desc__t.html#a9b05db3dea81806c7cbbde4503bfd3bb',1,'_slamtec_aurora_sdk_map_desc_t']]],
-  ['map_5fpoint_5fid_5fend_693',['map_point_id_end',['../struct__slamtec__aurora__sdk__map__desc__t.html#a0ae926d32c3b5d62a38c320f7ce42cb2',1,'_slamtec_aurora_sdk_map_desc_t']]],
-  ['map_5fpoint_5fid_5fstart_694',['map_point_id_start',['../struct__slamtec__aurora__sdk__map__desc__t.html#a5089a201ecc91067e570f28af37cbbc7',1,'_slamtec_aurora_sdk_map_desc_t']]],
-  ['mapmanager_695',['mapManager',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#a6efc994d92a0f5559e6f8f9286aa3ceb',1,'rp::standalone::aurora::RemoteSDK']]],
-  ['mappingflags_696',['mappingFlags',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a794f57bb55c66e19854e2b5a8333a206',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
-  ['max_5fheight_697',['max_height',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a77af6dcb42c83026766788e26c2c7fa7',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t::max_height()'],['../struct__slamtec__aurora__sdk__floor__detection__desc__t.html#a225854787156a55db1d5e574e54eecc1',1,'_slamtec_aurora_sdk_floor_detection_desc_t::max_height()']]],
-  ['max_5fx_698',['max_x',['../struct__slamtec__aurora__sdk__2d__gridmap__dimension__t.html#a328a2d8ee8ac7c4faea9796bdf87e2ce',1,'_slamtec_aurora_sdk_2d_gridmap_dimension_t']]],
-  ['max_5fy_699',['max_y',['../struct__slamtec__aurora__sdk__2d__gridmap__dimension__t.html#a0b23e248bfc01796271b5b50bdf597ff',1,'_slamtec_aurora_sdk_2d_gridmap_dimension_t']]],
-  ['min_5fheight_700',['min_height',['../struct__slamtec__aurora__sdk__2d__gridmap__generation__options__t.html#a148658e88e5bbfe7fbd94ded956f7be6',1,'_slamtec_aurora_sdk_2d_gridmap_generation_options_t::min_height()'],['../struct__slamtec__aurora__sdk__floor__detection__desc__t.html#a11b1b4de668b437042a25eae65ed2d4d',1,'_slamtec_aurora_sdk_floor_detection_desc_t::min_height()']]],
-  ['min_5fx_701',['min_x',['../struct__slamtec__aurora__sdk__2d__gridmap__dimension__t.html#a9f26bb7f8609f59f4cb267d98e380d82',1,'_slamtec_aurora_sdk_2d_gridmap_dimension_t']]],
-  ['min_5fy_702',['min_y',['../struct__slamtec__aurora__sdk__2d__gridmap__dimension__t.html#acd09407914f64b6f99e61b68725f13d2',1,'_slamtec_aurora_sdk_2d_gridmap_dimension_t']]]
+  ['lastkfcounttofetch_936',['lastKFCountToFetch',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a5d1ff5fb4c610ca9645a0baa30815c2e',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
+  ['lastkfretrieved_937',['lastKFRetrieved',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#ad8a7875306abf62db075e24885b2730f',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
+  ['lastmapcounttofetch_938',['lastMapCountToFetch',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a95e651eeab4d074137a681ab593036c9',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
+  ['lastmpcounttofetch_939',['lastMPCountToFetch',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#a990698d0b11b938e5f2f3d020aedaa77',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
+  ['lastmpretrieved_940',['lastMPRetrieved',['../struct__slamtec__aurora__sdk__global__map__desc__t.html#ad805effa699dbcbb3eecf0cd9af7e9d9',1,'_slamtec_aurora_sdk_global_map_desc_t']]],
+  ['layer_5fid_941',['layer_id',['../struct__slamtec__aurora__sdk__lidar__singlelayer__scandata__info__t.html#ab660cc57057d21e58efbd75a5ac56e16',1,'_slamtec_aurora_sdk_lidar_singlelayer_scandata_info_t']]],
+  ['left_5fimage_5fdesc_942',['left_image_desc',['../struct__slamtec__aurora__sdk__tracking__info.html#a4ce62fedc867e3244f4a0bc7d273907b',1,'_slamtec_aurora_sdk_tracking_info::left_image_desc()'],['../struct__slamtec__aurora__sdk__stereo__image__pair__desc__t.html#ad363a4edc0aedb82f22fb558620b4460',1,'_slamtec_aurora_sdk_stereo_image_pair_desc_t::left_image_desc()']]],
+  ['leftimage_943',['leftImage',['../classrp_1_1standalone_1_1aurora_1_1RemoteTrackingFrameInfo.html#a5e41a721b09d67f0ba35aac174874cfb',1,'rp::standalone::aurora::RemoteTrackingFrameInfo']]],
+  ['lidar2dmapbuilder_944',['lidar2DMapBuilder',['../classrp_1_1standalone_1_1aurora_1_1RemoteSDK.html#aaec692cc68218881d6af5ae16135035f',1,'rp::standalone::aurora::RemoteSDK']]],
+  ['looped_5fframe_5fcount_945',['looped_frame_count',['../struct__slamtec__aurora__sdk__keyframe__desc__t.html#a6d677e6eb5e42c773132352580ec93ba',1,'_slamtec_aurora_sdk_keyframe_desc_t']]],
+  ['loopedkeyframeids_946',['loopedKeyFrameIDs',['../classrp_1_1standalone_1_1aurora_1_1RemoteKeyFrameData.html#a2b3e1e6bb8ee97b2974b4125ff2ddd61',1,'rp::standalone::aurora::RemoteKeyFrameData']]]
 ];

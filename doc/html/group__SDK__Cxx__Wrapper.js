@@ -6,5 +6,7 @@ var group__SDK__Cxx__Wrapper =
     [ "Map Management", "group__Cxx__Map__Management.html", "group__Cxx__Map__Management" ],
     [ "Data Provider Operations", "group__Cxx__DataProvider__Operations.html", "group__Cxx__DataProvider__Operations" ],
     [ "LIDAR 2D GridMap Operations", "group__Cxx__LIDAR__2DMap__Operations.html", "group__Cxx__LIDAR__2DMap__Operations" ],
-    [ "LIDAR Auto Floor Detection Operations", "group__Cxx__Auto__Floor__Detection__Operations.html", "group__Cxx__Auto__Floor__Detection__Operations" ]
+    [ "LIDAR Auto Floor Detection Operations", "group__Cxx__Auto__Floor__Detection__Operations.html", "group__Cxx__Auto__Floor__Detection__Operations" ],
+    [ "Enhanced Imaging Operations", "group__Cxx__Enhanced__Imaging__Operations.html", "group__Cxx__Enhanced__Imaging__Operations" ],
+    [ "Data Recorder Operations", "group__Cxx__Data__Recorder__Operations.html", "group__Cxx__Data__Recorder__Operations" ]
 ];
