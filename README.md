@@ -20,7 +20,7 @@ This repository contains the Demo code and project skeleton for using the SLAMTE
 
 ## ROS Integration
 - SLAMTEC provides Aurora ROS wrapper nodes for [ROS](https://github.com/Slamtec/aurora_ros) and [ROS2](https://github.com/Slamtec/aurora_ros/tree/ros2).
-- You can find the wrapper nodes on SLAMTEC Aurora Website. ([ROS Wrapper Nodes](https://developer.slamtec.com/docs/slamware/aurora_ros2_sdk_en/))
+- You can find the wrapper nodes on SLAMTEC Aurora Website. ([ROS Wrapper Nodes](https://developer.slamtec.com/docs/slamware/aurora-ros2-sdk-en/))
 - Some Aurora specific features are not supported in the ROS wrapper nodes, such as the auto floor detection.
 - If you want to use the Aurora specific features, you need to use the Remote SDK.
 
